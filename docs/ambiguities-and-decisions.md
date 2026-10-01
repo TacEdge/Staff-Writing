@@ -43,7 +43,7 @@ Decisions recorded 2026-10-01 (Minute gate review):
 | D-01 | DECIDED: bold every action addressee. The Annex 2C inconsistency stays in the discrepancy record. |
 | D-06 | DECIDED: do not implement signature-area shading for now. It remains **unresolved** pending authoritative Word-template or digital-signature evidence. |
 | D-09, D-10 | DECIDED: defer paragraph grading indicators and the single-approval statement. They are not implemented during the Minute validation gate. |
-| I-M7 | Kept: Word conditional field; to be verified in Word (V-01). |
+| I-M7 | Kept: Word conditional field. Verified in Word (V-01 PASS, 2026-10-01). |
 
 ## Submission: items that emerged
 
@@ -76,14 +76,18 @@ signature (DL-04, 2.1.16(17)).
 
 ## Phase status (2026-10-01)
 
-Phase 1 (engine, Annex 1A validation, Minute, Submission) is **provisionally
-accepted, pending Microsoft Word validation**. Phase 2 (DPB, VR/PAR, internal
-and external letters) is **provisionally accepted** (review 2026-10-01); the same
-Word checks apply to it. The shared renderer has been reused across six
-document types without destabilising the earlier ones. Checks V-01 to V-04
-(`templates/minute/NOTES.md` §7) have **not been tested in Word**. Do not
-report them as passed until a person has opened the outputs in Word and
-recorded the result.
+Microsoft Word checks V-01 to V-04 **PASSED** on 2026-10-01 and are closed
+(`templates/minute/NOTES.md` §7). The Word version, OS and per-check
+observations were not supplied and are recorded as such.
+
+The **shared renderer foundation for Phases 1–2 is accepted** (2026-10-01):
+the engine, Annex 1A validation, Minute, Submission, DPB, VR/PAR, internal
+and external letters. User direction: no further architectural changes unless a
+subsequently implemented DFI document type requires them.
+
+Next family (planned, not started): Administrative Instruction, CDF Directive,
+CDF Operational Directive. See `docs/phase3-directives-plan.md`. Its open
+items are DR-01 to DR-17 in that plan, plus E-13 and E-14 below (proposed).
 
 ## A. Ambiguities and conflicts in DFI 5.1
 
@@ -160,6 +164,8 @@ others verbatim, flagged in the template notes, until you decide each one.**
 | E-10 | Annex A abbreviations | "HQNZDF: Headquarters Defence Force New Zealand" | "Headquarters New Zealand Defence Force" (as on the title page) |
 | E-11 | 2V cl 15 | "own resources and;" | "own resources and:" (or an em dash, per A-07) |
 | E-12 | 2Q, 2Z, 2AC, 2AD | Enclosure item "1" without a full stop; "[Addressee (through Appointment XYZ]" with an unclosed parenthesis | "1."; "[Addressee] (through [Appointment])" |
+| E-13 | 3D para 15 (first cancellation option) | "…incorporated in DFO 14 and no later than DD Mmm YYYY." "DFO 14" is printed as fixed text, not as a placeholder | PROPOSED (Phase 3 plan): treat as a field "[parent publication]"; default verbatim until decided |
+| E-14 | 3F paras 1–4 and Cancellation | "Administrative Instruction" vs "administrative instruction" within the same boilerplate | PROPOSED (Phase 3 plan): reproduce verbatim unless you direct a correction |
 
 ---
 

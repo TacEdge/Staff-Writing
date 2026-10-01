@@ -1,7 +1,8 @@
 # Visit report / Post activity report: traceability notes
 
 Status: **implemented (Phase 2); provisionally accepted 2026-10-01.** Word checks
-V-01 to V-04: NOT TESTED.
+V-01 to V-04: PASSED in Microsoft Word 2026-10-01 (record in
+`templates/minute/NOTES.md` §7).
 
 ## 1. DFI sources
 

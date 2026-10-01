@@ -1,7 +1,7 @@
 # Minute: traceability notes
 
-Status: **implemented (Phase 1); gate review passed 2026-10-01 with decisions D-01, D-06, D-09 and D-10.** Not yet verified in MS Word
-(see §7, items V-01 to V-04).
+Status: **implemented (Phase 1); gate review passed 2026-10-01 with decisions D-01, D-06, D-09 and D-10.** Microsoft Word
+checks V-01 to V-04 **PASSED 2026-10-01** (see §7).
 
 ## 1. DFI sources
 
@@ -120,11 +120,20 @@ Visual comparison (LibreOffice preview with Carlito; images in
 | D-09 | Paragraph grading indicator "2.(U)" (2.1.11(12)) | **Deferred** (decided 2026-10-01) |
 | D-10 | Single-approval "approved / not approved" statement above the signature (2.1.11(13)) | **Deferred** (decided 2026-10-01) |
 
-### Needs verification in Microsoft Word (cannot be checked in this environment): status NOT TESTED
+### Microsoft Word verification: CLOSED 2026-10-01
 
-| ID | Item |
-|---|---|
-| V-01 | Annex/appendix page numbers: "A-1", "A-2" on multi-page annexes and none on a single-page annex (conditional field; LibreOffice shows "1A-"). |
-| V-02 | DRAFT watermark appearance (VML; correct in LibreOffice). |
-| V-03 | Footnote separator, numbering and 10 pt text. |
-| V-04 | The file opens without a repair prompt, and the styles show in the Styles pane. |
+These checks cannot be made in this environment (LibreOffice preview only). A
+person ran them in Microsoft Word and reported the results on 2026-10-01. They
+apply to every Phase 1–2 template, because all of them share these components.
+
+| ID | Item | Result (2026-10-01) | Observation as reported |
+|---|---|---|---|
+| V-01 | Annex/appendix page numbers: "A-1", "A-2" on multi-page annexes and none on a single-page annex (conditional field; LibreOffice shows "1A-"). | **PASS** | Not supplied (the report contained the placeholder "[brief observation]") |
+| V-02 | DRAFT watermark appearance (VML; correct in LibreOffice). | **PASS** | Not supplied (placeholder) |
+| V-03 | Footnote separator, numbering and 10 pt text. | **PASS** | Not supplied (placeholder) |
+| V-04 | The file opens without a repair prompt, and the styles show in the Styles pane. | **PASS** | "Documents opened in Microsoft Word without repair/recovery warnings." |
+
+Validation environment: **Microsoft Word, version and operating system not
+supplied.** Date: 2026-10-01. Tester: the repository owner (reported in the
+session). The Word version and OS, and the V-01 to V-03 observations, are to be
+added here when supplied. The PASS results do not depend on them.

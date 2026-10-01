@@ -13,5 +13,5 @@ annex, single-page appendix).
 Result (2026-10-01): layout matches Figs 1-4 to 1-6 apart from the expected
 differences. The crest is a labelled placeholder (T-05). "Reference/s:",
 "Distribution" and "For Information" are worded per register decisions A-03
-and A-04 and template 2D. Unclassified annex numbering awaits Word verification
-(V-01).
+and A-04 and template 2D. Unclassified annex numbering was verified in Word
+(V-01, PASS 2026-10-01).

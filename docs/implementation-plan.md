@@ -1,10 +1,10 @@
 # Recommended implementation sequence
 
-Status: **Phases 0–2 complete and provisionally accepted (2026-10-01).** Phase 2
-was re-ordered by the user to DPB → VR/PAR → internal letter → external letter;
-the Administrative Instruction and CDF Directive were held back to form the next
-batch with the CDF Operational Directive. Word checks V-01 to V-04 remain
-outstanding. Original plan text follows. No template implementation begins
+Status: **Phases 0–2 complete and accepted (2026-10-01); Word checks V-01 to
+V-04 passed.** Phase 2 was re-ordered by the user to DPB → VR/PAR → internal
+letter → external letter. The Administrative Instruction and CDF Directive were
+held back to form the next batch with the CDF Operational Directive: planned in
+[phase3-directives-plan.md](phase3-directives-plan.md), awaiting approval. Original plan text follows. No template implementation begins
 until this plan and the OPEN register items it depends on are approved.
 
 Each phase ends with a review point where you see the rendered output beside the

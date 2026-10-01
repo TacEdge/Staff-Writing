@@ -1,6 +1,6 @@
 # Submission: traceability notes
 
-Status: **implemented; review decisions S-01 and S-02 approved 2026-10-01. Provisionally accepted pending Word checks V-01 to V-04 (not yet tested).** It shares every engine component with
+Status: **implemented; review decisions S-01 and S-02 approved 2026-10-01. Accepted 2026-10-01; Word checks V-01 to V-04 passed.** It shares every engine component with
 the Minute. The only engine change is a `compose_body()` hook, which lets a
 schema map structured fields onto the shared body blocks.
 
@@ -70,4 +70,4 @@ Differences from Figs 2-5 and 2-6 (LibreOffice preview; images in
 | DS-06 | 2E italic annotations "(remove this block if not required)" | Omitted: DFI instructions, not content (CLAUDE.md §3 rule 8) |
 | DS-07 | Page break positions | Expected (illustrative pagination) |
 
-Word verification items V-01 to V-04 from the Minute apply equally. **Status: NOT TESTED in Microsoft Word.**
+Word verification items V-01 to V-04 from the Minute apply equally. **Status: PASSED in Microsoft Word 2026-10-01** (record in `templates/minute/NOTES.md` §7).
