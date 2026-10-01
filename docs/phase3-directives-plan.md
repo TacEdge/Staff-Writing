@@ -115,6 +115,7 @@ and that is tested (§6, T-R1).
 | N-6 | **AI originating-HQ block** | Fig 3-7 | A small block: a centred upper-case HQ line, then a centred [Originator] line. The size is measured from Fig 3-7 against the 12 pt body, as in A-22 (`[T]`), and held as a token. Kept separate from `originator_descriptor` so the Minute is unaffected. |
 | N-7 | **"See distribution" weight option** | Fig 3-5 bold; Fig 3-7 regular | An `addressees` option, default unchanged (DR-15). |
 | N-8 | **Optional: an unnumbered paragraph among numbered ones** | Fig 3-7 cancellation | Needed **only if** DR-03 is decided for the template (unnumbered). It would be an optional `numbered: false` flag on the shared paragraph block. |
+| N-9 | **Badge and logo artwork as inline pictures** (if BR-01 is approved) | 3.2.11(2), 3.2.18(2); T-05 | A fixed device vocabulary mapped to the derived assets; `letterhead` inserts the picture in place of the placeholder. |
 
 Not needed: new styles, new numbering code, new section handling, changes to the
 footnote or supporting-document builders.
@@ -207,6 +208,7 @@ person to run in Microsoft Word.
 ## 7. Implementation sequence (after approval)
 
 1. Record the DR decisions in the register; update the tokens (N-6 size) and the standards where needed.
+   If BR-01 and BR-06 are approved, add the artwork assets and image insertion to the `letterhead` block (N-9) at this step.
 2. Shared capabilities N-1 to N-5 (and N-7/N-8 if decided), each with its regression test T-R1 first.
 3. **Administrative Instruction**: template, schema, NOTES, fixtures, comparison.
 4. **CDF Directive** plus the variants (DR-13).
@@ -222,7 +224,7 @@ prefer a gate after the AI, say so.
 | Item | Needed for |
 |---|---|
 | Decisions DR-01 to DR-17, E-13, E-14 | Before step 1 |
-| Official NZDF badge artwork (T-05), or continued labelled placeholders | CDF Directive and Op Directive (placeholders by default) |
+| Decisions BR-01 to BR-06 on the supplied *NZDF Visual Identity Standards* artwork (register section BR) | CDF Directive and Op Directive badge (p12 of the standards). Placeholders until decided. |
 | Authoritative appointment-abbreviation list (A-10) | F-10 can only be checked once it exists. Until then it is not checked. |
 | Marking vocabulary (A-13) | Unchanged: DFI 5.1 markings only |
 | Word version and OS, and the V-01 to V-03 observations, for the validation record | `templates/minute/NOTES.md` §7 |

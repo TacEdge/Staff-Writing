@@ -33,7 +33,7 @@ Writing** (Version 2.01, 03 October 2025).
 
 | Path | Purpose | Rules |
 |---|---|---|
-| `source/` | Original authoritative DFI and derived extracts | Never modify the original. Derived files must say they are derived. |
+| `source/` | Original authoritative DFI and derived extracts; the NZDF Visual Identity Standards (artwork source only, see its `SOURCE.md`) | Never modify the original. Derived files must say they are derived. |
 | `standards/` | Common standards extracted **once** from DFI 5.1 | Every rule cites its DFI paragraph or annex. Templates reference these rules and do not restate them. |
 | `standards/spec/` | Machine-readable version of the shared standards (tokens) | This is the single source the renderer uses for fonts, sizes, spacing, indents and so on. |
 | `templates/` | One folder per document type: template spec, content schema, notes | Holds only what is unique to that document type. Shared rules are referenced, not copied. |
