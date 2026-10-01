@@ -1,0 +1,17 @@
+# Generated documents
+output/*
+!output/README.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Word lock files and OS cruft
+~$*
+.DS_Store
+Thumbs.db
+
+# Restricted assets (official artwork may not be redistributable)
+renderer/assets/restricted/

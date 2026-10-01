@@ -1,0 +1,189 @@
+# DFI 5.1 v2.01: shared formatting tokens
+#
+# The renderer reads these values. Templates reference them by key and never
+# duplicate them. Every value carries:
+#   src:  DFI paragraph, annex or figure
+#   tag:  M (mandatory) | D (DFI default/guidance) | T (template-derived)
+#         | I (implementation decision; see docs/ambiguities-and-decisions.md)
+#         | A-nn (ambiguous; see register)
+# Units: lengths in cm unless stated, font sizes and spacing in pt.
+#
+# STATUS: DRAFT. Values tagged I or A-nn are proposed defaults that need
+# approval.
+
+meta:
+  dfi: "DFI 5.1 Defence Force Writing"
+  dfi_version: "2.01"
+  dfi_date: "2025-10-03"
+  dfi_sha256: "65f2ec2cfcba11d3aef514ff5ed729fa9e7142a5db457c26ac99e0d2a0bcc67c"
+
+page:
+  size: { value: A4, allowed: [A4, A3], src: "1.1.3d(7), 1.2.16(1)", tag: M }
+  orientation_default: { value: portrait, src: "all templates", tag: T }
+  margins:
+    standard:    { top: 2.5, bottom: 2.5, left: 2.5, right: 2.5, src: "1.2.16(2)", tag: M }
+    brief:       { top: 2.5, bottom: 2.5, left: 2.5, right: 4.0, optional: true, src: "1.2.16(2), 2.2.7(1)", tag: D }
+    publication: { top: 3.0, bottom: 2.5, left: 2.5, right: 2.5, src: "4.4.7a(1)", tag: M }
+  header_distance: { value: 1.0, src: "1.2.16(2), 4.4.8a", tag: M }
+  footer_distance: { value: 1.0, src: "1.2.16(2), 4.4.8b", tag: M }
+  default_tab_interval: { value: 1.0, src: "1.2.16(3)", tag: M }
+  justification: { value: left, src: "1.2.16(10)", tag: M }
+  auto_hyphenation: { value: false, src: "1.2.7(11)(b)", tag: M }
+  language: { value: en-NZ, src: "1.2.5b", tag: M }
+
+font:
+  family: { value: Calibri, src: "1.2.16(4)", tag: M }
+  colour: { value: "000000", src: "1.2.16(4)", tag: M }
+  render_check_substitute: { value: Carlito, note: "only for LibreOffice visual checks", tag: I }
+  size:
+    body:              { value: 12, src: "1.2.16(4)(a)", tag: M }
+    heading:           { value: 12, src: "1.2.16(4)(a)", tag: M }
+    email:             { value: 11, src: "1.2.16(4), 2.1.8(1)", tag: M }
+    header_footer:     { value: 12, src: "1.2.16(4)(c)", tag: M }
+    protective_marking: { value: 12, bold: true, caps: true, align: center, src: "1.2.16(5)", tag: M }
+    table_caption:     { value: 11, src: "1.2.16(4)(b), 1.2.25b", tag: M }
+    table_header:      { value: 11, src: "1.2.16(4)(b)", tag: M }
+    table_body:        { value: 10, src: "1.2.16(4)(d), 1.2.25c", tag: M }
+    footnote:          { value: 10, src: "1.2.16(4)(e), 1.2.19b", tag: M }
+    quotation_delta:   { value: -0.5, src: "1.2.14b 'one half point lower'", tag: A-09 }
+    letterhead_address: { value: 10, src: "Fig 1-4 '(Calibri 10)'", tag: A-33 }
+    originator_descriptor: { value: null, bold: true, align: center, src: "Fig 2-4 (size not stated)", tag: A-22 }
+
+spacing:   # before / after in pt; line spacing single unless noted
+  part_heading:     { before: 12, after: 12, src: "1.2.16(11)(a), 4.4.12(1)", tag: M }
+  chapter_heading:  { before: 12, after: 12, src: "1.2.16(11)(b), 4.4.12(2)", tag: M }
+  section_heading:  { before: 12, after: 12, src: "1.2.16(11)(c), 4.4.12(3)", tag: M }
+  subject_heading:  { before: 12, after: 6,  src: "1.2.16(11)(d)", tag: M }
+  main_heading:     { before: 12, after: 6,  src: "1.2.16(11)(d)", tag: M }
+  group_heading:    { before: 12, after: 6,  src: "1.2.16(11)(d)", tag: M }
+  paragraph:        { before: 6,  after: 3,  src: "1.2.16(11)(e), 2.1.3(5)", tag: M }
+  highlight:        { before: 6,  after: 6,  src: "1.2.16(11)(g)", tag: M }
+  table_cell:       { before: 3,  after: 3,  src: "1.2.25c", tag: M }
+  dpb_bullet:       { before: 6,  after: 3,  src: "2.2.7(3)", tag: M }
+  line_spacing:     { value: single, src: "1.2.16(11)(f)-(i)", tag: M }
+  suppress_same_style_spacing: { value: false, src: "4.4.16a", tag: M }
+  graphic_clearance: { value: 12, src: "4.4.18b", tag: M }
+  signature_gap_lines: { value: 6, src: "1.2.21c 'six lines below'", tag: A-08 }
+  min_text_lines_before_signature: { value: 2, src: "1.2.21c", tag: M }
+
+draft:
+  watermark_text: { value: DRAFT, orientation: diagonal, src: "1.2.22(1)", tag: M }
+  line_spacing_electronic: { value: single, src: "1.2.22(2)", tag: M }
+  line_spacing_hardcopy:   { value: double, src: "1.2.22(3)", tag: M }
+
+colours:
+  hyperlink: { rgb: [0, 0, 255], underline: true, src: "1.2.20, Glossary", tag: M }
+  warning:   { rgb: [192, 0, 0], size: 12, src: "4.4.20d, Glossary", tag: M }
+  caution:   { rgb: [227, 108, 10], size: 11, src: "4.4.20d, Glossary", tag: M }
+  note:      { rgb: [0, 128, 0], size: 10, src: "4.4.20d, Glossary", tag: M }
+
+tables:
+  border_weight_pt: { value: 0.5, src: "1.2.25c", tag: M }
+  align_on_page: { value: center, src: "1.2.25a", tag: M }
+  repeat_header_row: { value: true, src: "1.2.25c", tag: M }
+  continued_suffix: { value: " (cont.)", src: "1.2.25c", tag: M }
+  header_shading: { value: null, src: "templates show grey; not in prose", tag: A-24 }
+  caption:
+    pattern: "{kind} {major}-{seq}\t{title}"   # kind = Table|Figure
+    identifier_bold: { value: true, src: "1.2.25b", tag: M }
+    title_bold: { value: false, src: "4.4.11 Heading 5 'roman title'", tag: M }
+    table_position: { value: above, src: "1.2.25b", tag: M }
+    figure_position: { value: below, src: "1.2.25b", tag: M }
+    major_number: { value: "part, else chapter", src: "1.2.25b", tag: A-23 }
+
+bullets:
+  level1: { symbol: "•", label_indent: 1.0, src: "1.2.23g(1)", tag: M }
+  level2: { symbol: "♦", label_indent: 2.0, src: "1.2.23g(1)", tag: M }
+  dpb_text_indent: { value: 2.0, src: "2.2.7(2)", tag: M }
+  forbidden_in: [formal_letter, directive, order, instruction]   # 1.2.23g, 2.1.16(12), 2.2.3(5)
+
+# Paragraph numbering schemes. indent = label position; text = first-line
+# text position; wrap = turnover-line position. All in cm from the left margin.
+numbering:
+  correspondence:      # scheme C: 2.1.3(3), Annex 1A paras 6-7
+    src: "2.1.3(3), Fig 1-4"
+    single_first_level_unnumbered: { value: true, tag: M }
+    levels:
+      - { fmt: "%1.",   indent: 0, text: 1, wrap: 0, tag: A-05 }  # wrap to margin per prose
+      - { fmt: "%2.",   style: lowerLetter, indent: 1, text: 2, wrap: 2, tag: M }
+      - { fmt: "(%3)",  indent: 2, text: 3, wrap: 3, tag: M }
+      - { fmt: "(%4)",  style: lowerLetter, indent: 3, text: 4, wrap: 4, tag: M }
+  directive:           # scheme D: fn 23, 3.2.11(6), 3.2.18(6), 3.2.22a(7)
+    src: "fn 23, 3.2.11(6), 3.2.18(6), 3.2.22a(7)"
+    levels:
+      - { fmt: "%1.",   indent: 0, text: 1, wrap: 1, tag: M }
+      - { fmt: "%2.",   style: lowerLetter, indent: 1, text: 2, wrap: 2, tag: T }
+      - { fmt: "(%3)",  indent: 2, text: 3, wrap: 3, tag: T }
+      - { fmt: "(%4)",  style: lowerLetter, indent: 3, text: 4, wrap: 4, tag: T }
+  publication:         # scheme P: 4.4.13-4.4.16
+    src: "4.4.14-4.4.16, Fig 4-10"
+    group_heading: { fmt_parts: "{part}.{chapter}.{n}", fmt_no_parts: "{chapter}.{n}", indent: 0, text: 2, tag: M }
+    second_level_single_unnumbered: { value: true, tag: M }
+    levels:
+      - { fmt: "%1.",   style: lowerLetter, indent: 0, text: 1, wrap: 1, tag: M }
+      - { fmt: "(%2)",  indent: 1, text: 2, wrap: 2, tag: M }
+      - { fmt: "(%3)",  style: lowerLetter, indent: 2, text: 3, wrap: 3, tag: M }
+      - { fmt: "(%4)",  style: lowerRoman, indent: 3, text: 4, wrap: 4, tag: M }
+      - { fmt: "(%5)",  style: upperLetter, indent: 4, text: 5, wrap: 5, tag: M }
+  intro_end_matter:    # 4.4.13
+    src: "4.4.13"
+    levels:
+      - { fmt: "%1.", indent: 0, text: 1, wrap: 1, tag: M }
+      - { fmt: "%2.", style: lowerLetter, indent: 1, text: 2, wrap: 2, tag: A-26 }
+  references:          # 1.2.19a: principal references A., B.
+    levels:
+      - { fmt: "%1.", style: upperLetter, indent: 0, text: 1, wrap: 1, src: "1.2.19a", tag: M }
+  annex_list:     { fmt: "%1.", style: upperLetter, src: "Figs 2-3..2-6", tag: T }
+  enclosure_list: { fmt: "%1.", style: decimal, src: "Figs 2-3..2-6", tag: T }
+  flag_list:      { fmt: "%1.", style: upperLetter, src: "Fig 2-17", tag: T }
+
+headings:
+  subject:   { bold: true, case: upper, align: left, src: "1.2.17(1), 1.2.9(6)", tag: M }
+  main:      { bold: true, case: title, align: center, numbered: false, src: "1.2.17(2)", tag: M }
+  group:     { bold: true, case: sentence, align: left, numbered: false, src: "1.2.17(3)", tag: M }
+  paragraph: { bold: true, case: sentence, terminator: ".", run_in: true, src: "1.2.17(4)", tag: M }
+  publication:
+    h1: { size: 16, bold: true, case: upper, align: center, src: "4.4.11", tag: M }
+    h2: { size: 16, bold: true, case: title, align: center, src: "4.4.11", tag: M }
+    h3: { size: 14, bold: false, italic: true, case: sentence, align: center, src: "4.4.11", tag: M }
+    h4: { size: 12, bold: true, case: sentence, align: left, src: "4.4.11", tag: M }
+    h5: { size: 11, identifier_bold: true, align: center, src: "4.4.11", tag: M }
+
+dates:
+  abbreviated: { pattern: "d MMM yy", example: "2 Sep 16", src: "1.2.10b", tag: M }
+  full:        { pattern: "d MMMM yyyy", example: "2 September 2016", src: "1.2.10b", tag: M }
+  leading_zero_day: { value: false, src: "2.1.11(2), 2.1.16(5), 2.2.3(1)", tag: A-01 }
+  publication_header_date: { pattern: "dd MMMM yyyy", example: "03 October 2025", src: "4.4.8a(5)", tag: A-01 }
+  day_of_week_short: { pattern: "EEE", example: "Tue", src: "1.2.10a", tag: M }
+  day_of_week_full:  { pattern: "EEEE", example: "Tuesday", src: "1.2.10a", tag: M }
+  combined: { pattern: "EEE, d HHmm MMM yy", example: "Mon, 16 1300 Aug 21", src: "1.2.10d", tag: M }
+  range_separator: { value: "–", src: "1.2.7(10)(b), 1.2.10b", tag: M }
+  file_name_suffix: { pattern: "yyMMdd", src: "1.2.10b", tag: M }
+  handwritten_day: { value: true, src: "fn 20, 2.1.11(2), 2.1.16(5), 2.2.3(1)", tag: A-02 }
+  time_internal: { pattern: "HHmm", src: "1.2.10c", tag: M }
+  time_external: { pattern: "h:mm a", example: "8:00 am", src: "1.2.10c", tag: M }
+
+page_numbering:
+  unclassified:      { format: "{n}", align: center, bold: false, first_page: false, position: above_markings, src: "1.2.16(6)", tag: M }
+  above_restricted:  { format: "Page {n} of {N}", align: center, first_page: true, include_supporting_docs_in_total: true, src: "1.2.16(7)", tag: M }
+  annex:             { format: "{annex}-{n}", single_page_numbered: false, src: "1.2.24(1)(f), Fig 1-5", tag: M }
+  appendix:          { format: "{annex}-{appendix}-{n}", single_page_numbered: false, src: "1.2.24(2)(c), Fig 1-6", tag: M }
+  publication:
+    intro:  { format: lowerRoman, src: "4.4.7b(1)", tag: A-36 }
+    prelim: { format: decimal, src: "4.4.7b(2)", tag: M }
+    main:   { format: "{part_or_chapter}-{n}", src: "4.4.7b(3)", tag: M }
+    end:    { format: "EM-{n}", src: "4.4.7b(5)", tag: M }
+    classified: { format: decimal, start_on_title: 1, src: "4.4.7c", tag: M }
+
+copy_number:
+  format: "Copy {n} of {N}"
+  position: header_right_below_markings
+  first_page_only: true
+  src: "1.2.16(9), 1.2.18"
+  tag: A-21
+
+signature_blocks:   # line formats; see standards/04 §2
+  minute:   { lines: ["{INITIALS} {SURNAME}|bold", "{rank_abbr}, {service}", "{appointment_abbr}"], src: "2.1.11(17)", tag: M }
+  letter:   { lines: ["{INITIALS} {SURNAME}|bold", "{rank_full}", "{appointment}?"], src: "2.1.16(17)", tag: M }
+  formal:   { lines: ["{INITIALS} {SURNAME}|bold", "{rank_full}", "{appointment_full}"], src: "Figs 2-13..2-16, 3-2..3-6", tag: T }
+  for_marker: { text: "for", position: left_margin, handwritten: true, src: "1.2.21b", tag: M }
