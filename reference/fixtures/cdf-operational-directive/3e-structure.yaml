@@ -1,0 +1,55 @@
+# Mirrors the element set and order of DFI 5.1 Annex 3E CDF Operational
+# Directive - Template (Fig 3-6, PDF pp 173-174), with representative fictional
+# values. No DFI example exists. Each section has a lead paragraph (Fig 3-6
+# shows one numbered paragraph per section); the 3.2.17(5)-(7) minimum
+# elements follow as the author's sub-paragraphs, without generated headings
+# (DR-11). Fictional operation and content.
+type: cdf-operational-directive
+letterhead:
+  device: nzdf_badge
+  address: [Headquarters New Zealand Defence Force, Wellington]
+date: { year: 2026, month: 10 }
+distribution: [CN, CA, CAF, VCDF, CoS HQNZDF, AC SCE, CFO]
+number: 4
+year: 2026
+operation: EXAMPLE
+situation:
+  - "A regional partner has requested support following a severe weather event. The Government has agreed to provide humanitarian assistance. The force elements are listed at Annex A."
+mission:
+  - "The NZDF is to deliver humanitarian assistance to the affected region in order to support the partner government's recovery effort."
+execution:
+  lead: "Execution is to be conducted in two phases: deployment and assistance."
+  intent: "The purpose of the mission is to relieve immediate hardship. The end state is that the partner government is able to lead the recovery without NZDF support."
+  tasks:
+    text: "You are to—"
+    sentence_list: and
+    sub:
+      - "deploy an assessment team within 48 hours"
+      - "be prepared to deploy a logistics task group on order"
+coordinating_instructions:
+  lead: "The following coordinating instructions apply—"
+  command_and_control_arrangements: ["COMJFNZ is to exercise operational command of assigned forces."]
+  locations: ["Forces are to operate from the partner's main airfield and port."]
+  timings: ["The assessment team is to be in place by 1800 on the second day after this Directive."]
+  planning_guidance: ["Planning is to assume a deployment of no more than 60 days."]
+  freedoms_and_constraints: ["Forces are not to operate outside the affected region without CDF approval."]
+logistics_and_administration:
+  logistics_guidance: ["Host-nation support is to be used for accommodation where available."]
+  finance_and_resources: ["Costs are to be recorded against the operation cost centre."]
+  public_affairs: ["Public affairs is to be led by HQNZDF Defence Public Affairs."]
+  legal_aspects: ["A status of forces arrangement is in place with the partner government."]
+  nzdf_output: ["The associated NZDF output is humanitarian assistance and disaster relief."]
+command_and_control:
+  command_status: ["Forces assigned to the operation are under the operational command of COMJFNZ."]
+  dirlauth: ["DIRLAUTH is granted between HQJFNZ and the partner's national disaster agency."]
+  critical_information_requirements: ["Any injury to NZDF personnel is to be reported immediately."]
+  points_of_contact: ["The point of contact is SO1 SCE, DTelN (349) 7404."]
+acknowledgement:
+  - "COMJFNZ is to acknowledge receipt of this Directive to AC SCE."
+cancellation:
+  - "This Directive will be cancelled by signal at the completion of the mission."
+signature: { initials: AB, surname: Example, rank: AM, appointment: Chief of Defence Force }
+annexes:
+  - title: Force elements
+    body:
+      - para: "The force elements assigned to the operation are listed by Service."

@@ -154,6 +154,27 @@ def sub_sections(group: str, parts: list[tuple[str, list[Item]]], missing: list[
     return [GroupHeading(group=group), *(heading_para(h, items) for h, items in present)]
 
 
+def element_paras(lead: Optional[str], elements: list[list[Item]]) -> list:
+    """Required minimum elements rendered as the author's own paragraphs, in the
+    prose order, with no generated headings (register DR-11). With a lead
+    paragraph they become its sub-paragraphs a., b., ...; otherwise each is a
+    first-level paragraph."""
+    items: list = [it for el in elements for it in el]
+    if lead:
+        return [ParaBlock(para=Para(text=lead, sub=items))]
+    return [ParaBlock(para=it if isinstance(it, Para) else Para(text=it)) for it in items]
+
+
+def headed(heading: str, item: Item) -> Para:
+    """A paragraph with a paragraph heading drawn in the template (eg Fig 3-6
+    'Intent.', 'Tasks.'), bold with a full stop (1.2.17(4))."""
+    if isinstance(item, Para):
+        if item.heading:
+            raise ValueError(f"'{heading}' supplies its own paragraph heading; remove 'heading'.")
+        return item.model_copy(update={"heading": heading})
+    return Para(heading=heading, text=item)
+
+
 def stem_para(stem: str, items: list[str]) -> ParaBlock:
     """'The purpose of this … is—' with lettered items (Figs 3-5, 3-7)."""
     return ParaBlock(para=Para(text=stem, sub=list(items), sentence_list="and"))

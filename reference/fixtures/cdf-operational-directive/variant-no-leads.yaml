@@ -1,0 +1,35 @@
+# No section lead paragraphs: each minimum element is a first-level paragraph
+# (DR-11). No distribution list, so only COMJFNZ is shown (3.2.18(3)). No
+# cancellation instructions (optional, 3.2.17(9)). Fictional content.
+type: cdf-operational-directive
+letterhead:
+  device: nzdf_badge
+  address: [Headquarters New Zealand Defence Force, Wellington]
+date: { year: 2026, month: 11 }
+number: 5
+year: 2026
+operation: SAMPLE
+situation: ["A fictional situation requires a short NZDF deployment."]
+mission: ["The NZDF is to deploy a small team to support a partner exercise."]
+execution:
+  intent: "The purpose is to build interoperability with the partner."
+  tasks: "You are to deploy a team of six for the exercise."
+coordinating_instructions:
+  command_and_control_arrangements: ["COMJFNZ is to command the team."]
+  locations: ["The team is to operate from the partner's training area."]
+  timings: ["The team is to deploy on Monday 7 Dec 26."]
+  planning_guidance: ["Plan on a deployment of 14 days."]
+  freedoms_and_constraints: ["The team is not to take part in live firing."]
+logistics_and_administration:
+  logistics_guidance: ["The partner will provide rations and accommodation."]
+  finance_and_resources: ["Costs are to be met from the exercise budget."]
+  public_affairs: ["No public affairs activity is planned."]
+  legal_aspects: ["Existing arrangements with the partner apply."]
+  nzdf_output: ["The associated NZDF output is international engagement."]
+command_and_control:
+  command_status: ["The team is under the operational command of COMJFNZ."]
+  dirlauth: ["DIRLAUTH is granted with the partner's exercise headquarters."]
+  critical_information_requirements: ["Report any injury immediately."]
+  points_of_contact: ["The point of contact is SO2 SCE, DTelN (349) 7405."]
+acknowledgement: ["COMJFNZ is to acknowledge receipt."]
+signature: { initials: AB, surname: Example, rank: AM, appointment: Chief of Defence Force }

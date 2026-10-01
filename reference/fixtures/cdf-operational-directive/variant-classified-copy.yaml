@@ -1,0 +1,47 @@
+# CONFIDENTIAL with endorsement: copy number in the header (A-21; DR-10),
+# "Page n of N" on every page (1.2.16(7)), annex introduced in the text.
+# Marking pairing for layout testing only (A-13). Fictional content.
+type: cdf-operational-directive
+markings: { classification: CONFIDENTIAL, endorsement: SENSITIVE }
+copy_number: { number: 1, of: 9 }
+letterhead:
+  device: nzdf_badge
+  address: [Headquarters New Zealand Defence Force, Wellington]
+date: { year: 2026, month: 12 }
+distribution: [CN, CA, CAF, VCDF, CoS HQNZDF, AC SCE]
+number: 6
+year: 2026
+operation: TEMPLATE
+situation: ["A fictional situation requires an NZDF contribution. The forces are listed at Annex A."]
+mission: ["The NZDF is to contribute a task group to a partner-led operation."]
+execution:
+  intent: "The purpose is to contribute to regional security. The end state is a stable region."
+  tasks:
+    text: "You are to—"
+    sentence_list: and
+    sub:
+      - "prepare the task group listed at Annex A"
+      - "be prepared to deploy it on order"
+coordinating_instructions:
+  command_and_control_arrangements: ["COMJFNZ is to command the task group."]
+  locations: ["The task group is to operate within the agreed area of operations."]
+  timings: ["The task group is to be ready to deploy by 1 Feb 27."]
+  planning_guidance: ["Plan for a six-month rotation."]
+  freedoms_and_constraints: ["Rules of engagement are to be approved by CDF before deployment."]
+logistics_and_administration:
+  logistics_guidance: ["The lead nation will provide theatre logistics."]
+  finance_and_resources: ["Costs are to be met from the operations appropriation."]
+  public_affairs: ["Public affairs is to be coordinated with the lead nation."]
+  legal_aspects: ["Status of forces arrangements are to be confirmed before deployment."]
+  nzdf_output: ["The associated NZDF output is military operations in support of regional security."]
+command_and_control:
+  command_status: ["The task group is to be under the operational command of COMJFNZ."]
+  dirlauth: ["DIRLAUTH is granted with the lead nation's headquarters."]
+  critical_information_requirements: ["Report any change in the threat assessment immediately."]
+  points_of_contact: ["The point of contact is SO1 SCE, DTelN (349) 7406."]
+acknowledgement: ["COMJFNZ is to acknowledge receipt."]
+signature: { initials: AB, surname: Example, rank: AM, appointment: Chief of Defence Force }
+annexes:
+  - title: Task group composition
+    body:
+      - para: "The task group comprises elements of all three Services."
