@@ -48,12 +48,20 @@ Decisions recorded 2026-10-01 (Minute gate review):
 ## Submission: items that emerged
 
 Decisions I-S1 to I-S8 and discrepancies DS-01 to DS-07 are recorded in
-`templates/submission/NOTES.md`. These need your decision:
+`templates/submission/NOTES.md`. Decisions recorded 2026-10-01 (Submission review):
 
-| ID | Issue | Proposed |
-|---|---|---|
-| S-01 | Template 2F shows six fixed Context sub-headings (Content, Sections, Argument, Implications, Effects, Consultation). The prose (2.1.12b(2)) describes them as considerations; only consultation is an "are to". | Require Consultation only; leave the other headings to the author (I-S3) |
-| S-02 | Position of the mandatory "Financial and resource implications" paragraph (no template guidance). | First-level paragraph after Context, before Summary, following the prose order (I-S2) |
+| ID | Decision |
+|---|---|
+| S-01 | **APPROVED AS IMPLEMENTED.** Consultation is required. Content, Sections, Argument, Implications and Effects are **not** required as fixed headings. They are author considerations under the written guidance (2.1.12b(2)), not mandatory structure. (I-S3) |
+| S-02 | **APPROVED AS IMPLEMENTED.** Financial and resource implications goes after Context and before Summary. This is an **implementation decision [I]**: DFI requires the paragraph (2.1.12b(3)) but does not specify its position. (I-S2) |
+
+## Phase status (2026-10-01)
+
+Phase 1 (engine, Annex 1A validation, Minute, Submission) is **provisionally
+accepted, pending Microsoft Word validation**. Checks V-01 to V-04
+(`templates/minute/NOTES.md` §7) have **not been tested in Word**. Do not
+report them as passed until a person has opened the outputs in Word and
+recorded the result.
 
 ## A. Ambiguities and conflicts in DFI 5.1
 

@@ -120,7 +120,7 @@ Visual comparison (LibreOffice preview with Carlito; images in
 | D-09 | Paragraph grading indicator "2.(U)" (2.1.11(12)) | **Deferred** (decided 2026-10-01) |
 | D-10 | Single-approval "approved / not approved" statement above the signature (2.1.11(13)) | **Deferred** (decided 2026-10-01) |
 
-### Needs verification in Microsoft Word (cannot be checked in this environment)
+### Needs verification in Microsoft Word (cannot be checked in this environment): status NOT TESTED
 
 | ID | Item |
 |---|---|
