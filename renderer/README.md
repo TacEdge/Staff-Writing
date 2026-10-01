@@ -43,8 +43,10 @@ builder.py  Document + styles.py (style sheet) + numbering.py (Word numbering
 blocks.py   REGISTRY of reusable blocks: letterhead, originator_descriptor,
             identifier, date_line, addressees, subject, references, body
             (scheme C numbering, paragraph headings, sentence lists, bullets,
-            recommendations), signature, telephone, annex_list, enclosure_list,
-            distribution, copy_distribution, supporting_documents
+            recommendations, tables; or unnumbered letter paragraphs), signature
+            (minute/admin/letter variants), telephone, annex_list, enclosure_list,
+            flag_list, consulted, distribution, copy_distribution, title_line,
+            from_line, recipient, salutation, supporting_documents
                        │
 .docx ─► lint.py (page setup, fonts/sizes/colour, settings, markings on every
          header/footer, page-number regime, subject case, numbering geometry,
@@ -61,7 +63,10 @@ blocks.py   REGISTRY of reusable blocks: letterhead, originator_descriptor,
 | `ooxml.py` | Fields (PAGE, NUMPAGES, nested IF/SECTIONPAGES), footnotes part, settings, watermark, page-number restart |
 | `page.py` | Section setup and header/footer composition by marking and page-number regime |
 | `blocks.py` | The reusable blocks above |
-| `model.py` | Shared content models: markings, dates, paragraphs, recommendations, addressees, signature, annexes, letterhead |
+| `model.py` | Shared content models: markings, dates, paragraphs, recommendations, tables, addressees, signature, annexes, letterhead |
+| `tables.py` | DFI tables (1.2.25): 0.5 pt borders, 10/11 pt, repeated header row, centred, optional caption |
+| `letters.py` | Shared formal-letter models and rules: salutation, close, From line, letter signature, `LetterBase` |
+| `wording.py` | Shared wording warnings (hyperlinks, exclamation marks, em dashes, %, eg/ie/etc) |
 | `inline.py` | `**bold**`, `*italic*`, `__underline__`, `^[footnote]` |
 | `render.py`, `__main__.py` | Template loading, validation, build, CLI |
 | `lint.py`, `preview.py`, `compare.py` | Validation tooling |

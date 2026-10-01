@@ -39,7 +39,7 @@ def main(argv=None) -> int:
         from .lint import lint
         lint_opts = res.spec.get("lint", {})
         findings = lint(res.path, pdf, doc_type=res.spec.get("id", "minute"),
-                        max_main_pages=lint_opts.get("max_main_pages"))
+                        max_main_pages=lint_opts.get("max_main_pages"), margins=res.margins)
         for level, msg in findings:
             print(f"  LINT {level}: {msg}")
         rc = 1 if any(level == "ERROR" for level, _ in findings) else 0

@@ -1,0 +1,30 @@
+# Re-key of DFI 5.1 Annex 2G Internal Formal Letter - Example (Fig 2-7, PDF p 83).
+# Faithful to the figure except:
+#  - the RNZAF logo is a labelled placeholder (official artwork not held, T-05);
+#  - the italic annotations "(appointment or name optional here)", "(if required)",
+#    "(typed or handwritten and matches closure)", "(if appropriate)" and
+#    "(if not identified below header)" are DFI notes, not content, and are omitted;
+#  - the handwritten signature "Bret Smyth" is not reproduced (signed by hand);
+#  - the figure prints the file reference on its own line above the date; it is
+#    rendered on the date line per 2.1.16(6) (DL-01);
+#  - the figure shows "Commanding Officer" in the signature block although the
+#    From line gives a name, so `shows: name` is used and the appointment is kept.
+type: internal-letter
+purpose: routine
+letterhead:
+  device: "RNZAF logo with Force for New Zealand logotype"
+  unit: Unit Name to go here
+  address: [RNZAF Air Force Base Auckland, Auckland 0618]
+from_line: { text: Wing Commander BE Smyth, shows: name }
+date: { year: 2025, month: 8, day: 26 }
+file_reference: ABC 8000-0000
+recipient: [Flight Lieutenant AN Officer, Training Officer, 40 SQUADRON]
+salutation: { mode: typed, text: Dear Alexander }
+subject: SUBJECT HEADING
+body:
+  - para: "Formal letters to members of the Defence Force are often referred to as demi-official letters."
+  - para: "Formal letters are normally written by commanders and senior officers to junior personnel. A formal or demi-official letter is addressed to an individual for the purpose of reporting or acknowledging a laudatory achievement, the expression of condolences, issue of an administrative reprimand, or replying to an admonitory letter."
+  - para: "Chiefs of Service may also direct use of the formal letter for matters of ceremony and for certain formal submissions (for example, *Reports of Proceedings*)."
+  - para: "Paragraphs are left-aligned and unnumbered. Letters are to be error-free and written using an appropriate tone. Avoid jargon and technical terms."
+close: { mode: typed, text: Yours sincerely }
+signature: { initials: BE, surname: Smyth, rank: Wing Commander, appointment: "Commanding Officer, 40 Squadron RNZAF" }

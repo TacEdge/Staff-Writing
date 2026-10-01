@@ -1,0 +1,26 @@
+# Mirrors the element set and order of DFI 5.1 Annex 2O Dot-point Brief -
+# Template (Fig 2-17, PDF p 100) with fictional values. Annex 2O has no
+# example annex, so there is no re-keyed DFI example for the DPB.
+type: dpb
+date: { year: 2025, month: 10 }
+file_reference: NZALC 1200-0003
+brief_for: COMD NZALC
+subject: Command leadership course pilot
+body:
+  - group: Purpose
+  - para:
+      text: "This brief informs COMD NZALC of the results of the command leadership course pilot."
+      bullets:
+        - text: "The pilot ran from 4–15 Aug 25 with 18 students."
+          sub: ["Students came from all three Services."]
+  - group: Format
+  - para:
+      text: "The course combined a residential phase and a workplace project."
+      bullets:
+        - "student feedback is summarised at **Flag A**"
+        - "the evaluation report is enclosed"
+signature: { initials: AB, surname: Example, rank: MAJ, appointment: NZALC }
+telephone: "DTelN (349) 7200"
+enclosures: ["Command leadership course pilot evaluation report, 30 Sep 25"]
+flags: ["Student feedback summary (Enclosure 1, page 4)"]
+consulted: [NZDC, HQ NZDF Directorate of Training]

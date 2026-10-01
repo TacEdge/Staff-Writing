@@ -137,7 +137,34 @@ class ApprovalBlock(Strict):
     approval: Literal["approved_not_approved"]
 
 
-BodyBlock = Union[GroupHeading, MainHeading, ParaBlock, RecommendationsBlock]
+class Cell(Strict):
+    text: str = ""
+    bold: bool = False
+    span: int = Field(default=1, ge=1)
+    align: Literal["left", "center", "right"] = "left"
+    # For multi-line cells ("\n"): bold applies to the first line only.
+    first_line_bold_only: bool = True
+
+
+class Table(Strict):
+    """A DFI table (1.2.25). Rows are lists of cells (or plain strings)."""
+
+    rows: list[list[Union[Cell, str]]] = Field(min_length=1)
+    header_rows: int = 0
+    col_widths_cm: Optional[list[float]] = None
+    caption: Optional[str] = None  # rendered "Table n<tab>caption" above (1.2.25b; A-23)
+
+    @field_validator("rows")
+    @classmethod
+    def _cells(cls, rows):
+        return [[c if isinstance(c, Cell) else Cell(text=c) for c in row] for row in rows]
+
+
+class TableBlock(Strict):
+    table: Table
+
+
+BodyBlock = Union[GroupHeading, MainHeading, ParaBlock, RecommendationsBlock, TableBlock]
 
 
 # ---------------------------------------------------------------- addressees
@@ -205,4 +232,5 @@ class Letterhead(Strict):
     `device` names the badge or logo; artwork is a later input (T-05)."""
 
     device: Optional[str] = None
+    unit: Optional[str] = None  # first line in bold, eg "[Unit name]" (Figs 2-8, 2-9) [T]
     address: list[str] = Field(min_length=1)

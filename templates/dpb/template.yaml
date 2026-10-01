@@ -1,0 +1,25 @@
+# Dot-point brief: DFI 5.1 2.2.6-2.2.8 (administrative documentation, 2.2.1-2.2.3);
+# template Annex 2O (Fig 2-17). No example annex.
+id: dpb
+title: Dot-point brief
+dfi:
+  section: "2.2.6-2.2.8 (and 2.2.3)"
+  template: "2O (Fig 2-17), PDF p 100"
+  example: "-"
+page: { margins: standard, orientation: portrait }       # brief margin optional via content (2.2.7(1))
+numbering: correspondence                                 # 2.2.8d "paragraphs should be numbered"
+page_numbering: unclassified_from_page_2
+identity: none                                            # 2.2.3(2)
+date: { style: abbreviated }                              # 2.2.3(1)
+blocks:
+  - date_line: { indent_cm: 1.0 }                         # 2.2.3(1) [M]; Fig 2-17 shows margin (DP-01)
+  - title_line: { pattern: "DOT-POINT BRIEF FOR {brief_for}", fields: [brief_for] }   # [T] Fig 2-17
+  - subject                                               # 2.2.3(4) [M]
+  - body: { numbering: correspondence }                   # 2.2.8d
+  - signature: { variant: admin }                         # [T] Fig 2-17 name / title-rank / organisation
+  - telephone                                             # [T] Fig 2-17
+  - annex_list                                            # 2.2.3(7) [D]
+  - enclosure_list                                        # Fig 2-17
+  - flag_list                                             # 2.2.7(4), 1.2.24(4)
+  - consulted                                             # 2.2.7(5) [M]
+  - supporting_documents

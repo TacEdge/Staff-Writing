@@ -14,7 +14,7 @@ from docx.shared import Cm, Pt
 
 from . import dates, ooxml, styles
 from .inline import Fmt, add_inline
-from .model import GroupHeading, MainHeading, Para, ParaBlock, RecommendationsBlock
+from .model import GroupHeading, MainHeading, Para, ParaBlock, RecommendationsBlock, TableBlock
 from .page import setup_section
 from .tokens import cm_to_twips
 
@@ -47,10 +47,11 @@ def letterhead(b, c, opts):
     lp.style = b.doc.styles[styles.BLOCK]
     if lh.device:
         lp.add_run(f"[{lh.device} - official artwork not held (register T-05)]").italic = True
-    for i, line in enumerate(lh.address):
+    lines = ([(lh.unit, True)] if lh.unit else []) + [(a, False) for a in lh.address]
+    for i, (line, bold) in enumerate(lines):
         p = right.paragraphs[0] if i == 0 else right.add_paragraph()
         p.style = b.doc.styles[styles.LETTERHEAD]
-        p.add_run(line)
+        p.add_run(line).bold = bold or None
     b.warn("Letterhead device rendered as a placeholder: official artwork not held (T-05).")
 
 
@@ -97,7 +98,11 @@ def date_line(b, c, opts):
 def addressees(b, c, opts):
     """Action addressee(s) with optional '(through X)', then 'For information'
     and up to `info_max` addressees; or 'See distribution' (2.1.11(5)-(7))."""
-    if c.distribution and opts.get("distribution_replaces", True):
+    # distribution_mode: "all" (minute: 'See distribution' replaces every addressee,
+    # 2.1.11(7)) | "info" (VR/PAR: action addressee kept, 'For information / See
+    # distribution', Figs 2-18, 2-19) | "none" (both shown, Fig 1-4 validation).
+    mode = opts.get("distribution_mode", "all" if opts.get("distribution_replaces", True) else "none")
+    if c.distribution and mode == "all":
         p = b.par(styles.BLOCK, before=BLOCK_GAP)
         p.add_run("See distribution").bold = True
         return
@@ -106,7 +111,10 @@ def addressees(b, c, opts):
         p.add_run(a.appointment).bold = True  # [T] Figs 2-3, 2-4
         if a.through:
             p.add_run(f" (through {a.through})")
-    if c.info:
+    if c.distribution and mode == "info":
+        b.par(styles.BLOCK, "For information", before=BLOCK_GAP * 2)
+        b.par(styles.BLOCK, "See distribution")          # not bold in Figs 2-18, 2-19
+    elif c.info:
         b.par(styles.BLOCK, "For information", before=BLOCK_GAP * 2)
         for name in c.info:
             b.par(styles.BLOCK, name)
@@ -115,8 +123,10 @@ def addressees(b, c, opts):
 # ------------------------------------------------------------ subject / refs
 
 def subject(b, c, opts):
-    """Bold upper case, left margin (1.2.17(1), 1.2.9(6))."""
-    b.par(styles.SUBJECT, c.subject.upper())
+    """Bold upper case, left margin (1.2.17(1), 1.2.9(6)). Optional in letters
+    (1.2.17(1), 2.1.16(9)): nothing is rendered when absent."""
+    if getattr(c, "subject", None):
+        b.par(styles.SUBJECT, c.subject.upper())
 
 
 def references(b, c, opts):
@@ -211,6 +221,10 @@ def body_blocks(b, blocks, num_id: int | None, *, single_unnumbered: bool = True
                 last = _render_para_unnumbered_top(b, blk.para, num_id)
             else:
                 last = _render_para(b, blk.para, 0, num_id)
+        elif isinstance(blk, TableBlock):
+            from .tables import render_table
+            b._table_seq = getattr(b, "_table_seq", 0) + 1
+            last = render_table(b, blk.table, str(b._table_seq))   # A-23: "Table 1" in correspondence
         elif isinstance(blk, RecommendationsBlock):
             r = blk.recommendations
             b.par(styles.GROUP_HEADING, r.heading)
@@ -239,7 +253,25 @@ def _render_para_unnumbered_top(b, para, num_id):
     return last
 
 
+def _letter_paragraphs(b, paras):
+    """Formal letters: left-aligned, unnumbered paragraphs (2.1.16(12));
+    paragraph headings allowed (2.1.14b). Returns the last paragraph."""
+    last = None
+    for para in paras:
+        if isinstance(para, str):
+            para = Para(text=para)
+        last = b.par(styles.PARA_UNNUMBERED)
+        if para.heading:
+            add_inline(last, para.heading + ".", b, Fmt(bold=True))
+            last.add_run(" ")
+        add_inline(last, para.text, b)
+    return last
+
+
 def body(b, c, opts):
+    if opts.get("numbering") == "none":
+        b._last_body_par = _letter_paragraphs(b, [blk.para for blk in c.body])
+        return
     num = b.numbering.instance(opts.get("numbering", "correspondence"))
     # A schema may compose its structured fields into shared body blocks
     # (eg the submission's Purpose/Context structure); otherwise use c.body.
@@ -256,6 +288,9 @@ def signature(b, c, opts):
     paragraph is kept together and with the block so the block never sits on a
     page without text and has at least two lines above it (1.2.21c).
     """
+    variant = opts.get("variant", "minute")
+    if variant == "letter":
+        return _letter_signature(b, c)   # close first, then the six-line gap
     last = getattr(b, "_last_body_par", None)
     if last is not None:
         last.paragraph_format.keep_together = True
@@ -264,7 +299,6 @@ def signature(b, c, opts):
         p = b.par(styles.SIGNATURE)
         p.paragraph_format.keep_with_next = True
     s = c.signature
-    variant = opts.get("variant", "minute")
     p = b.par(styles.SIGNATURE)
     p.add_run(f"{s.initials} {s.surname.upper()}").bold = True
     p.paragraph_format.keep_with_next = True
@@ -275,6 +309,60 @@ def signature(b, c, opts):
     p = b.par(styles.SIGNATURE, line2)
     p.paragraph_format.keep_with_next = True
     b.par(styles.SIGNATURE, s.appointment)
+
+
+def _letter_signature(b, c):
+    """Complimentary close, then the signature block six lines below the last
+    line of text (1.2.21c; DL-03), then name / full rank / appointment
+    (2.1.16(17)). A handwritten close leaves an empty line (Figs 2-9, 2-12)."""
+    last = getattr(b, "_last_body_par", None)
+    if last is not None:                      # orphan rule (1.2.21c)
+        last.paragraph_format.keep_together = True
+        last.paragraph_format.keep_with_next = True
+    s = c.signature
+    close = c.close
+    if close.mode != "none":
+        p = b.par(styles.SIGNATURE, close.text if close.mode == "typed" else None, before=BLOCK_GAP)
+        p.paragraph_format.keep_with_next = True
+    for _ in range(int(b.tk.value("spacing.signature_gap_lines"))):
+        p = b.par(styles.SIGNATURE)
+        p.paragraph_format.keep_with_next = True
+    p = b.par(styles.SIGNATURE)
+    p.add_run(f"{s.initials} {s.surname.upper()}").bold = True
+    p.paragraph_format.keep_with_next = True
+    lines = [s.rank] if s.rank else []
+    if not c.appointment_in_from_line:
+        lines.append(s.appointment)
+    for i, line in enumerate(lines):
+        q = b.par(styles.SIGNATURE, line)
+        q.paragraph_format.keep_with_next = i < len(lines) - 1
+
+
+def from_line(b, c, opts):
+    """'From: [appointment or name]', centred, sentence case, 12 pt before and
+    after (2.1.16(4)); optional."""
+    fl = getattr(c, "from_line", None)
+    if fl:
+        p = b.par(styles.BLOCK, before=12)
+        p.paragraph_format.space_after = Pt(12)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p.add_run("From: " + fl.text)
+
+
+def recipient(b, c, opts):
+    """Recipient address block (2.1.16(7), 2.1.17a-b; Figs 2-7, 2-10)."""
+    for i, line in enumerate(c.recipient):
+        b.par(styles.BLOCK, line, before=BLOCK_GAP if i == 0 else 0)
+
+
+def salutation(b, c, opts):
+    """Salutation before the subject heading (2.1.16(8)); typed, handwritten
+    (an empty line is left) or none (2.1.17c-d, 2.1.18)."""
+    sal = c.salutation
+    if sal.mode == "typed":
+        b.par(styles.BLOCK, sal.text, before=BLOCK_GAP)
+    elif sal.mode == "handwritten":
+        b.par(styles.BLOCK, before=BLOCK_GAP)
 
 
 def telephone(b, c, opts):
@@ -319,6 +407,33 @@ def distribution(b, c, opts):
     p.paragraph_format.keep_with_next = True
     for name in c.distribution:
         b.par(styles.BLOCK, name)
+
+
+def title_line(b, c, opts):
+    """Document title line in bold upper case, eg 'DOT-POINT BRIEF FOR [APPOINTMENT]'
+    (Fig 2-17). opts.pattern uses {field} names from the content."""
+    text = opts["pattern"].format(**{k: getattr(c, k) for k in opts.get("fields", [])})
+    b.par(styles.SUBJECT, text.upper())
+
+
+def flag_list(b, c, opts):
+    """Flags listed after enclosures, lettered A. (1.2.24(4), Fig 2-17)."""
+    flags = getattr(c, "flags", None) or []
+    if flags:
+        _list_block(b, "Flag" if len(flags) == 1 else "Flags", flags, "flag_list")
+
+
+def consulted(b, c, opts):
+    """'Commands, departments and authorities consulted' below the signature
+    block (2.2.7(5), Fig 2-17)."""
+    items = getattr(c, "consulted", None) or []
+    if not items:
+        return
+    p = b.par(styles.BLOCK, before=BLOCK_GAP)
+    p.add_run("Commands, departments and authorities consulted").bold = True
+    p.paragraph_format.keep_with_next = True
+    for line in items:
+        b.par(styles.BLOCK, line)
 
 
 def copy_distribution(b, c, opts):
@@ -390,5 +505,11 @@ REGISTRY = {
     "enclosure_list": enclosure_list,
     "distribution": distribution,
     "copy_distribution": copy_distribution,
+    "title_line": title_line,
+    "flag_list": flag_list,
+    "consulted": consulted,
+    "from_line": from_line,
+    "recipient": recipient,
+    "salutation": salutation,
     "supporting_documents": supporting_documents,
 }

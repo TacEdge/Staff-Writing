@@ -24,6 +24,9 @@ PARA = ["DFI Para 1", "DFI Para 2", "DFI Para 3", "DFI Para 4"]
 PARA_UNNUMBERED = "DFI Para Unnumbered"
 LIST_ITEM = "DFI List Item"
 BULLET = "DFI Bullet"
+TABLE_TEXT = "DFI Table Text"
+TABLE_HEADER = "DFI Table Header"
+TABLE_CAPTION = "DFI Table Caption"
 # Styles that carry body text; hard-copy drafts double-space these only (1.2.22(3)).
 
 SIGNATURE = "DFI Signature"
@@ -168,6 +171,11 @@ def build(document, tk: Tokens) -> None:
         _para_style(document, name)  # indents come from the numbering definition
 
     _para_style(document, BULLET)
+    tb, ta = tk.spacing("table_cell")
+    _para_style(document, TABLE_TEXT, size=tk.size("table_body"), before=tb, after=ta)      # 1.2.25c
+    _para_style(document, TABLE_HEADER, base=TABLE_TEXT, size=tk.size("table_header"))       # 1.2.16(4)(b)
+    _para_style(document, TABLE_CAPTION, size=tk.size("table_caption"),
+                align=WD_ALIGN_PARAGRAPH.CENTER, before=12, after=3, keep_next=True)         # 1.2.25b
     _para_style(document, LIST_ITEM, before=0, after=0, left_cm=1.0, hanging_cm=1.0)
     _para_style(document, SIGNATURE, before=0, after=0)
     _para_style(document, ANNEX_ID, bold=True, align=WD_ALIGN_PARAGRAPH.RIGHT, before=0, after=0)

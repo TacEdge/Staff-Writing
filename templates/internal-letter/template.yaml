@@ -1,0 +1,24 @@
+# Internal formal (demi-official) letter: DFI 5.1 2.1.13-2.1.17;
+# template Annex 2H (Fig 2-8 typewritten, Fig 2-9 handwritten); example Annex 2G (Fig 2-7).
+id: internal-letter
+title: Internal formal letter
+dfi:
+  section: "2.1.13-2.1.17"
+  template: "2H (Figs 2-8, 2-9), PDF pp 84-85"
+  example: "2G (Fig 2-7), PDF p 83"
+page: { margins: standard, orientation: portrait }
+numbering: none                                        # 2.1.16(12)
+page_numbering: unclassified_from_page_2               # 2.1.16(19)
+identity: letter                                       # 2.1.16(3)
+date: { style: full }                                  # 2.1.16(5)
+blocks:
+  - letterhead                                         # 2.1.16(3)-(4); A-14
+  - from_line                                          # 2.1.16(4) optional
+  - date_line: { indent_cm: 0.0 }                      # 2.1.16(5)-(6): date left, file reference same line right
+  - recipient                                          # 2.1.17a-b
+  - salutation                                         # 2.1.16(8), 2.1.17c-d
+  - subject                                            # 2.1.16(9) optional
+  - references                                         # 2.1.16(10) internal: principal reference below subject
+  - body: { numbering: none }                          # 2.1.16(12)
+  - signature: { variant: letter }                     # close + 2.1.16(17)
+  - enclosure_list                                     # 2.1.16(18): enclosures only

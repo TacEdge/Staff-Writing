@@ -1,0 +1,16 @@
+# Mirrors DFI 5.1 Annex 2J External Letter - Handwritten - Template
+# (Fig 2-12, PDF p 88): handwritten salutation and close; the writer knows the
+# recipient (2.1.18(2)).
+type: external-letter
+letterhead:
+  device: "NZDF logo with Force for New Zealand logotype"
+  address: [New Zealand Army Leadership Centre, Waiouru Military Camp, Private Bag 1, Waiouru 4861]
+from_line: { text: Commandant, shows: appointment }
+date: { year: 2025, month: 12 }
+recipient: [Mr LM Example, Chair, Waiouru Community Trust, PO Box 12, WAIOURU 4861]
+salutation: { mode: handwritten }
+body:
+  - para: "Thank you for the Trust's support of the NZALC community leadership programme during 2025."
+  - para: "The programme would not have been possible without the use of the community hall, and our students valued the opportunity to work alongside local volunteers."
+close: { mode: handwritten }
+signature: { initials: EF, surname: Example, rank: Lieutenant Colonel, appointment: Commandant New Zealand Army Leadership Centre }

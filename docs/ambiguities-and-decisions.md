@@ -55,10 +55,30 @@ Decisions I-S1 to I-S8 and discrepancies DS-01 to DS-07 are recorded in
 | S-01 | **APPROVED AS IMPLEMENTED.** Consultation is required. Content, Sections, Argument, Implications and Effects are **not** required as fixed headings. They are author considerations under the written guidance (2.1.12b(2)), not mandatory structure. (I-S3) |
 | S-02 | **APPROVED AS IMPLEMENTED.** Financial and resource implications goes after Context and before Summary. This is an **implementation decision [I]**: DFI requires the paragraph (2.1.12b(3)) but does not specify its position. (I-S2) |
 
+## Phase 2 (DPB, VR/PAR, internal and external letters): items that emerged
+
+Full records are in each template's `NOTES.md` (I-D, I-V, I-L, I-E decisions;
+DP, DV, DL, DE discrepancies). These need your decision:
+
+| ID | Issue | Proposed |
+|---|---|---|
+| DL-02 | Letters: with the day left blank for handwriting, the date reads "November 2025" at the left margin and no space is reserved for the day. 2.1.16(5) says left margin and handwritten day, but not where the day goes. | Keep at the margin (prose). Alternative: reserve space with a leading tab. |
+| I-L4 | Letters: the template shows about four lines before the close and one after; the prose requires the signature block six lines below the last line of text. | Close one line below the last paragraph; signature block six lines below the close (prose) |
+| I-V3 | VR/PAR travel table: "Event" and "Dates" rows full width with the value in bold (template 2Q), not as labels (example 2P). | Template governs |
+| I-D6 | DPB: "Format" in Fig 2-17 treated as a placeholder group heading, not a fixed heading. | Placeholder (author's own group headings) |
+
+Applied consistently with earlier decisions (recorded, no new decision needed):
+the date indent of 1 cm for administrative documents where templates 2O and 2Q
+show the margin (A-06, 2.2.3(1)); bold action addressees (D-01); upper-case
+annex identifiers (A-12); the example's missing rank line in a letter
+signature (DL-04, 2.1.16(17)).
+
 ## Phase status (2026-10-01)
 
 Phase 1 (engine, Annex 1A validation, Minute, Submission) is **provisionally
-accepted, pending Microsoft Word validation**. Checks V-01 to V-04
+accepted, pending Microsoft Word validation**. Phase 2 (DPB, VR/PAR, internal
+and external letters) is **implemented and awaiting review**; the same Word
+checks apply to it. Checks V-01 to V-04
 (`templates/minute/NOTES.md` §7) have **not been tested in Word**. Do not
 report them as passed until a person has opened the outputs in Word and
 recorded the result.

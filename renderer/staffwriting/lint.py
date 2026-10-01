@@ -31,7 +31,7 @@ def _xml(docx: Path, name: str):
 
 
 def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
-         max_main_pages: int | None = None) -> list[tuple[str, str]]:
+         max_main_pages: int | None = None, margins: str = "standard") -> list[tuple[str, str]]:
     tk = load()
     out: list[tuple[str, str]] = []
     err = lambda m: out.append(("ERROR", m))  # noqa: E731
@@ -39,7 +39,7 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
     d = Document(str(docx))
 
     # -- page setup (1.2.16(1)-(2)) --------------------------------------
-    m = tk.margins("standard")
+    m = tk.margins(margins)
     for i, s in enumerate(d.sections):
         w, h = round(s.page_width.cm, 1), round(s.page_height.cm, 1)
         if sorted((w, h)) != [21.0, 29.7]:

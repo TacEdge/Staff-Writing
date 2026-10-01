@@ -1,0 +1,22 @@
+# Re-key of DFI 5.1 Annex 2I External Letter - Example (Fig 2-10, PDF p 86).
+# Faithful to the figure except:
+#  - Fig 2-10 shows no date; 2.1.16(5) requires one, so a fictional date is
+#    given (A-30 decided);
+#  - Fig 2-10 shows no device; template 2J places one top left, so a labelled
+#    placeholder is used (T-05);
+#  - the italic annotations "(if appropriate)" and "(identify reference in
+#    introductory paragraph)" are DFI notes, not content, and are omitted.
+type: external-letter
+letterhead:
+  device: "NZ Army badge"
+  address: [Defence House, Private Bag 39997, Wellington Mail Centre, Lower Hutt 5045, New Zealand]
+date: { year: 2016, month: 6, day: 3 }
+recipient: [Mr MP Gummint, Ashes Taskings Ltd, 411 Target Road, AUCKLAND 6097]
+salutation: { mode: typed, text: Dear Sir }
+subject: SUBJECT HEADING
+body:
+  - para: "Thank you for your letter of 27 May 2016 concerning…"
+  - para: "Formal letters are used for official business with members of the public and external organisations. Letters are to be error free and written in the appropriate tone. Avoid jargon and technical terms. Ensure the letter is respectful."
+  - para: "Paragraphs are left-aligned and unnumbered."
+close: { mode: typed, text: Yours faithfully }
+signature: { initials: EV, surname: Windgrass, rank: Brigadier, appointment: Deputy Chief of Army }

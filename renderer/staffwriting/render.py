@@ -26,6 +26,7 @@ class Result:
     path: Path
     warnings: list[str] = field(default_factory=list)
     spec: dict = field(default_factory=dict)
+    margins: str = "standard"
 
 
 def load_template(template_id: str) -> Template:
@@ -50,12 +51,15 @@ def load_content(path: Path):
 def build(tpl: Template, content, out: Path) -> Result:
     tk = tokens.load()
     page = tpl.spec.get("page", {})
+    # A content file may select an alternative margin variant where DFI allows
+    # one (eg the 4 cm right margin for briefs, 1.2.16(2), 2.2.7(1)).
+    margins = getattr(content, "margins", None) or page.get("margins", "standard")
     b = Builder(
         tk, content.markings,
         copy=getattr(content, "copy_number", None),
         draft=bool(getattr(content, "draft", None)),
         draft_medium=getattr(content, "draft", None) or "electronic",
-        margins=page.get("margins", "standard"),
+        margins=margins,
         orientation=page.get("orientation", "portrait"),
     )
     b.date_style = tpl.spec.get("date", {}).get("style", "abbreviated")
@@ -65,7 +69,7 @@ def build(tpl: Template, content, out: Path) -> Result:
         blocks.REGISTRY[name](b, content, opts or {})
     out.parent.mkdir(parents=True, exist_ok=True)
     b.save(out)
-    return Result(out, b.warnings, tpl.spec)
+    return Result(out, b.warnings, tpl.spec, margins)
 
 
 def render_file(content_path: Path, out: Path) -> Result:

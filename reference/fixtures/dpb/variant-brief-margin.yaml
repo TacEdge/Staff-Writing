@@ -1,0 +1,21 @@
+# Variant: 4 cm right margin for handwritten notes (2.2.7(1)); RESTRICTED;
+# several group headings; no flags or enclosures; typed day. Fictional content.
+type: dpb
+markings: { classification: RESTRICTED }
+margins: brief
+date: { year: 2025, month: 10, day: 9 }
+brief_for: CO 1 RNZIR
+subject: Range safety incident 2 Oct 25
+body:
+  - group: Purpose
+  - para: "This brief informs CO 1 RNZIR of a range safety incident at Waiouru on 2 Oct 25."
+  - group: Incident
+  - para:
+      text: "A practice grenade was thrown outside the designated arc."
+      bullets: ["no personnel were injured", "the range was closed for 40 minutes"]
+  - group: Action taken
+  - para:
+      text: "The range conducting officer stopped the practice and reported the incident."
+      bullets: ["a unit investigation has been convened", "refresher training is scheduled for 20 Oct 25"]
+signature: { initials: CD, surname: Example, rank: CAPT, appointment: Adjutant 1 RNZIR }
+consulted: [Range Control Waiouru]

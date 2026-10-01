@@ -1,0 +1,40 @@
+# Re-key of DFI 5.1 Annex 2P Visit Report or PAR - Example (Fig 2-18, PDF pp 104-106).
+# Faithful to the figure except:
+#  - "Jun YY" given a fictional year (2025);
+#  - Fig 2-18 shows an empty "Distribution" block; a placeholder entry is added
+#    so the 'For information / See distribution' form can render;
+#  - Annex A table: "Event" and "Dates" kept as the row text (as drawn); the
+#    Fig 2-18 footnote on "Expense" is not reproduced because the template
+#    (Fig 2-19) omits it (template governs; DV-03).
+#  - The figure's italic annotations ("(list below or remove ...)") are omitted.
+type: visit-report
+report_type: visit
+date: { year: 2025, month: 6 }
+file_reference: ABC 8000-0000
+to: [{ appointment: CDF }, { appointment: AC SCE }]
+distribution: ["[Distribution addressees]"]
+title: "COMMANDER JOINT FORCES NEW ZEALAND VISIT TO …… DD–DD MMM YY"
+introduction:
+  - text: "On DD Mmm YY the Commander Joint Forces New Zealand (COMJFNZ) and a three-person delegation from Joint Headquarters visited ……….. The visit was conducted between 0900 and 1500. The delegation comprised:"
+    sentence_list: and
+    sub: ["abc", "efg"]
+  - "The purpose of the visit was to extend ……….."
+report:
+  - para: "The main body of the report should outline the events of the visit and include information such as the events or activities observed, personnel involved, discussions undertaken, and any decisions or agreements reached."
+decisions:
+  lead: "The decision section summarises any actions proposed or agreed. Each decision is recapped and followed by a statement of the agreement and the appointment responsible for undertaking that action."
+  items:
+    - { type: agreement, text: "It was agreed that ……….." }
+    - { type: for_action, text: "It was recommended that further meetings at this level be considered on an annual basis." }
+    - { type: for_information, text: "It is recommended that ……….." }
+    - { type: further_action, text: "Proposal on the feasibility of undertaking annual meetings to be submitted to COMJFNZ by [appointment] by DD Mmm YY." }
+background:
+  - "Limited background information should be provided to allow a reader to understand a decision. Succinctness and brevity are necessary; detail not required to give context to an agreement should be excluded. Post activity reports are likely to generate issues or requirements for agreement or action. Similarly, a report may form part of the history of a series of visits, or the development of a problem or project. If so, future readers may need to understand the circumstances of the visit and/or activity and be given an explanation for actions, rather than a simple list of decisions taken."
+conclusions:
+  - "A conclusions section may not be required unless the author needs to reinforce some of the visit details, particularly where other governmental departments may have an interest in the outcomes of the visit."
+recommendations:
+  - "Recommendations are only required in exceptional circumstances and should be included if it proposed that future visits or attendance at an event be continued or not."
+signature: { initials: JO, surname: Bloggs, rank: MAJGEN, appointment: COMJFNZ }
+telephone: "DTelN (nnn) nnnn"
+travel: { event: Event, dates: Dates }
+enclosures: ["Report LMN dated 15 Mar 16"]

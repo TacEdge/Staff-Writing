@@ -30,11 +30,15 @@ def text_warnings(texts, *, doc_name: str = "minutes") -> list[str]:
 
 def block_texts(blocks):
     for blk in blocks:
-        if isinstance(blk, ParaBlock):
+        if isinstance(blk, ParaBlock) or hasattr(blk, "para"):
             yield from para_texts(blk.para)
         elif isinstance(blk, RecommendationsBlock):
             yield blk.recommendations.lead
             yield from blk.recommendations.items
+        elif hasattr(blk, "table"):
+            for row in blk.table.rows:
+                for cell in row:
+                    yield cell.text
         else:
             yield getattr(blk, "group", None) or getattr(blk, "main", "")
 

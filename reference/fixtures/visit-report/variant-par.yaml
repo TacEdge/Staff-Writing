@@ -1,0 +1,31 @@
+# Variant: post activity report; RESTRICTED; information addressees listed
+# (no distribution list); a typed date more than two weeks after the activity
+# (2.2.9a warning); an additional Annex B; no conclusions or recommendations.
+type: visit-report
+report_type: post_activity
+markings: { classification: RESTRICTED }
+date: { year: 2025, month: 10, day: 28 }
+activity_end: { year: 2025, month: 10, day: 3 }
+to: [{ appointment: CO 2/1 RNZIR }]
+info: [S3 2/1 RNZIR]
+title: "Exercise SOUTHERN KATIPO planning conference 1–3 Oct 25"
+introduction:
+  - "The battalion was represented at the Exercise SOUTHERN KATIPO main planning conference at Trentham Military Camp on 1–3 Oct 25 by the S3 and the Operations Warrant Officer."
+report:
+  - group: Conference outcomes
+  - para: "The battalion's role as the land component reserve was confirmed. Details are in Annex B."
+decisions:
+  lead: "The following decisions affect the battalion:"
+  items:
+    - { type: for_action, text: "S3 is to submit the battalion force contribution by 15 Oct 25." }
+background: ["The exercise is conducted every two years."]
+signature: { initials: CD, surname: Example, rank: MAJ, service: Army, appointment: S3 2/1 RNZIR }
+travel:
+  event: "Exercise SOUTHERN KATIPO main planning conference"
+  dates: "1–3 Oct 25"
+  ground_transportation: { details: "Unit vehicle, Burnham–Trentham via ferry", cost: "620" }
+  accommodation: { details: "Trentham transit accommodation", cost: "0" }
+additional_annexes:
+  - title: Battalion tasks from the planning conference
+    subject: Battalion tasks from the planning conference
+    body: [{ para: "The battalion is to provide one company group as the land component reserve." }]

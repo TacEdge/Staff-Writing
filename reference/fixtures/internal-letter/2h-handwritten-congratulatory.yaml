@@ -1,0 +1,17 @@
+# Mirrors DFI 5.1 Annex 2H Internal Formal Letter - Handwritten - Template
+# (Fig 2-9, PDF p 85): space left for a handwritten salutation and close;
+# congratulatory, so no file reference (2.1.16(6)) and no subject heading.
+type: internal-letter
+purpose: congratulatory
+letterhead:
+  device: "NZDF logo with Force for New Zealand logotype"
+  unit: New Zealand Army Leadership Centre
+  address: [Waiouru Military Camp, Waiouru 4861]
+date: { year: 2025, month: 11 }
+recipient: [Sergeant GH Example, Instructor, New Zealand Army Leadership Centre]
+salutation: { mode: handwritten }
+body:
+  - para: "Congratulations on your promotion to sergeant. It is a well-deserved recognition of the leadership you have shown throughout the year."
+  - para: "I wish you every success in your new appointment."
+close: { mode: handwritten }
+signature: { initials: EF, surname: Example, rank: Lieutenant Colonel, appointment: Commandant New Zealand Army Leadership Centre }

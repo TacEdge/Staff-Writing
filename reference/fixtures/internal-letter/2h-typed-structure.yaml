@@ -1,0 +1,21 @@
+# Mirrors the element set and order of DFI 5.1 Annex 2H Internal Formal Letter -
+# Typewritten - Template (Fig 2-8, PDF p 84) with fictional values.
+type: internal-letter
+purpose: routine
+letterhead:
+  device: "NZ Army logo with Force for New Zealand logotype"
+  unit: New Zealand Army Leadership Centre
+  address: [Waiouru Military Camp, Waiouru 4861]
+from_line: { text: Commandant, shows: appointment }
+date: { year: 2025, month: 10 }
+file_reference: NZALC 1300-0005
+recipient: [Captain CD Example, Instructor, NZALC]
+salutation: { mode: typed, text: Dear Captain Example }
+subject: Instructor of the year 2025
+body:
+  - para: "I write to inform you that you have been selected as the NZALC instructor of the year for 2025."
+  - para: "Your work redesigning the junior leaders course was commended by every course evaluation this year, and the course's completion rate rose from 82 to 91 per cent."
+  - para: "The award will be presented at the NZALC end-of-year parade on Friday 12 December 2025 at 1000."
+close: { mode: typed, text: Yours faithfully }
+signature: { initials: EF, surname: Example, rank: Lieutenant Colonel, appointment: Commandant NZALC }
+enclosures: ["NZALC instructor of the year citation, 1 Oct 25"]

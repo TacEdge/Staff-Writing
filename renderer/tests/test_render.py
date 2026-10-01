@@ -11,19 +11,20 @@ from staffwriting.lint import lint
 from staffwriting.render import render_file
 
 MINUTE_FIXTURES = sorted((FIXTURES / "minute").glob("*.yaml"))
-SUBMISSION_FIXTURES = sorted((FIXTURES / "submission").glob("*.yaml"))
-ALL_FIXTURES = MINUTE_FIXTURES + SUBMISSION_FIXTURES + sorted((FIXTURES / "annex-1a").glob("*.yaml"))
+ALL_FIXTURES = sorted(p for p in FIXTURES.glob("*/*.yaml"))
 
 
 @pytest.mark.parametrize("fixture", ALL_FIXTURES, ids=lambda p: p.stem)
 def test_fixture_renders_and_lints_clean(fixture, tmp_out):
     out = tmp_out / (fixture.stem + ".docx")
-    render_file(fixture, out)
+    res = render_file(fixture, out)
     pdf = None
     if HAS_SOFFICE:
         from staffwriting.preview import to_pdf
         pdf = to_pdf(out)
-    errors = [m for lvl, m in lint(out, pdf) if lvl == "ERROR"]
+    errors = [m for lvl, m in lint(out, pdf, doc_type=res.spec.get("id", "minute"),
+                                   max_main_pages=res.spec.get("lint", {}).get("max_main_pages"),
+                                   margins=res.margins) if lvl == "ERROR"]
     assert errors == []
 
 

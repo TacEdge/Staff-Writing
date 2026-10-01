@@ -19,10 +19,10 @@ the shared engine). **P2** = common staff products that reuse P1 components.
 | 1 | Minute **(implemented; gate passed 2026-10-01; pending Word checks)** | 2.1.10–2.1.11 | 2D (Fig 2-4) | 2C (Fig 2-3) | C | **P1** |
 | 2 | Submission (decision minute) **(implemented; S-01/S-02 approved; pending Word checks)** | 2.1.12 | 2F (Fig 2-6) | 2E (Fig 2-5) | C | **P1** |
 | 3 | Annex / appendix pages (shared sub-template) | 1.2.24 | Annex 1A (Figs 1-5, 1-6) | 2P p3 (Annex A) | C | **P1** |
-| 4 | Dot-point brief (DPB) | 2.2.6–2.2.8 | 2O (Fig 2-17) | – | C + bullets | P2 |
-| 5 | Visit report / post activity report | 2.2.9–2.2.11 | 2Q (Fig 2-19) | 2P (Fig 2-18) | C | P2 |
-| 6 | Internal formal (demi-official) letter | 2.1.13–2.1.17 | 2H (Figs 2-8 typed, 2-9 handwritten) | 2G (Fig 2-7) | none | P2 |
-| 7 | External letter | 2.1.13–2.1.16, 2.1.18 | 2J (Figs 2-11 typed, 2-12 handwritten) | 2I (Fig 2-10) | none | P2 |
+| 4 | Dot-point brief (DPB) **(implemented Phase 2, under review)** | 2.2.6–2.2.8 | 2O (Fig 2-17) | – | C + bullets | P2 |
+| 5 | Visit report / post activity report **(implemented Phase 2, under review)** | 2.2.9–2.2.11 | 2Q (Fig 2-19) | 2P (Fig 2-18) | C | P2 |
+| 6 | Internal formal (demi-official) letter **(implemented Phase 2, under review)** | 2.1.13–2.1.17 | 2H (Figs 2-8 typed, 2-9 handwritten) | 2G (Fig 2-7) | none | P2 |
+| 7 | External letter **(implemented Phase 2, under review)** | 2.1.13–2.1.16, 2.1.18 | 2J (Figs 2-11 typed, 2-12 handwritten) | 2I (Fig 2-10) | none | P2 |
 | 8 | Administrative Instruction (AI) | 3.2.21–3.2.22 | 3F (Fig 3-7) | – | D | P2 |
 | 9 | CDF Directive (also COS/commander and senior-executive directives) | 3.2.9–3.2.13 | 3D (Fig 3-5) | – | D | P2 |
 | 10 | NZDF Note (Submission) to the Minister | 2.3.7b, 2.3.8–2.3.11 | 2AC (Fig 2-31) | – | C | P3 |

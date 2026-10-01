@@ -1,0 +1,25 @@
+# Visit report / Post activity report: DFI 5.1 2.2.9-2.2.11 (administrative
+# documentation 2.2.1-2.2.3); template Annex 2Q (Fig 2-19); example Annex 2P (Fig 2-18).
+id: visit-report
+title: Visit report / Post activity report
+dfi:
+  section: "2.2.9-2.2.11 (and 2.2.3)"
+  template: "2Q (Fig 2-19), PDF pp 107-109"
+  example: "2P (Fig 2-18), PDF pp 104-106"
+page: { margins: standard, orientation: portrait }
+numbering: correspondence
+page_numbering: unclassified_from_page_2
+identity: none                                            # 2.2.10(2) plain paper
+date: { style: abbreviated }
+blocks:
+  - date_line: { indent_cm: 1.0 }                         # 2.2.3(1); 2.2.10(3)
+  - addressees: { distribution_mode: info }               # 2.2.10(4); Figs 2-18, 2-19
+  - subject                                               # 2.2.10(5) "VISIT REPORT -" / "POST ACTIVITY REPORT -"
+  - body: { numbering: correspondence }                   # 2.2.11, composed by schema
+  - signature: { variant: minute }                        # 2.2.10(7)
+  - telephone                                             # [T]
+  - annex_list                                            # Annex A travel summary first (2.2.10(9))
+  - enclosure_list
+  - distribution
+  - copy_distribution
+  - supporting_documents

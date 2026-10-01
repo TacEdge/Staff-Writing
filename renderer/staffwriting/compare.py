@@ -27,6 +27,15 @@ PAIRS = {
     "minute-2d-template": ([72, 73], "output/minute/2d-structure.pdf", [1, 2]),
     "submission-2e-example": ([74, 75], "output/submission/2e-example.pdf", [1, 2]),
     "submission-2f-template": ([76, 77], "output/submission/2f-structure.pdf", [1, 2]),
+    "dpb-2o-template": ([100], "output/dpb/2o-structure.pdf", [1]),
+    "vr-2p-example": ([104, 105, 106], "output/visit-report/2p-example.pdf", [1, 2, 3]),
+    "vr-2q-template": ([107, 109], "output/visit-report/2q-structure.pdf", [1, 3]),
+    "internal-letter-2g-example": ([83], "output/internal-letter/2g-example.pdf", [1]),
+    "internal-letter-2h-typed": ([84], "output/internal-letter/2h-typed-structure.pdf", [1]),
+    "internal-letter-2h-handwritten": ([85], "output/internal-letter/2h-handwritten-congratulatory.pdf", [1]),
+    "external-letter-2i-example": ([86], "output/external-letter/2i-example.pdf", [1]),
+    "external-letter-2j-typed": ([87], "output/external-letter/2j-typed-structure.pdf", [1]),
+    "external-letter-2j-handwritten": ([88], "output/external-letter/2j-handwritten.pdf", [1]),
 }
 
 

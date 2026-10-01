@@ -1,0 +1,18 @@
+# Mirrors the element set and order of DFI 5.1 Annex 2J External Letter -
+# Typewritten - Template (Fig 2-11, PDF p 87) with fictional values.
+type: external-letter
+letterhead:
+  device: "NZ Army logo with Force for New Zealand logotype"
+  address: [New Zealand Army Leadership Centre, Waiouru Military Camp, Private Bag 1, Waiouru 4861]
+from_line: { text: Commandant, shows: appointment }
+date: { year: 2025, month: 10, day: 14 }
+recipient: [Ms JK Example, Principal, Ruapehu College, 6 Ruapehu Road, OHAKUNE 4625]
+salutation: { mode: typed, text: Dear Ms Example }
+subject: Leadership workshop for senior students
+body:
+  - para: "Thank you for your letter of 2 October 2025 inviting the New Zealand Army Leadership Centre (NZALC) to run a leadership workshop for your senior students."
+  - para: "I am pleased to confirm that NZALC instructors will run the workshop at the college on Wednesday 19 November 2025 from 9:00 am to 12:30 pm."
+  - para: "Our point of contact is Captain CD Example, who will call you to confirm the arrangements."
+close: { mode: typed, text: Yours faithfully }
+signature: { initials: EF, surname: Example, rank: Lieutenant Colonel, appointment: Commandant New Zealand Army Leadership Centre }
+enclosures: ["Workshop outline, October 2025"]

@@ -1,0 +1,35 @@
+# Mirrors the element set and order of DFI 5.1 Annex 2Q Visit Report or PAR -
+# Template (Fig 2-19, PDF pp 107-109) with fictional values.
+type: visit-report
+report_type: visit
+date: { year: 2025, month: 11 }
+file_reference: NZALC 3000-0042
+activity_end: { year: 2025, month: 10, day: 30 }
+to: [{ appointment: COMD NZALC, through: CoS NZALC }]
+distribution: [NZDC, HQ NZDF Directorate of Training]
+title: Visit to the Australian Defence College 28–30 Oct 25
+introduction:
+  - "On 28–30 Oct 25 three NZALC staff visited the Australian Defence College, Canberra, to compare leadership course design."
+report:
+  - para: "The visit covered course design, assessment and the use of workplace projects."
+decisions:
+  lead: "The following decisions were reached:"
+  items:
+    - { type: agreement, text: "NZALC and the Australian Defence College will exchange course evaluation data annually." }
+    - { type: for_action, text: "SO2 Curriculum NZALC is to draft an exchange arrangement by 15 Dec 25." }
+    - { type: for_information, text: "The Australian Defence College will host a regional leadership conference in Mar 26." }
+    - { type: further_action, text: "A return visit is proposed for May 26." }
+background: ["NZALC is reviewing its command leadership course for 2026."]
+conclusions: ["The visit confirmed that the NZALC course design is consistent with Australian practice."]
+recommendations: ["The exchange should be continued annually."]
+signature: { initials: AB, surname: Example, rank: MAJ, service: Army, appointment: SO2 Curriculum NZALC }
+telephone: "DTelN (349) 7300"
+travel:
+  event: "Australian Defence College staff visit"
+  dates: "28–30 Oct 25"
+  air_travel: { details: "Wellington–Canberra return, three passengers", cost: "3,120" }
+  ground_transportation: { details: "Airport transfers", cost: "180" }
+  accommodation: { details: "Three nights, three personnel", cost: "1,650" }
+  meals: { details: "Per diem", cost: "540" }
+  incidental_expenses: { details: "Nil", cost: "0" }
+enclosures: ["Australian Defence College course handbook, Oct 25"]
