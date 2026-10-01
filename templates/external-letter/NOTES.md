@@ -55,6 +55,6 @@ Differences from Figs 2-10 to 2-12 (`output/comparisons/external-letter-*`):
 | ID | Difference | Disposition |
 |---|---|---|
 | DE-01 | Fig 2-10 has no date | A-30 decided: date required (2.1.16(5)) |
-| DE-02 | Fig 2-10 shows the NZ Army logo | **Resolved 2026-10-01** (BR-06): official artwork, army_logo, 1.25 cm high (BR-05). The fixture label was corrected from "NZ Army badge". No Force for New Zealand wording mark is added (BR-02: Figs 2-10 to 2-12 do not show one). |
+| DE-02 | Fig 2-10 shows the NZ Army logo | **Resolved 2026-10-01** (BR-06): official artwork, army_logo, 1.25 cm high (BR-05). The fixture label was corrected from "NZ Army badge". No Force for New Zealand wording mark is added (BR-02: Figs 2-10 to 2-12 do not show one). **Known compliance gap OP-01:** 2.1.16(3)(c) requires it; placement awaits an authoritative source. |
 | DE-03 | About two lines between the last paragraph and the close in Fig 2-10; ours one | I-L4 (close one line below; six lines below the close for the signature, 1.2.21c) |
 | DE-04 | Fig 2-10 italic annotations not reproduced | DFI notes, not content |

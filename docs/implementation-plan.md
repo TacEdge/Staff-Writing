@@ -2,7 +2,7 @@
 
 Status: **Phases 0–2 complete and accepted (2026-10-01); Word checks V-01 to
 V-04 passed. Phase 3 directive family (AI, CDF Directive with variants, CDF
-Operational Directive) implemented 2026-10-01, awaiting its review gate; V-05
+Operational Directive) implemented and provisionally accepted 2026-10-01; V-05
 not tested.** The remaining items listed under "Phase 3" below (ministerial,
 delegations, meetings, DFO(T)) are not started. Phase 2 was re-ordered by the user to DPB → VR/PAR → internal
 letter → external letter. The Administrative Instruction and CDF Directive were

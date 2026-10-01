@@ -52,10 +52,15 @@ Annex 1C; 2.1.11(1); 2.1.16(3)–(4); 2.2.3(2); 2.2.10(2); 2.3.6f; 2.3.8(1)–(3
   (1.2.26f, 2.1.16(3)(c)). Gold-leaf badge for CDF and their office only
   (1.2.26e, 2.1.16(3)(b); BR-04). No device on AIs (3.2.22a(2)) or
   senior-executive directives (3.2.13c).
-- **Size** `[T]`: badge 2.5 cm high, logo 1.25 cm high (measured from the DFI
-  figures), logo never narrower than 35 mm (VIS) (BR-05; tokens `identity.*`).
-- **Force for New Zealand wording mark:** not generated (BR-02). See open point
-  OP-01 in the register.
+- **Size** `[T]`: badge 2.5 cm high; logo 1.25 cm **high** (both measured from
+  the DFI figures); logo never narrower than 35 mm **wide** (VIS minimum size).
+  At 1.25 cm high every logo is 4.57 to 5.77 cm wide, so the minimum does not
+  bind (BR-05, verified 2026-10-01; tokens `identity.*`).
+- **Force for New Zealand wording mark** `[M]` 2.1.16(3)(c): required on
+  applicable formal letters but **not generated**. Its placement is not
+  established by DFI or the VIS for these letters (BR-02). **Known compliance
+  gap OP-01**, open until an authoritative NZDF template or approved source
+  gives the treatment.
 
 ## 2. Protective markings
 

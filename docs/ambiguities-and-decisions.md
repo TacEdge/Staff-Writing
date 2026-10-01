@@ -123,9 +123,27 @@ instead of adopted.
 | DR-17 | DECIDED. Enforce the one-year limit as an error for CDF Directives. 3.2.9d states the period and makes the end-of-period action mandatory ("are to be incorporated … or cancelled"). Not applied to the commander and senior-executive variants: 3.2.9d is about CDF Directives, and 3.2.13b extends only the layout. |
 | E-13 | DECIDED. Do not alter the fixed "DFO 14" reference. It is reproduced verbatim, and a warning flags it on every use, pending authoritative resolution. |
 | E-14 | DECIDED. Obvious capitalisation error, corrected without changing meaning: "this administrative instruction" becomes "this Administrative Instruction" (Fig 3-7 Purpose stem and Cancellation), matching paras 1–3 and 3.2.21. |
-| OP-01 | **OPEN (surfaced by BR-02).** 2.1.16(3)(c) requires the Force for New Zealand logotype with the logo on formal letters from members other than COS and the executive committee. Figs 2-7 to 2-12 do not show it, and the VIS placement (bottom right of a single-page document, or the back cover) does not fit multi-page letters. Not generated. Needs your decision. See `docs/baselines/2026-10-01-identity-artwork.md`. |
+| OP-01 | **OPEN: KNOWN COMPLIANCE GAP (review 2026-10-01; see the Phase 3 review table).** 2.1.16(3)(c) requires the Force for New Zealand logotype with the logo on formal letters from members other than COS and the executive committee. Figs 2-7 to 2-12 do not show it, and the VIS placement (bottom right of a single-page document, or the back cover) does not fit multi-page letters. Not generated. Needs your decision. See `docs/baselines/2026-10-01-identity-artwork.md`. |
 | V-05 | ADDED. Microsoft Word check of the directive page-1 conditional number. **NOT TESTED.** |
 
+
+## Phase 3 review (2026-10-01): directive family provisionally accepted
+
+The directive family (Administrative Instruction, CDF Directive with
+commander and senior-executive variants, CDF Operational Directive) is
+**provisionally accepted**, subject to Word check V-05 and the open items
+below.
+
+| ID | Decision |
+|---|---|
+| OP-01 | **OPEN: KNOWN COMPLIANCE GAP. Not an accepted deviation.** DFI prose (2.1.16(3)(c)) requires the Force for New Zealand logotype on applicable formal letters, so the requirement is **not waived**. Its placement is not invented. Generated letters continue to omit it until an authoritative NZDF Word template or other approved source establishes the treatment and placement. Then implement it and remove this gap. |
+| I-A1 / I-C4 | APPROVED: listed addressees stay bold. |
+| I-A2 | APPROVED: annexes belonging to directives use the directive (hanging) paragraph numbering. |
+| I-C1 | APPROVED: commander and senior-executive directive variants require numbered identifiers. |
+| I-O1 | APPROVED: optional lead paragraphs before the required minimum elements. No headings are generated where DFI prescribes none. |
+| I-C2 | ACCEPTED LIMITATION: no command or unit badge artwork is invented or extracted from unofficial sources. Only authoritative artwork in the repository is used. |
+| V-05 | **Still NOT TESTED.** The review text contained "V-05 verified", but the same review said V-05 "still needs the actual Word check", and no result, observation or environment was supplied. The check is not recorded as passed until a person confirms the Word result. |
+| BR-05 | **Verified 2026-10-01; no correction needed.** The two values measure different dimensions of the same devices. "1.25 cm" is the logo **height**, measured from the DFI figures (Fig 2-7 RNZAF logo 1.30 cm high, 5.67 cm wide; Fig 2-10 NZ Army logo 1.19 cm high, 5.17 cm wide). "35 mm" is the VIS minimum **width**: the bracket on VIS pp 8, 26, 40 and 54 spans the logo's full width, and the sample logos are drawn about 3.5 cm wide. At 1.25 cm high the logos render 4.57 to 5.77 cm wide (NZDF 5.77, RNZN 4.57, NZ Army 5.18, RNZAF 5.42), so the minimum does not bind; it would bind only below about 0.76 to 0.96 cm height. The rendered Army and RNZAF logo widths are within 5 per cent of the DFI-figure widths. Caveat: the true-scale factor of the DFI figures depends on the method (body text size 1.385; figure frame 1.31), about 5 per cent apart. Either way the minimum is met. Badges have no VIS minimum. The record wording "logo 1.25 cm" is clarified as "1.25 cm high". |
 
 ## Phase 3 (directive family): items that emerged (2026-10-01)
 
@@ -139,13 +157,13 @@ These need your attention at the family review:
 
 | ID | Item | Status |
 |---|---|---|
-| OP-01 | Force for New Zealand wording mark on letters (2.1.16(3)(c)) is not generated (BR-02) | OPEN |
+| OP-01 | Force for New Zealand wording mark on letters (2.1.16(3)(c)) is not generated (BR-02) | OPEN: known compliance gap (see review above) |
 | DR-12 | Op Directive format variation (3.2.16c) is not implemented | SURFACED |
-| I-A1 / I-C4 | Listed addressees (four or fewer) in AIs and CDF Directives use the shared bold addressee lines. No DFI figure shows them. | For confirmation (appearance) |
-| I-A2 | Annex paragraphs in this family use scheme D (fn 23 "Hanging indents are used in Directives, Orders and Instructions") | For confirmation (appearance) |
-| I-C1 | Commander and senior-executive directive identifiers are numbered and require the number (3.2.13b by analogy; DR-13) | For confirmation |
-| I-C2 | Command and unit badges are not held; commanders may use a Service or NZDF badge only (3.2.12b) | Input needed: command/unit artwork, if wanted |
-| I-O1 | Op Directive sections take an optional lead paragraph; required minimum elements follow as sub-paragraphs or as first-level paragraphs (DR-11) | For confirmation (appearance) |
+| I-A1 / I-C4 | Listed addressees (four or fewer) in AIs and CDF Directives use the shared bold addressee lines. No DFI figure shows them. | APPROVED 2026-10-01 |
+| I-A2 | Annex paragraphs in this family use scheme D (fn 23 "Hanging indents are used in Directives, Orders and Instructions") | APPROVED 2026-10-01 |
+| I-C1 | Commander and senior-executive directive identifiers are numbered and require the number (3.2.13b by analogy; DR-13) | APPROVED 2026-10-01 |
+| I-C2 | Command and unit badges are not held; commanders may use a Service or NZDF badge only (3.2.12b) | ACCEPTED LIMITATION 2026-10-01 |
+| I-O1 | Op Directive sections take an optional lead paragraph; required minimum elements follow as sub-paragraphs or as first-level paragraphs (DR-11) | APPROVED 2026-10-01 |
 | E-13 | "DFO 14" reproduced and flagged on every use of the first cancellation wording | Awaiting authoritative resolution |
 | V-05 | Page-1 conditional number in directives | NOT TESTED |
 

@@ -105,3 +105,16 @@ def test_gold_badge_only_for_cdf_and_office(tmp_out):
     data["signature"]["appointment"] = "Chief of Defence Force"
     src.write_text(yaml.safe_dump(data))
     load_content(src)
+
+
+def test_br05_height_and_minimum_width_are_different_dimensions():
+    """BR-05 (verified 2026-10-01): 1.25 cm is the logo height from the DFI
+    figures; 35 mm is the VIS minimum width. The minimum does not bind at the
+    DFI height, and widths match the DFI figures within 5 per cent."""
+    h_tok, min_w = TK.value("identity.logo_height"), TK.value("identity.logo_min_width")
+    for logo in ("nzdf_logo", "navy_logo", "army_logo", "airforce_logo"):
+        w, h = artwork.size_cm(logo, TK)
+        assert h == pytest.approx(h_tok)              # height governs ...
+        assert w > min_w                              # ... and the width minimum is met
+    assert artwork.size_cm("army_logo", TK)[0] == pytest.approx(5.17, rel=0.05)      # Fig 2-10
+    assert artwork.size_cm("airforce_logo", TK)[0] == pytest.approx(5.67, rel=0.05)  # Fig 2-7

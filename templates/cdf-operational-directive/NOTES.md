@@ -1,7 +1,7 @@
 # CDF Operational Directive: traceability notes
 
-Status: **implemented (Phase 3, directive family); awaiting the family review
-gate.** Word check **V-05** (page-1 conditional number): **NOT TESTED**.
+Status: **implemented (Phase 3); provisionally accepted 2026-10-01** (family
+review; implementation decisions approved, see the register). Word check **V-05** (page-1 conditional number): **NOT TESTED**.
 
 ## 1. DFI sources
 
@@ -64,7 +64,7 @@ is a first-level paragraph.
 
 | ID | Decision | Reason |
 |---|---|---|
-| I-O1 | Each section has an optional `lead` paragraph. | Fig 3-6 shows one numbered paragraph per section. DR-11 forbids generated headings, so the elements follow the lead or stand as paragraphs. |
+| I-O1 | **Approved 2026-10-01.** Each section has an optional `lead` paragraph. | Fig 3-6 shows one numbered paragraph per section. DR-11 forbids generated headings, so the elements follow the lead or stand as paragraphs. |
 | I-O2 | The field for 3.2.17(7)(c) is named `critical_information_requirements`. | The DFI text reads "Command critical information requirements". The wording is not reproduced, because the field is not rendered. |
 | I-O3 | Gold-leaf badge permitted. | The directive is CDF's (1.2.26e; BR-04). 3.2.18(2) names the official NZDF badge, which is the default. |
 

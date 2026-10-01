@@ -23,8 +23,8 @@ the shared engine). **P2** = common staff products that reuse P1 components.
 | 5 | Visit report / post activity report **(implemented Phase 2; accepted 2026-10-01)** | 2.2.9–2.2.11 | 2Q (Fig 2-19) | 2P (Fig 2-18) | C | P2 |
 | 6 | Internal formal (demi-official) letter **(implemented Phase 2; accepted 2026-10-01)** | 2.1.13–2.1.17 | 2H (Figs 2-8 typed, 2-9 handwritten) | 2G (Fig 2-7) | none | P2 |
 | 7 | External letter **(implemented Phase 2; accepted 2026-10-01)** | 2.1.13–2.1.16, 2.1.18 | 2J (Figs 2-11 typed, 2-12 handwritten) | 2I (Fig 2-10) | none | P2 |
-| 8 | Administrative Instruction (AI) **(implemented Phase 3; awaiting family review)** | 3.2.21–3.2.22 | 3F (Fig 3-7) | – | D | P2 |
-| 9 | CDF Directive (also COS/commander and senior-executive directives) **(implemented Phase 3 with variants; awaiting family review; V-05 not tested)** | 3.2.9–3.2.13 | 3D (Fig 3-5) | – | D | P2 |
+| 8 | Administrative Instruction (AI) **(implemented Phase 3; provisionally accepted 2026-10-01)** | 3.2.21–3.2.22 | 3F (Fig 3-7) | – | D | P2 |
+| 9 | CDF Directive (also COS/commander and senior-executive directives) **(implemented Phase 3 with variants; provisionally accepted 2026-10-01; V-05 not tested)** | 3.2.9–3.2.13 | 3D (Fig 3-5) | – | D | P2 |
 | 10 | NZDF Note (Submission) to the Minister | 2.3.7b, 2.3.8–2.3.11 | 2AC (Fig 2-31) | – | C | P3 |
 | 11 | NZDF Submission to the Minister cover sheet | 2.3.7b | 2AB (Fig 2-30) | – | form | P3 |
 | 12 | NZDF Quality Assurance Form | 2.3.4 | 1B (Fig 1-7) = 2AG (Fig 2-36) | – | form | P3 |
@@ -39,7 +39,7 @@ the shared engine). **P2** = common staff products that reuse P1 components.
 | 21 | Minutes of a meeting | 2.2.15–2.2.16 | 2U (Fig 2-23) | 2T (Fig 2-22) | table | P3 |
 | 22 | DFO (Temporary): conditions of service | 3.2.2 | 3C (Fig 3-4) | 3B (Fig 3-3) | D | P3 |
 | 23 | DFO (Temporary): appointment, promotion, discharge of officers | 3.2.2b(2), c | – (example only) | 3A (Fig 3-2) | D | P3 |
-| 24 | CDF Operational Directive **(implemented Phase 3; awaiting family review; V-05 not tested)** | 3.2.16–3.2.18 | 3E (Fig 3-6) | – | D | P3 |
+| 24 | CDF Operational Directive **(implemented Phase 3; provisionally accepted 2026-10-01; V-05 not tested)** | 3.2.16–3.2.18 | 3E (Fig 3-6) | – | D | P3 |
 | 25 | DFI / DM publication (title page, authority order, foreword, contents, preliminary provisions, main content, end matter) | 4.4 | 4A–4G (Figs 4-3, 4-5, 4-6, 4-7, 4-9, 4-10, 4-11) | DFI 5.1 itself (4.4.1b) | P | P4 |
 | 26 | DFO publication (as above, DFO variants) | 4.4, 4.3.2 | 4A–4G (Figs 4-2, 4-4, 4-6, 4-7, 4-8, 4-10, 4-11) | – | P | P4 |
 | 27 | Publications Quality Assurance Form | 4.3.12g | 4H (Fig 4-12) | – | form | P4 |

@@ -1,7 +1,7 @@
 # Administrative Instruction: traceability notes
 
-Status: **implemented (Phase 3, directive family); awaiting the family review
-gate.** Word check V-05 does not apply: an AI follows the general page-number
+Status: **implemented (Phase 3); provisionally accepted 2026-10-01** (family
+review; implementation decisions approved, see the register). Word check V-05 does not apply: an AI follows the general page-number
 rule (DR-02).
 
 ## 1. DFI sources
@@ -75,8 +75,8 @@ Em dashes are **not** reported in this family (A-07, 1.2.23c(2)).
 
 | ID | Decision | Reason |
 |---|---|---|
-| I-A1 | Listed addressees (four or fewer) use the shared addressee block, which renders them in bold. | No DFI AI figure shows listed addressees. The minute convention (D-01) is reused rather than a new format invented. |
-| I-A2 | Annex and appendix paragraphs use scheme D. | fn 23: "Hanging indents are used in Directives, Orders and Instructions." Applies throughout the document. |
+| I-A1 | **Approved 2026-10-01.** Listed addressees (four or fewer) use the shared addressee block, which renders them in bold. | No DFI AI figure shows listed addressees. The minute convention (D-01) is reused rather than a new format invented. |
+| I-A2 | **Approved 2026-10-01.** Annex and appendix paragraphs use scheme D. | fn 23: "Hanging indents are used in Directives, Orders and Instructions." Applies throughout the document. |
 | I-A3 | The third signature line holds the sender organisation, in the shared `appointment` field. | Fig 3-7: "[Sender organisation]". |
 | I-A4 | The identifier uses its own style (bold, body size, left margin), created only when used. | 3.2.22a(2). Accepted Phase 1–2 documents are left unchanged. |
 | I-A5 | The Authority wording uses a two-digit number ("07/2026"), as the identifier does. | Fig 3-7 "[nn/yyyy]"; 2.1.11(3) form. |

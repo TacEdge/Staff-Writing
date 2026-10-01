@@ -1,7 +1,7 @@
 # CDF Directive (with commander and senior-executive variants): traceability notes
 
-Status: **implemented (Phase 3, directive family); awaiting the family review
-gate.** Word check **V-05** (page-1 conditional number): **NOT TESTED**.
+Status: **implemented (Phase 3); provisionally accepted 2026-10-01** (family
+review; implementation decisions approved, see the register). Word check **V-05** (page-1 conditional number): **NOT TESTED**.
 
 ## 1. DFI sources
 
@@ -71,10 +71,10 @@ no separate layout, so the CDF layout is used (DR-13).
 
 | ID | Decision | Reason |
 |---|---|---|
-| I-C1 | Variant identifiers are numbered ("[APPOINTMENT] DIRECTIVE NN/YYYY"), and the number is required. | 3.2.13b (layout conforms to the CDF Directive); DR-13. No DFI figure shows a variant identifier. |
-| I-C2 | Command and unit badges are not held, so a commander may use a Service badge or the NZDF badge only. | 3.2.12b allows a Service, command or unit badge. Only the Service and NZDF badges are in the VIS (SOURCE.md). |
+| I-C1 | **Approved 2026-10-01.** Variant identifiers are numbered ("[APPOINTMENT] DIRECTIVE NN/YYYY"), and the number is required. | 3.2.13b (layout conforms to the CDF Directive); DR-13. No DFI figure shows a variant identifier. |
+| I-C2 | **Accepted limitation 2026-10-01** (no unofficial artwork). Command and unit badges are not held, so a commander may use a Service badge or the NZDF badge only. | 3.2.12b allows a Service, command or unit badge. Only the Service and NZDF badges are in the VIS (SOURCE.md). |
 | I-C3 | The page-1 field caches "1". LibreOffice shows "1" on a one-page directive. Word recalculates the field (V-05). | DR-01. The page count is not known when the document is generated. |
-| I-C4 | Listed addressees use the shared bold addressee lines, as for the AI (I-A1). | Fig 3-5 shows one bold placeholder "[Addressee or See distribution]". |
+| I-C4 | **Approved 2026-10-01.** Listed addressees use the shared bold addressee lines, as for the AI (I-A1). | Fig 3-5 shows one bold placeholder "[Addressee or See distribution]". |
 
 ## 5. Differences from Fig 3-5
 
