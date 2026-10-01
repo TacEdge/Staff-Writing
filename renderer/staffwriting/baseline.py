@@ -129,8 +129,11 @@ def prove_artwork_only(a: Path, b: Path) -> tuple[bool, list[str]]:
     """Register BR-06: show that the only change between snapshots a and b is
     the identity artwork (placeholder run -> picture run, plus its image part)."""
     ok, lines = True, []
+    new_fixtures = [fx for fx in diff(a, b) if not (a / fx).exists()]
     for fx, _ in diff(a, b).items():
         fa, fb = a / fx, b / fx
+        if fx in new_fixtures:
+            continue
         parts = sorted({p.name for p in fa.iterdir()} | {p.name for p in fb.iterdir()})
         changed = [p for p in parts if not ((fa / p).exists() and (fb / p).exists()
                                             and (fa / p).read_text() == (fb / p).read_text())]
@@ -167,8 +170,10 @@ def prove_artwork_only(a: Path, b: Path) -> tuple[bool, list[str]]:
         ok &= good
         lines.append(f"{'PASS' if good else 'FAIL'} {fx}")
         lines += [f"    {'ok  ' if v else 'FAIL'} {k}" for k, v in checks.items()]
-    same = sum(1 for p in a.iterdir() if p.is_dir()) - len(diff(a, b))
-    lines.append(f"{same} fixture(s) identical in every part; {len(diff(a, b))} changed")
+    changed = len(diff(a, b)) - len(new_fixtures)
+    same = sum(1 for p in a.iterdir() if p.is_dir()) - changed
+    lines.append(f"{same} fixture(s) identical in every part; {changed} changed; "
+                 f"{len(new_fixtures)} new (not in the first snapshot)")
     return ok, lines
 
 

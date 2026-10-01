@@ -36,6 +36,9 @@ PAIRS = {
     "external-letter-2i-example": ([86], "output/external-letter/2i-example.pdf", [1]),
     "external-letter-2j-typed": ([87], "output/external-letter/2j-typed-structure.pdf", [1]),
     "external-letter-2j-handwritten": ([88], "output/external-letter/2j-handwritten.pdf", [1]),
+    "ai-3f-template": ([178, 179], "output/administrative-instruction/3f-structure.pdf", [1, 2]),
+    "cdf-directive-3d-template": ([167, 168], "output/cdf-directive/3d-structure.pdf", [1, 2]),
+    "cdf-op-directive-3e-template": ([173, 174], "output/cdf-operational-directive/3e-structure.pdf", [1, 2]),
 }
 
 

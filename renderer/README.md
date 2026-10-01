@@ -12,8 +12,9 @@ pip install -r renderer/requirements.txt
 apt-get install libreoffice-writer fonts-crosextra-carlito poppler-utils
 ```
 
-LibreOffice Writer and the Carlito font are needed **only** for PDF previews and
-visual checks. Carlito is metric-compatible with Calibri. The deliverable is the
+poppler-utils (`pdftocairo`) is also needed at render time for identity
+artwork (badges and logos). LibreOffice Writer and the Carlito font are needed
+**only** for PDF previews and visual checks. Carlito is metric-compatible with Calibri. The deliverable is the
 `.docx` opened in Microsoft Word.
 
 ## Use
@@ -21,13 +22,15 @@ visual checks. Carlito is metric-compatible with Calibri. The deliverable is the
 ```bash
 PYTHONPATH=renderer python3 -m staffwriting render CONTENT.yaml -o output/x.docx [--pdf] [--lint]
 PYTHONPATH=renderer python3 -m staffwriting.compare      # DFI vs rendered side-by-side images
+PYTHONPATH=renderer python3 -m staffwriting.baseline snapshot output/baselines/NAME   # regression snapshot
+PYTHONPATH=renderer python3 -m staffwriting.baseline diff output/baselines/A output/baselines/B
 cd renderer && python3 -m pytest -q tests                 # schema, render, lint and negative tests
 ```
 
 The content file's `type:` selects `templates/<type>/` (its `template.yaml`
 block sequence and its `schema.py` content model).
 
-## Architecture as built (Phases 1–2)
+## Architecture as built (Phases 1–3)
 
 ```
 content.yaml ─► templates/<id>/schema.py (pydantic: mandatory elements, counts, warnings)
@@ -46,7 +49,8 @@ blocks.py   REGISTRY of reusable blocks: letterhead, originator_descriptor,
             recommendations, tables; or unnumbered letter paragraphs), signature
             (minute/admin/letter variants), telephone, annex_list, enclosure_list,
             flag_list, consulted, distribution, copy_distribution, title_line,
-            from_line, recipient, salutation, supporting_documents
+            from_line, recipient, salutation, supporting_documents,
+            originating_hq, directive_identifier (Phase 3)
                        │
 .docx ─► lint.py (page setup, fonts/sizes/colour, settings, markings on every
          header/footer, page-number regime, subject case, numbering geometry,
@@ -68,10 +72,13 @@ blocks.py   REGISTRY of reusable blocks: letterhead, originator_descriptor,
 | `model.py` | Shared content models: markings, dates, paragraphs, recommendations, tables, addressees, signature, annexes, letterhead |
 | `tables.py` | DFI tables (1.2.25): 0.5 pt borders, 10/11 pt, repeated header row, centred, optional caption |
 | `letters.py` | Shared formal-letter models and rules: salutation, close, From line, letter signature, `LetterBase` |
+| `orders.py` | Shared rules for orders, directions and instructions: distribution threshold, bullet ban, CDF signatory and badge checks, Administration and Command and control sub-structures, required-element rendering (DR-11), order wording warnings (day names, colon lead-ins, mandatory language, annexes introduced) |
+| `artwork.py` | Identity artwork derived at render time from the controlled VIS PDF (checksum verified; manifest; cache) and its display size (BR-01, BR-05) |
 | `wording.py` | Shared wording warnings (hyperlinks, exclamation marks, em dashes, %, eg/ie/etc) |
 | `inline.py` | `**bold**`, `*italic*`, `__underline__`, `^[footnote]` |
 | `render.py`, `__main__.py` | Template loading, validation, build, CLI |
-| `lint.py`, `preview.py`, `compare.py` | Validation tooling |
+| `lint.py`, `preview.py`, `compare.py` | Validation tooling. `lint_result(res)` lints with the template's declared numbering scheme (C or D) and page-number regime |
+| `baseline.py` | Output snapshots (canonical XML of every part, relationship ids resolved, media checksums), `diff`, and `prove-artwork` for controlled baseline updates |
 
 Rules:
 - Read every formatting value from the tokens.

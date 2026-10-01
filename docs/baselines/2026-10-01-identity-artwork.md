@@ -106,3 +106,17 @@ the logo only. The VIS places the wording mark bottom right of a single-page
 document or on the back cover. Per BR-02, it is not added. The prose
 requirement therefore remains unmet in generated letters until you decide
 where the wording mark goes.
+
+## Re-check at the end of the Phase 3 family (2026-10-01)
+
+The same proof was run on the final Phase 3 code (after the shared directive
+capabilities, the AI, the CDF Directive and the Op Directive) against the
+accepted Phase 1–2 snapshot:
+
+```
+12 fixture(s) identical in every part; 9 changed; 11 new (not in the first snapshot)
+```
+
+All 9 changed fixtures pass `prove-artwork`: the artwork is still their only
+change. The 11 new fixtures belong to the three new document types. None of
+the Phase 3 shared changes altered an accepted output.

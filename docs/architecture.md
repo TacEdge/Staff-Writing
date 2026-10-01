@@ -1,6 +1,6 @@
 # Architecture
 
-Status: **as built, Phases 1–2** (decisions T-01, T-02, T-06 approved). The
+Status: **as built, Phases 1–3** (decisions T-01, T-02, T-06 approved; BR-01 identity artwork). The
 module-level detail lives in `renderer/README.md`; this document keeps the
 structure, data flow and validation contract.
 
@@ -96,9 +96,11 @@ Staff-Writing/
 See the module table in `renderer/README.md`. In summary: `tokens`, `styles`,
 `numbering`, `page` (sections and header/footer furniture), `ooxml` (fields,
 footnotes, settings, watermark), `blocks` (reusable blocks), `tables`,
-`letters` (shared letter rules), `model` (shared content models), `inline`,
-`wording`, `dates`, `builder`, `render` (template loading and CLI), and the
-validation tools `lint`, `preview` and `compare`.
+`letters` (shared letter rules), `orders` (shared rules for orders, directions
+and instructions), `artwork` (identity artwork derived from the controlled VIS
+source), `model` (shared content models), `inline`, `wording`, `dates`,
+`builder`, `render` (template loading and CLI), and the validation tools
+`lint`, `preview`, `compare` and `baseline`.
 
 ## 5. Template definition
 
@@ -127,9 +129,12 @@ Items marked (planned) are not yet implemented in `lint.py` or the schemas.
    - margins and header/footer distances; A4; correct orientation;
    - markings present on **every** page header and footer, in the right order;
    - page-number fields per regime; first-page suppression where required;
-   - correspondence numbering geometry matches scheme C; bullets and
-     paragraph numbers in letters are prevented by the letter schema
-     (the docx-level check is planned);
+   - paragraph numbering geometry matches the template's declared scheme
+     (C, or D for orders, directions and instructions); no bullets in scheme
+     D documents; bullets and paragraph numbers in letters are prevented by
+     the letter schema;
+   - directive page-number regime: page 1 numbered when the main document has
+     two or more pages (conditional field; Word check V-05);
    - no hyperlinks in minutes or letters;
    - signature block preceded by at least two lines of text on the same page
      (checked on PDF render);
@@ -138,14 +143,21 @@ Items marked (planned) are not yet implemented in `lint.py` or the schemas.
      markings today);
    - OOXML child order of paragraph and section properties;
    - language en-NZ; auto-hyphenation off.
-3. **Visual regression:** render DFI example fixtures → PDF → PNG and compare
+3. **Output regression:** `staffwriting.baseline` snapshots every fixture
+   (canonical XML of each part, media checksums). A change to shared code is
+   checked against the last accepted snapshot. A controlled baseline update
+   proves its only change (see `docs/baselines/`).
+4. **Visual regression:** render DFI example fixtures → PDF → PNG and compare
    side by side with `reference/dfi-pages/`. Differences are listed in the
    template's `NOTES.md` and accepted by a human.
-4. **Wording warnings (T-10):** implemented: exclamation marks, full stops in
+5. **Wording warnings (T-10):** implemented: exclamation marks, full stops in
    eg/ie/etc, "%", hyperlinks, em dashes in correspondence; in letters,
    abbreviated days and dates, 12- or 24-hour clock, and unexplained
-   abbreviations (external letters). Planned: numerals below 10, US spelling,
-   "shall"/"will" in orders.
+   abbreviations (external letters); in orders, directions and instructions,
+   abbreviated day names (except 1.2.10d), colon list lead-ins, missing
+   mandatory language in tasks, and annexes or enclosures not introduced in
+   the text (em dashes are not reported there). Planned: numerals below 10,
+   US spelling.
 
 ## 7. Non-goals for now
 

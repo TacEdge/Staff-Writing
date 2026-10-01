@@ -127,6 +127,28 @@ instead of adopted.
 | V-05 | ADDED. Microsoft Word check of the directive page-1 conditional number. **NOT TESTED.** |
 
 
+## Phase 3 (directive family): items that emerged (2026-10-01)
+
+Implementation decisions and figure discrepancies are recorded in each
+template's `NOTES.md`:
+- `administrative-instruction`: I-A1 to I-A5, DA-01 to DA-06;
+- `cdf-directive`: I-C1 to I-C4, DC-01 to DC-06;
+- `cdf-operational-directive`: I-O1 to I-O3, DO-01 to DO-03.
+
+These need your attention at the family review:
+
+| ID | Item | Status |
+|---|---|---|
+| OP-01 | Force for New Zealand wording mark on letters (2.1.16(3)(c)) is not generated (BR-02) | OPEN |
+| DR-12 | Op Directive format variation (3.2.16c) is not implemented | SURFACED |
+| I-A1 / I-C4 | Listed addressees (four or fewer) in AIs and CDF Directives use the shared bold addressee lines. No DFI figure shows them. | For confirmation (appearance) |
+| I-A2 | Annex paragraphs in this family use scheme D (fn 23 "Hanging indents are used in Directives, Orders and Instructions") | For confirmation (appearance) |
+| I-C1 | Commander and senior-executive directive identifiers are numbered and require the number (3.2.13b by analogy; DR-13) | For confirmation |
+| I-C2 | Command and unit badges are not held; commanders may use a Service or NZDF badge only (3.2.12b) | Input needed: command/unit artwork, if wanted |
+| I-O1 | Op Directive sections take an optional lead paragraph; required minimum elements follow as sub-paragraphs or as first-level paragraphs (DR-11) | For confirmation (appearance) |
+| E-13 | "DFO 14" reproduced and flagged on every use of the first cancellation wording | Awaiting authoritative resolution |
+| V-05 | Page-1 conditional number in directives | NOT TESTED |
+
 ## A. Ambiguities and conflicts in DFI 5.1
 
 ### Originally needing your decision (all DECIDED 2026-10-01: see the decision tables above; text below is the original analysis)

@@ -5,10 +5,13 @@ produce documents that conform to **DFI 5.1 Defence Force Writing**
 (v2.01, 03 Oct 2025), the authoritative source for all NZDF writing, formatting,
 structure and layout.
 
-**Status: Phases 1–2 accepted (2026-10-01); Microsoft Word checks V-01 to V-04
-passed.** Next family planned, not started: see
-[docs/phase3-directives-plan.md](docs/phase3-directives-plan.md). Implemented: Minute, Submission, Dot-point brief, Visit
-report/PAR, internal formal letter, external letter. See
+**Status: Phases 1–2 accepted (2026-10-01); Word checks V-01 to V-04 passed.
+Phase 3 (Administrative Instruction, CDF Directive with variants, CDF
+Operational Directive) implemented and awaiting the family review; Word check
+V-05 not tested.** Identity artwork comes from the NZDF Visual Identity
+Standards (`source/nzdf-visual-identity/`). Implemented: Minute, Submission, Dot-point brief, Visit
+report/PAR, internal formal letter, external letter, Administrative
+Instruction, CDF Directive, CDF Operational Directive. See
 [docs/template-inventory.md](docs/template-inventory.md) and
 [renderer/README.md](renderer/README.md).
 

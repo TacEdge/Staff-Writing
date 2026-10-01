@@ -132,6 +132,7 @@ apply to every Phase 1–2 template, because all of them share these components.
 | V-02 | DRAFT watermark appearance (VML; correct in LibreOffice). | **PASS** | Not supplied (placeholder) |
 | V-03 | Footnote separator, numbering and 10 pt text. | **PASS** | Not supplied (placeholder) |
 | V-04 | The file opens without a repair prompt, and the styles show in the Styles pane. | **PASS** | "Documents opened in Microsoft Word without repair/recovery warnings." |
+| V-05 | Directives (CDF Directive and variants, CDF Operational Directive): page 1 shows "1" when the main document has two or more pages, and no number on a one-page directive. The conditional field is `{IF {SECTIONPAGES} > 1 "{PAGE}" ""}`; LibreOffice shows its cached "1" (DR-01). Fixtures: `cdf-directive/3d-structure` (2 pp) and `variant-single-page` (1 p). Added 2026-10-01 (Phase 3). | **NOT TESTED** | – |
 
 Validation environment: **Microsoft Word, version and operating system not
 supplied.** Date: 2026-10-01. Tester: the repository owner (reported in the
