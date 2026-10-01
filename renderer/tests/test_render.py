@@ -7,7 +7,7 @@ from docx.shared import Cm
 
 from conftest import FIXTURES, HAS_SOFFICE
 from staffwriting import styles as S
-from staffwriting.lint import lint
+from staffwriting.lint import lint, lint_result
 from staffwriting.render import render_file
 
 MINUTE_FIXTURES = sorted((FIXTURES / "minute").glob("*.yaml"))
@@ -22,9 +22,7 @@ def test_fixture_renders_and_lints_clean(fixture, tmp_out):
     if HAS_SOFFICE:
         from staffwriting.preview import to_pdf
         pdf = to_pdf(out)
-    errors = [m for lvl, m in lint(out, pdf, doc_type=res.spec.get("id", "minute"),
-                                   max_main_pages=res.spec.get("lint", {}).get("max_main_pages"),
-                                   margins=res.margins) if lvl == "ERROR"]
+    errors = [m for lvl, m in lint_result(res, pdf) if lvl == "ERROR"]
     assert errors == []
 
 

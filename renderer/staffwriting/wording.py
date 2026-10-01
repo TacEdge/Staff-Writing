@@ -11,15 +11,17 @@ from .inline import plain
 from .model import ParaBlock, RecommendationsBlock
 
 
-def text_warnings(texts, *, doc_name: str = "minutes") -> list[str]:
+def text_warnings(texts, *, doc_name: str = "minutes", orders: bool = False) -> list[str]:
+    """`orders`: orders, directions and instructions, where the em dash is the
+    list lead-in (1.2.23c(2); A-07), so it is not reported."""
     w: list[str] = []
     for text in texts:
         t = plain(text or "")
-        if re.search(r"https?://|www\.", t):
+        if not orders and re.search(r"https?://|www\.", t):   # Table 1-1: minutes and letters
             w.append(f"Hyperlinks are not used in {doc_name} (Table 1-1): {t[:60]!r}")
         if "!" in t:
             w.append(f"Exclamation marks are not to be used (1.2.7(2)): {t[:60]!r}")
-        if "—" in t:
+        if "—" in t and not orders:
             w.append(f"Em dash is not used in correspondence (1.2.7(10)(a); A-07): {t[:60]!r}")
         if re.search(r"\b\d+\s?%", t):
             w.append(f"Use 'per cent', not '%' (1.2.13(8)): {t[:60]!r}")

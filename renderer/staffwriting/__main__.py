@@ -36,10 +36,8 @@ def main(argv=None) -> int:
         pdf = to_pdf(res.path)
         print(f"Preview {pdf}")
     if args.lint:
-        from .lint import lint
-        lint_opts = res.spec.get("lint", {})
-        findings = lint(res.path, pdf, doc_type=res.spec.get("id", "minute"),
-                        max_main_pages=lint_opts.get("max_main_pages"), margins=res.margins)
+        from .lint import lint_result
+        findings = lint_result(res, pdf)
         for level, msg in findings:
             print(f"  LINT {level}: {msg}")
         rc = 1 if any(level == "ERROR" for level, _ in findings) else 0

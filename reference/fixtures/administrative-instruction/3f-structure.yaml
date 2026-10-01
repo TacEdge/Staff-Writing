@@ -1,0 +1,51 @@
+# Mirrors the element set and order of DFI 5.1 Annex 3F Administrative
+# Instruction - Template (Fig 3-7, PDF pp 178-179), with representative
+# fictional values in place of the red placeholders. No DFI example exists.
+# Every Fig 3-7 section is present; more than four addressees -> distribution.
+type: administrative-instruction
+originating_hq: Headquarters Joint Forces New Zealand
+originator: J7 Branch
+date: { year: 2026, month: 3 }
+file_reference: HQJFNZ 7000-0012
+distribution: [COMJFNZ, DCN, DCA, DCAF, CoS HQNZDF, J1 HQJFNZ]
+identifier: { appointment: COMJFNZ, number: 7, year: 2026 }
+subject: NZDF support to the 2026 Example Regional Games
+issued_by: Commander Joint Forces New Zealand
+applies_to: all members of the NZDF who support the 2026 Example Regional Games
+purpose:
+  - "to direct NZDF support to the 2026 Example Regional Games"
+introduction:
+  - "The 2026 Example Regional Games will be held in Waiouru from 12 to 18 Oct 26. The NZDF has agreed to provide transport, catering and medical support."
+conduct:
+  - "Support will be provided from existing resources. Units are to plan on the basis of the support schedule at Annex A."
+tasks:
+  - group: Transport
+  - para: "COMD 1 BDE is to provide two buses and drivers each day of the Games."
+  - group: Catering
+  - para:
+      text: "COMLOG is to—"
+      sentence_list: and
+      sub:
+        - "provide field catering for 120 people each day"
+        - "arrange fresh rations through the regional supply chain"
+coordinating_arrangements:
+  - "Units are to confirm their support arrangements with J7 HQJFNZ by 1 Sep 26. The venue plan is at Enclosure 1."
+administration:
+  finance:
+    - "Costs are to be met from unit operating budgets."
+  legal:
+    - "No legal implications have been identified."
+command_and_control:
+  reporting:
+    - "Units are to report daily to J7 HQJFNZ at 1700 during the Games."
+  dirlauth:
+    - "DIRLAUTH is granted between supporting units and the Games organising committee."
+  points_of_contact:
+    - "The point of contact is SO2 J7 HQJFNZ, DTelN (349) 7012."
+cancellation_date: { year: 2026, month: 12, day: 31 }
+signature: { initials: AB, surname: Example, rank: COL, appointment: Headquarters Joint Forces New Zealand }
+annexes:
+  - title: Support schedule
+    body:
+      - para: "Daily support requirements are listed by venue."
+enclosures: ["Venue plan, 2026 Example Regional Games"]

@@ -61,6 +61,7 @@ def build(tpl: Template, content, out: Path) -> Result:
         draft_medium=getattr(content, "draft", None) or "electronic",
         margins=margins,
         orientation=page.get("orientation", "portrait"),
+        page_regime=page.get("numbering", "standard"),
     )
     b.date_style = tpl.spec.get("date", {}).get("style", "abbreviated")
     b.warnings.extend(content.warnings() if hasattr(content, "warnings") else [])

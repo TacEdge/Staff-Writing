@@ -17,6 +17,7 @@ BLOCK = "DFI Block"
 MARKING = "DFI Marking"
 ORIGINATOR = "DFI Originator"
 IDENTIFIER = "DFI Identifier"
+DIRECTIVE_ID = "DFI Directive Identifier"   # 3.2.11(4), 3.2.18(4), 3.2.22a(2)
 SUBJECT = "DFI Subject Heading"
 MAIN_HEADING = "DFI Main Heading"
 GROUP_HEADING = "DFI Group Heading"
@@ -198,3 +199,14 @@ def style_id(document, name: str) -> str:
 
 
 BODY_TEXT_STYLES = [*PARA, PARA_UNNUMBERED, BULLET]
+
+
+def ensure_directive_id(document, tk: Tokens) -> str:
+    """Directive/AI identifier style, created on first use so that documents
+    which do not use it are unchanged. Bold, left margin, immediately above the
+    subject heading (3.2.11(4), 3.2.18(4), 3.2.22a(2)); spacing as the subject
+    heading [T] Figs 3-5 to 3-7."""
+    if DIRECTIVE_ID not in [st.name for st in document.styles]:
+        sb, _ = tk.spacing("subject_heading")
+        _para_style(document, DIRECTIVE_ID, bold=True, before=sb, after=0, keep_next=True)
+    return DIRECTIVE_ID

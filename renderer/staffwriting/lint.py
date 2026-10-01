@@ -31,7 +31,11 @@ def _xml(docx: Path, name: str):
 
 
 def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
-         max_main_pages: int | None = None, margins: str = "standard") -> list[tuple[str, str]]:
+         max_main_pages: int | None = None, margins: str = "standard",
+         scheme: str = "correspondence", page_regime: str = "standard") -> list[tuple[str, str]]:
+    """Structural checks. `scheme` and `page_regime` are the template's
+    declared numbering scheme and page-number regime (template.yaml
+    `numbering` and `page.numbering`)."""
     tk = load()
     out: list[tuple[str, str]] = []
     err = lambda m: out.append(("ERROR", m))  # noqa: E731
@@ -119,7 +123,13 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
     # -- page numbering (1.2.16(6)-(7)) -------------------------------------
     s0 = d.sections[0]
     classified = any(x in ABOVE_RESTRICTED for x in (header_sets[0] if header_sets else ()))
-    if not classified:
+    if not classified and page_regime == "directive":
+        first = _instr(s0.first_page_footer) if s0.different_first_page_header_footer else ""
+        if not all(k in first for k in ("IF", "SECTIONPAGES", "PAGE")):
+            err("Directive first page lacks the conditional page number (3.2.11(1), 3.2.18(1); DR-01).")
+        if "PAGE" not in _instr(s0.footer):
+            err("Continuation pages have no page number (3.2.11(1), 3.2.18(1)).")
+    elif not classified:
         if not s0.different_first_page_header_footer:
             err("First page is numbered on an unclassified/restricted document (1.2.16(6)).")
         elif "PAGE" in _instr(s0.first_page_footer):
@@ -136,9 +146,11 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
         if p.style.name == S.SUBJECT and p.text != p.text.upper():
             err(f"Subject heading not in upper case: {p.text!r} (1.2.9(6)).")
 
-    # -- numbering scheme C geometry (2.1.3(3)) ------------------------------
+    # -- paragraph numbering geometry: scheme C (2.1.3(3)) or D (fn 23,
+    #    3.2.11(6), 3.2.18(6), 3.2.22a(7)) as declared by the template ---------
     num_xml = _xml(docx, "word/numbering.xml")
-    expected = tk.get("numbering.correspondence.levels")
+    key = "directive" if scheme == "directive" else "correspondence"
+    expected = tk.get(f"numbering.{key}.levels")
     for absn in num_xml.findall(f"{W}abstractNum"):
         lvls = absn.findall(f"{W}lvl")
         if len(lvls) == 4 and lvls[0].find(f"{W}lvlText").get(f"{W}val") == "%1.":
@@ -147,6 +159,23 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
                 left = int(ind.get(f"{W}left"))
                 if abs(left - round(exp["wrap"] * TWIPS_PER_CM)) > 2:
                     err(f"Numbering level {lv.get(W + 'ilvl')} turnover at {left} twips, expected {exp['wrap']} cm.")
+                if key == "directive":
+                    hang = int(ind.get(f"{W}hanging") or 0)
+                    want = round((exp["text"] - exp["indent"]) * TWIPS_PER_CM)
+                    if abs(hang - want) > 2:
+                        err(f"Numbering level {lv.get(W + 'ilvl')} hanging {hang} twips, expected "
+                            f"{exp['text'] - exp['indent']} cm (scheme D).")
+    if scheme == "directive":
+        bullet_fmt = num_xml.find(f".//{W}numFmt[@{W}val='bullet']")
+        used = {n.get(f"{W}val") for n in doc_xml.iter(f"{W}numId")}
+        if bullet_fmt is not None and used:
+            for num in num_xml.findall(f"{W}num"):
+                absid = num.find(f"{W}abstractNumId").get(f"{W}val")
+                absn = num_xml.find(f"{W}abstractNum[@{W}abstractNumId='{absid}']")
+                if num.get(f"{W}numId") in used and absn is not None and \
+                        absn.find(f".//{W}numFmt[@{W}val='bullet']") is not None:
+                    err("Bulleted list in an order, direction or instruction (1.2.23g).")
+                    break
 
     # -- OOXML child order (Word rejects out-of-order elements) ------------------
     for e in xml_order_errors(docx):
@@ -163,6 +192,15 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
                 warn(f"Main document is {main} pages; ideally no longer than {max_main_pages} "
                      "(2.1.12b(6)). Consider moving detail to annexes.")
     return out
+
+
+def lint_result(res, pdf: Path | None = None) -> list[tuple[str, str]]:
+    """Lint a render Result with the options its template declares."""
+    spec = res.spec
+    return lint(res.path, pdf, doc_type=spec.get("id", "minute"),
+                max_main_pages=spec.get("lint", {}).get("max_main_pages"), margins=res.margins,
+                scheme=spec.get("numbering", "correspondence"),
+                page_regime=spec.get("page", {}).get("numbering", "standard"))
 
 
 def _effective_size(style):

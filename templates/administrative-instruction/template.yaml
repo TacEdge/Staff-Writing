@@ -1,0 +1,26 @@
+# Administrative Instruction (AI): DFI 5.1 3.2.21-3.2.22; template Annex 3F
+# (Fig 3-7). No DFI example annex exists. The body structure is composed by
+# schema.py into the shared body blocks (scheme D numbering).
+id: administrative-instruction
+title: Administrative Instruction
+dfi:
+  section: "3.2.21-3.2.22"
+  template: "3F (Fig 3-7), PDF pp 178-179"
+  example: "none"
+page: { margins: standard, orientation: portrait }        # general rule; DR-02 / A-11
+numbering: directive                                       # scheme D, 3.2.22a(7)
+page_numbering: unclassified_from_page_2                   # DR-02: A-11 general rule (1.2.16(6)-(7))
+identity: none                                             # 3.2.22a(2): no badge, crest or logo
+date: { style: abbreviated }                               # 1.2.10b administrative documentation
+blocks:
+  - originating_hq                                         # Fig 3-7 [T]
+  - date_line: { indent_cm: 0 }                            # DR-07: margin; file reference right (Fig 3-7)
+  - addressees: { distribution_mode: all, see_distribution_bold: false }   # 3.2.22a(1); DR-15
+  - directive_identifier: { word: ADMINISTRATIVE INSTRUCTION }  # 3.2.22a(2)
+  - subject                                                # 3.2.22a(3)
+  - body: { numbering: directive }                         # composed (schema.py)
+  - signature: { variant: admin }                          # 3.2.22b; Fig 3-7 name / title-rank / organisation
+  - annex_list                                             # 3.2.22a(8)
+  - enclosure_list
+  - distribution                                           # "Distribution:" (A-04)
+  - supporting_documents: { numbering: directive }       # fn 23: hanging indents throughout

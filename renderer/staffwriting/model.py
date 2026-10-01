@@ -106,6 +106,16 @@ class DocDate(Strict):
                 raise ValueError(f"Not a calendar date: {self.day}/{self.month}/{self.year} ({e}).") from None
         return self
 
+    def as_date(self, *, earliest: bool = True):
+        """The calendar date; when the day is to be handwritten, the first
+        (earliest=True) or last day of the month."""
+        import calendar
+        import datetime as _dt
+        if self.day is not None:
+            return _dt.date(self.year, self.month, self.day)
+        day = 1 if earliest else calendar.monthrange(self.year, self.month)[1]
+        return _dt.date(self.year, self.month, day)
+
 
 # ---------------------------------------------------------------- body text
 

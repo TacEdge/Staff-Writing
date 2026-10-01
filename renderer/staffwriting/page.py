@@ -44,10 +44,16 @@ class Furniture:
     page_label: None (main document), "A" (annex A), "A-1" (appendix 1 of A).
     """
 
-    def __init__(self, document, tk: Tokens, markings, *, copy=None, draft: bool = False):
+    def __init__(self, document, tk: Tokens, markings, *, copy=None, draft: bool = False,
+                 regime: str = "standard"):
         # The page-number regime follows from the markings (1.2.16(6)-(7)).
+        # regime "directive": unclassified/restricted directives number every
+        # page including the first when the main document has two or more
+        # pages (3.2.11(1), 3.2.18(1); register DR-01).
+        if regime not in ("standard", "directive"):
+            raise ValueError(f"Unknown page-number regime {regime!r}")
         self.document, self.tk, self.markings = document, tk, markings
-        self.copy, self.draft = copy, draft
+        self.copy, self.draft, self.regime = copy, draft, regime
 
     # -- page-number paragraph ---------------------------------------------
     def _page_number(self, footer, page_label: str | None, first_page: bool) -> None:
@@ -63,6 +69,9 @@ class Furniture:
             return
         if page_label is None:
             if first_page:
+                if self.regime == "directive":
+                    # DR-01: count the main document only (its own section).
+                    ooxml.append_field(p, ["IF ", ["SECTIONPAGES"], " > 1 \"", ["PAGE"], "\" \"\""], "1")
                 return  # 1.2.16(6): first page not numbered
             ooxml.append_field(p, ["PAGE"], "2")
         else:

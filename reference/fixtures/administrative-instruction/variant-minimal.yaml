@@ -1,0 +1,16 @@
+# Only the elements DFI prose makes mandatory (3.2.22a, 3.2.22b; register DR-06):
+# Purpose, Introduction, Tasks, an effective cancellation date, signature and
+# date. Four addressees (no distribution list, 3.2.22a(1)). Fictional content.
+type: administrative-instruction
+date: { year: 2026, month: 5, day: 4 }
+to: [{ appointment: COMD 1 BDE }, { appointment: COMD DJFHQ }, { appointment: COMLOG }, { appointment: J7 HQJFNZ }]
+identifier: { appointment: COMJFNZ, number: 9, year: 2026 }
+subject: Range safety stand-down
+purpose:
+  - "to direct a one-day range safety stand-down"
+introduction:
+  - "A one-day range safety stand-down will be held on Wednesday 10 Jun 26."
+tasks:
+  - para: "Units with range activity planned on that day are to postpone it."
+cancellation_date: { year: 2026, month: 6, day: 30 }
+signature: { initials: CD, surname: Sample, rank: BRIG, appointment: Headquarters Joint Forces New Zealand }

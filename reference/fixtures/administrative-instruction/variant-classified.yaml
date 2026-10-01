@@ -1,0 +1,59 @@
+# CONFIDENTIAL with an endorsement: "Page n of N" on every page (1.2.16(7);
+# DR-02, A-11); copy number in the header (A-21); multi-page body with
+# sub-paragraph levels to (a); annex. Marking pairing for layout testing only
+# (register A-13). Fictional content.
+type: administrative-instruction
+markings: { classification: CONFIDENTIAL, endorsement: SENSITIVE }
+copy_number: { number: 3, of: 12 }
+originating_hq: Headquarters New Zealand Defence Force
+originator: Strategic Commitments and Engagement Branch
+date: { year: 2026, month: 2 }
+file_reference: NZDF 3300-0303
+distribution: [COMJFNZ, DCN, DCA, DCAF, CFO, DDLS, AC SCE]
+identifier: { appointment: AC SCE, number: 2, year: 2026 }
+subject: Exercise EXAMPLE SHIELD visitor programme
+issued_by: Assistant Chief Strategic Commitments and Engagement
+applies_to: all members of the NZDF who host visitors during Exercise EXAMPLE SHIELD
+purpose:
+  - "to coordinate the visitor programme for Exercise EXAMPLE SHIELD"
+  - "to allocate hosting responsibilities"
+introduction:
+  - "Exercise EXAMPLE SHIELD will be conducted from 3 to 21 Aug 26. Visitors are expected on four days of the exercise. The programme is at Annex A."
+  - "Visiting groups will include officials, partner liaison officers and media."
+conduct:
+  - "Each visit will follow a standard programme of briefing, site visit and debrief."
+tasks:
+  - group: Hosting
+  - para:
+      text: "COMJFNZ is to—"
+      sentence_list: and
+      sub:
+        - "appoint a host officer for each visiting group"
+        - text: "provide briefings at the exercise headquarters, which are to cover—"
+          sentence_list: and
+          sub:
+            - "the exercise scenario"
+            - "safety arrangements"
+        - "provide transport between sites"
+  - group: Security
+  - para: "Host officers are to ensure that visitors are escorted at all times."
+coordinating_arrangements:
+  - "Visit dates are to be confirmed with AC SCE at least four weeks before each visit."
+administration:
+  finance:
+    - "Hosting costs are to be met from the exercise budget."
+  legal:
+    - "Media access is to follow the agreed public affairs plan."
+command_and_control:
+  reporting:
+    - "Host officers are to submit a visit report within two days of each visit."
+  dirlauth:
+    - "DIRLAUTH is granted between host officers and visiting delegations."
+  points_of_contact:
+    - "The point of contact is SO1 SCE, DTelN (349) 7303."
+cancellation_date: { year: 2026, month: 9, day: 30 }
+signature: { initials: EF, surname: Instance, rank: CDRE, appointment: Headquarters New Zealand Defence Force }
+annexes:
+  - title: Visitor programme
+    body:
+      - para: "The programme lists each visit by date, group and host."

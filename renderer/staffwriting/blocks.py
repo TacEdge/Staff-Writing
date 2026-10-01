@@ -78,6 +78,29 @@ def identifier(b, c, opts):
     b.par(styles.IDENTIFIER, " ".join(parts))
 
 
+def originating_hq(b, c, opts):
+    """AI header (Fig 3-7): the originating headquarters, branch/portfolio,
+    Service, command or unit, centred in bold upper case, then the
+    [Originator] line centred in body text. Size as the minute descriptor
+    (16 pt, measured; A-22) [T]. Lines are omitted when not given (DR-06)."""
+    if getattr(c, "originating_hq", None):
+        b.par(styles.ORIGINATOR, c.originating_hq.upper(), before=0)
+    if getattr(c, "originator", None):
+        p = b.par(styles.BLOCK, c.originator)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+
+def directive_identifier(b, c, opts):
+    """'[APPOINTMENT] WORD NN/YYYY' in bold upper case, immediately above the
+    subject heading (3.2.11(4), 3.2.18(4), 3.2.22a(2)); eg 'CDF DIRECTIVE
+    03/2026', 'CDF OPERATIONAL DIRECTIVE 01/2026', 'COMLOG ADMINISTRATIVE
+    INSTRUCTION 07/2026'."""
+    ident = c.identifier
+    parts = [ident.appointment] if ident.appointment else []
+    parts += [opts["word"], f"{ident.number:02d}/{ident.year}"]
+    b.par(styles.ensure_directive_id(b.doc, b.tk), " ".join(parts).upper())
+
+
 # ------------------------------------------------------------------ date line
 
 def date_line(b, c, opts):
@@ -108,7 +131,8 @@ def addressees(b, c, opts):
     mode = opts.get("distribution_mode", "all" if opts.get("distribution_replaces", True) else "none")
     if c.distribution and mode == "all":
         p = b.par(styles.BLOCK, before=BLOCK_GAP)
-        p.add_run("See distribution").bold = True
+        # Bold in Figs 2-4, 3-5; regular in Fig 3-7 (register DR-15).
+        p.add_run("See distribution").bold = opts.get("see_distribution_bold", True) or None
         return
     for i, a in enumerate(c.to):
         p = b.par(styles.BLOCK, before=BLOCK_GAP if i == 0 else 0)
@@ -451,7 +475,10 @@ def _new_supporting_section(b, page_label: str):
 
 
 def supporting_documents(b, c, opts):
-    """Annex and appendix pages in the same file (1.2.24(6))."""
+    """Annex and appendix pages in the same file (1.2.24(6)). opts.numbering is
+    the paragraph scheme of the parent (default correspondence; 'directive' for
+    orders, directions and instructions, fn 23)."""
+    scheme = opts.get("numbering", "correspondence")
     for idx, annex in enumerate(c.annexes or []):
         if not annex.body and not annex.subject and not annex.appendices:
             b.warn(f"Annex {chr(65 + idx)} is listed but its content is not in the file "
@@ -466,7 +493,7 @@ def supporting_documents(b, c, opts):
                 lines.append(_date_text(b, annex.date))
         _identifying_block(b, lines)
         b.par(styles.SUBJECT, (annex.subject or annex.title).upper())
-        body_blocks(b, annex.body, b.numbering.instance("correspondence"))
+        body_blocks(b, annex.body, b.numbering.instance(scheme))
         for n, app in enumerate(annex.appendices, start=1):
             _new_supporting_section(b, f"{letter}-{n}")
             lines = [f"APPENDIX {n} OF ANNEX {letter}"]  # 1.2.24(2)(a); A-12
@@ -476,10 +503,12 @@ def supporting_documents(b, c, opts):
                     lines.append(_date_text(b, app.date))
             _identifying_block(b, lines)
             b.par(styles.SUBJECT, (app.subject or app.title).upper())
-            body_blocks(b, app.body, b.numbering.instance("correspondence"))
+            body_blocks(b, app.body, b.numbering.instance(scheme))
 
 
 REGISTRY = {
+    "originating_hq": originating_hq,
+    "directive_identifier": directive_identifier,
     "letterhead": letterhead,
     "originator_descriptor": originator_descriptor,
     "identifier": identifier,

@@ -15,7 +15,7 @@ from .tokens import Tokens, cm_to_twips
 class Builder:
     def __init__(self, tk: Tokens, markings, *, copy=None, draft: bool = False,
                  draft_medium: str = "electronic", margins: str = "standard",
-                 orientation: str = "portrait"):
+                 orientation: str = "portrait", page_regime: str = "standard"):
         self.tk = tk
         self.doc = Document()
         # Drop any paragraphs in the stock template body.
@@ -31,7 +31,7 @@ class Builder:
         self.fn_text_style = styles.style_id(self.doc, styles.FOOTNOTE_TEXT)
         self.fn_ref_style = styles.style_id(self.doc, styles.FOOTNOTE_REF)
         self.markings = markings
-        self.furniture = Furniture(self.doc, tk, markings, copy=copy, draft=draft)
+        self.furniture = Furniture(self.doc, tk, markings, copy=copy, draft=draft, regime=page_regime)
         self.margins, self.orientation = margins, orientation
         self.warnings: list[str] = list(markings.warnings())
         self.date_style = "abbreviated"
