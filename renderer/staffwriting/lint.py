@@ -15,11 +15,11 @@ from docx import Document
 from docx.oxml.ns import qn
 
 from . import styles as S
-from .tokens import load
+from .model import ABOVE_RESTRICTED, CLASSIFICATIONS, ENDORSEMENTS
+from .tokens import TWIPS_PER_CM, cm_to_twips, load
 
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
-MARKING_WORDS = {"UNCLASSIFIED", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP SECRET",
-                 "IN-CONFIDENCE", "SENSITIVE", "STAFF-IN-CONFIDENCE"}
+MARKING_WORDS = set(CLASSIFICATIONS) | set(ENDORSEMENTS)
 
 
 def _xml(docx: Path, name: str):
@@ -42,7 +42,7 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
     m = tk.margins(margins)
     for i, s in enumerate(d.sections):
         w, h = round(s.page_width.cm, 1), round(s.page_height.cm, 1)
-        if sorted((w, h)) != [21.0, 29.7]:
+        if sorted((w, h)) != sorted(tk.a4_cm):
             err(f"Section {i + 1}: page is {w} x {h} cm, not A4 (1.2.16(1)).")
         for side in ("top", "bottom", "left", "right"):
             got = round(getattr(s, f"{side}_margin").cm, 2)
@@ -50,8 +50,9 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
                 err(f"Section {i + 1}: {side} margin {got} cm, expected {m[side]} cm (1.2.16(2)).")
         for kind in ("header", "footer"):
             got = round(getattr(s, f"{kind}_distance").cm, 2)
-            if abs(got - 1.0) > 0.01:
-                err(f"Section {i + 1}: {kind} distance {got} cm, expected 1 cm (1.2.16(2)).")
+            want = tk.value(f"page.{kind}_distance")
+            if abs(got - want) > 0.01:
+                err(f"Section {i + 1}: {kind} distance {got} cm, expected {want} cm (1.2.16(2)).")
 
     # -- fonts, sizes, colour (1.2.16(4)) --------------------------------
     styles_xml = _xml(docx, "word/styles.xml")
@@ -81,7 +82,7 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
         for c in root.iter(f"{W}color"):
             if c.get(f"{W}val") not in ("000000", "auto", None):
                 err(f"{part}: coloured text ({c.get(W + 'val')}) is not permitted here (1.2.16(4)).")
-        if root.find(f".//{W}hyperlink") is not None and doc_type in ("minute", "submission", "letter"):
+        if root.find(f".//{W}hyperlink") is not None and doc_type in ("minute", "submission", "internal-letter", "external-letter"):
             err(f"{part}: hyperlinks are not used in minutes or letters (Table 1-1).")
 
     # -- settings ------------------------------------------------------------
@@ -90,7 +91,7 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
     if hy is not None and hy.get(f"{W}val") not in ("0", "false"):
         err("Automatic hyphenation is on (1.2.7(11)(b)).")
     tab = settings.find(f"{W}defaultTabStop")
-    if tab is None or abs(int(tab.get(f"{W}val")) - 567) > 1:
+    if tab is None or abs(int(tab.get(f"{W}val")) - cm_to_twips(tk.tab_cm)) > 1:
         err("Default tab stop is not 1 cm (1.2.16(3)).")
 
     # -- markings in every header/footer (1.2.16(5), 1.2.18) -----------------
@@ -117,7 +118,7 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
 
     # -- page numbering (1.2.16(6)-(7)) -------------------------------------
     s0 = d.sections[0]
-    classified = any(x in ("CONFIDENTIAL", "SECRET", "TOP SECRET") for x in (header_sets[0] if header_sets else ()))
+    classified = any(x in ABOVE_RESTRICTED for x in (header_sets[0] if header_sets else ()))
     if not classified:
         if not s0.different_first_page_header_footer:
             err("First page is numbered on an unclassified/restricted document (1.2.16(6)).")
@@ -144,7 +145,7 @@ def lint(docx: Path, pdf: Path | None = None, *, doc_type: str = "minute",
             for lv, exp in zip(lvls, expected):
                 ind = lv.find(f"{W}pPr/{W}ind")
                 left = int(ind.get(f"{W}left"))
-                if abs(left - round(exp["wrap"] * 566.929)) > 2:
+                if abs(left - round(exp["wrap"] * TWIPS_PER_CM)) > 2:
                     err(f"Numbering level {lv.get(W + 'ilvl')} turnover at {left} twips, expected {exp['wrap']} cm.")
 
     # -- OOXML child order (Word rejects out-of-order elements) ------------------

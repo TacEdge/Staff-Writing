@@ -27,7 +27,7 @@ cd renderer && python3 -m pytest -q tests                 # schema, render, lint
 The content file's `type:` selects `templates/<type>/` (its `template.yaml`
 block sequence and its `schema.py` content model).
 
-## Architecture as built (Phase 1)
+## Architecture as built (Phases 1–2)
 
 ```
 content.yaml ─► templates/<id>/schema.py (pydantic: mandatory elements, counts, warnings)
@@ -57,7 +57,9 @@ blocks.py   REGISTRY of reusable blocks: letterhead, originator_descriptor,
 
 | Module | Responsibility |
 |---|---|
-| `tokens.py` | Loads the shared DFI values; no formatting value is hard-coded elsewhere |
+| `tokens.py` | Loads the shared DFI values (fonts, sizes, spacing, indents, page size). Renderer modules read formatting values from here |
+| `builder.py` | Owns the python-docx Document and shared services (styles, numbering, footnotes, furniture) |
+| `dates.py` | Date formatting (abbreviated and full; handwritten day) |
 | `styles.py` | Word style sheet (Calibri, en-NZ, spacing, heading styles, footnote styles) |
 | `numbering.py` | Abstract numbering for scheme C, lists and bullets; per-body restart instances |
 | `ooxml.py` | Fields (PAGE, NUMPAGES, nested IF/SECTIONPAGES), footnotes part, settings, watermark, page-number restart |

@@ -1,7 +1,8 @@
 # Architecture
 
-Status: **proposal for approval**. The technology choices depend on register
-items T-01 to T-06.
+Status: **as built, Phases 1–2** (decisions T-01, T-02, T-06 approved). The
+module-level detail lives in `renderer/README.md`; this document keeps the
+structure, data flow and validation contract.
 
 ## 1. Principles
 
@@ -50,7 +51,7 @@ Staff-Writing/
 │       ├── template.yaml         Ordered blocks, variant selections, overrides (cited)
 │       ├── schema.py|json        Content schema (mandatory and optional elements)
 │       ├── NOTES.md              DFI references, ambiguities, deviations
-│       └── blank.yaml            Content that reproduces the DFI blank template
+│       └── (blank.yaml)          Blank-template content: deferred (T-06)
 ├── renderer/                     (4) REUSABLE GENERATION COMPONENTS
 │   └── README.md                 Planned modules (see §4)
 ├── reference/                    (5) VALIDATION / REFERENCE EXAMPLES
@@ -90,51 +91,27 @@ Staff-Writing/
 - The renderer turns tokens into Word styles and numbering definitions once, then
   each block builder emits paragraphs, tables, fields and sections.
 
-## 4. Renderer components (planned)
+## 4. Renderer components (as built)
 
-| Module | Responsibility | Key DFI sources |
-|---|---|---|
-| `tokens` | Load and validate `dfi-5.1-tokens.yaml`; expose typed values; refuse unresolved `A-nn` values unless they have an approved default | standards/spec |
-| `styles` | Build the Word style sheet: Normal (Calibri 12), Subject, Main/Group heading, Para levels, Table caption/header/body, Footnote, Marking, Publication H1–H5, Warning/Caution/Note, Hyperlink; en-NZ; hyphenation off | 1.2.16, 1.2.17, 4.4.11 |
-| `numbering` | Abstract numbering definitions for schemes C, D, P, intro/end matter, references, annex/enclosure lists, bullets; the "single first-level paragraph unnumbered" logic | 2.1.3(3), 3.2.11(6), 4.4.13–16, 1.2.23 |
-| `page` | Sections, margins, header/footer distance, orientation (landscape agenda), first-page-different, DRAFT watermark, draft line spacing | 1.2.16, 1.2.22 |
-| `furniture` | Header and footer composition: markings (mirror order), page number formats (n, Page n of N, A-1, A-1-1, Roman, part-n, EM-n), copy number, publication running headers | 1.2.16(5)–(9), 1.2.18, 4.4.7–4.4.8 |
-| `blocks` | Reusable blocks: originator descriptor, identifier, date line + file reference, addressees, subject, references, paragraphs, recommendations, signature-block variants, list blocks (annexes, enclosures, flags, distribution, copy distribution, consulted, ministerial referral), badge/address letterhead | standards/04, 05, 07 |
-| `supporting` | Annex, appendix and enclosure sections: identifying block, own subject heading, page numbering restart, (cont.) | 1.2.24, 4.4.7a(6) |
-| `tables` | DFI table style (0.5 pt borders, 10/11 pt, repeat header, "(cont.)" captions), boxed forms (cover sheets, QA forms, agenda) | 1.2.25 |
-| `footnotes` | Real Word footnotes (10 pt, consecutive) | 1.2.19b |
-| `inline` | Inline mark-up: bold, italic, underline, footnote refs, non-breaking spaces before units, en dashes in ranges, macron safety | 1.2.7, 1.2.13 |
-| `writer` | Assemble the document, set core properties, write the .docx; optional PDF preview via LibreOffice | T-07 |
-| `lint` | Post-render checks (§6) | – |
+See the module table in `renderer/README.md`. In summary: `tokens`, `styles`,
+`numbering`, `page` (sections and header/footer furniture), `ooxml` (fields,
+footnotes, settings, watermark), `blocks` (reusable blocks), `tables`,
+`letters` (shared letter rules), `model` (shared content models), `inline`,
+`wording`, `dates`, `builder`, `render` (template loading and CLI), and the
+validation tools `lint`, `preview` and `compare`.
 
-## 5. Template definition (sketch)
+## 5. Template definition
 
-```yaml
-# templates/minute/template.yaml  (illustrative only, not yet implemented)
-id: minute
-dfi: { section: "2.1.10-2.1.11", template: "2D", example: "2C" }
-page: { margins: standard, orientation: portrait }
-numbering: correspondence
-page_numbering: unclassified_from_page_2      # 1.2.16(6), 2.1.11(18)
-identity: none                                 # 2.1.11(1)
-date: { style: abbreviated, indent_cm: 1.0, handwritten_day: true }  # A-01/02/06
-blocks:
-  - markings
-  - originator_descriptor        # required
-  - identifier: { pattern: "{appointment} MINUTE {nn}/{yyyy}", optional_parts: [appointment, number] }
-  - date_line: { file_reference: right }
-  - addressees: { action: required, through: optional, info_max: 6, distribution_over: 6 }
-  - subject                      # required
-  - references: { optional: true }
-  - body                         # purpose recommended; main/group headings
-  - recommendations: { optional: true }
-  - signature: minute
-  - telephone: { optional: true }
-  - annex_list
-  - enclosure_list
-  - distribution
-  - copy_distribution
-```
+Each template folder holds `template.yaml` (an ordered block list with
+options), `schema.py` (a pydantic `Content` model, which may provide
+`compose_body()` and `warnings()`) and `NOTES.md`. See `templates/minute/` for
+a worked example and `templates/_SPEC-FORMAT.md` for the required keys.
+
+The renderer acts on `page`, `date`, `blocks` and `lint`. The `numbering`,
+`page_numbering` and `identity` keys are **declarative**. They record the shared
+variant the template uses, for review and traceability. The behaviour itself
+comes from the blocks and options listed, and the page-number regime follows
+from the markings.
 
 ## 6. Validation (definition of done for any template)
 
@@ -142,27 +119,33 @@ blocks:
    importance, urgency); counts (information addressees ≤ 6, a single addressee
    for submissions, one page for briefing notes and cover sheets as a
    post-render check); date formats.
+Items marked (planned) are not yet implemented in `lint.py` or the schemas.
+
 2. **Docx structural lint:**
    - every run is Calibri and black (except hyperlink, warning, caution, note);
      sizes match tokens;
    - margins and header/footer distances; A4; correct orientation;
    - markings present on **every** page header and footer, in the right order;
    - page-number fields per regime; first-page suppression where required;
-   - numbering definitions match the scheme; no bullets in letters or
-     directives; no paragraph numbers in external letters;
+   - correspondence numbering geometry matches scheme C; bullets and
+     paragraph numbers in letters are prevented by the letter schema
+     (the docx-level check is planned);
    - no hyperlinks in minutes or letters;
    - signature block preceded by at least two lines of text on the same page
      (checked on PDF render);
-   - annexes, appendices and enclosures in one file; annex marking ≤ parent
-     marking;
+   - annexes, appendices and enclosures in one file (schema warning);
+     annex marking ≤ parent marking (planned: annexes inherit the parent's
+     markings today);
+   - OOXML child order of paragraph and section properties;
    - language en-NZ; auto-hyphenation off.
 3. **Visual regression:** render DFI example fixtures → PDF → PNG and compare
    side by side with `reference/dfi-pages/`. Differences are listed in the
    template's `NOTES.md` and accepted by a human.
-4. **Wording warnings (T-10):** exclamation marks, full stops in abbreviations,
-   "%", numerals below 10, US spelling (-ize, color, program), "shall"/"will" in
-   orders, missing first-use expansion of abbreviations, em dashes in
-   correspondence.
+4. **Wording warnings (T-10):** implemented: exclamation marks, full stops in
+   eg/ie/etc, "%", hyperlinks, em dashes in correspondence; in letters,
+   abbreviated days and dates, 12- or 24-hour clock, and unexplained
+   abbreviations (external letters). Planned: numerals below 10, US spelling,
+   "shall"/"will" in orders.
 
 ## 7. Non-goals for now
 

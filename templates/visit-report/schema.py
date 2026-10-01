@@ -22,7 +22,7 @@ from staffwriting.model import (
     Addressee, Annex, BodyBlock, Cell, CopyNumber, DocDate, GroupHeading, Markings,
     Para, ParaBlock, Signature, Strict, Table, TableBlock,
 )
-from staffwriting.wording import block_texts, text_warnings
+from staffwriting.wording import block_texts, standard_warnings, text_warnings
 
 DECISION_HEADINGS = {           # 2.2.11(4)(a)-(d)
     "agreement": "Agreement",
@@ -171,10 +171,7 @@ class Content(Strict):
         t = self.travel
         if not any(getattr(t, k).details or getattr(t, k).cost for k, _ in TRAVEL_ROWS):
             w.append("Annex A travel summary has no entries; it must detail travel, accommodation and incidental costs (2.2.10(9)).")
-        if self.copy_number and not self.markings.above_restricted:
-            w.append("Copy numbers are for documents classified above Restricted (1.2.16(9), Fig 1-4 fn 2).")
-        if self.title != self.title.upper():
-            w.append("Subject heading supplied in mixed case; rendered in upper case (1.2.9(6)).")
+        w.extend(standard_warnings(self, self.title))
         w.append("Check: the report is classified no lower than the visit or activity (2.2.10(1)), and is signed "
                  "by the senior member of the party or host unit (2.2.10(7)).")
         w.extend(text_warnings(self._texts(), doc_name="reports"))
@@ -188,3 +185,6 @@ class Content(Strict):
         yield self.decisions.lead
         for i in self.decisions.items:
             yield i.text
+        for a in self.additional_annexes:
+            yield a.title
+            yield from block_texts(a.body)

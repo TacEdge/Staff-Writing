@@ -1,12 +1,16 @@
 # Recommended implementation sequence
 
-Status: **proposal, awaiting approval.** No template implementation begins
+Status: **Phases 0–2 complete and provisionally accepted (2026-10-01).** Phase 2
+was re-ordered by the user to DPB → VR/PAR → internal letter → external letter;
+the Administrative Instruction and CDF Directive were held back to form the next
+batch with the CDF Operational Directive. Word checks V-01 to V-04 remain
+outstanding. Original plan text follows. No template implementation begins
 until this plan and the OPEN register items it depends on are approved.
 
 Each phase ends with a review point where you see the rendered output beside the
 DFI pages.
 
-## Phase 0: Foundation (this phase) ✅ for review
+## Phase 0: Foundation ✅ accepted
 
 - Repository architecture, CLAUDE.md, source record and page map.
 - Extracted common standards (`standards/`) and tokens (`standards/spec/`).

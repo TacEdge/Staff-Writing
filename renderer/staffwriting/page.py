@@ -15,12 +15,13 @@ from .tokens import Tokens
 
 
 def setup_section(section, tk: Tokens, margins: str = "standard", orientation: str = "portrait") -> None:
+    w, h = tk.a4_cm
     if orientation == "landscape":
         section.orientation = WD_ORIENT.LANDSCAPE
-        section.page_width, section.page_height = Cm(29.7), Cm(21.0)
+        section.page_width, section.page_height = Cm(h), Cm(w)
     else:
         section.orientation = WD_ORIENT.PORTRAIT
-        section.page_width, section.page_height = Cm(21.0), Cm(29.7)
+        section.page_width, section.page_height = Cm(w), Cm(h)
     m = tk.margins(margins)
     section.top_margin, section.bottom_margin = Cm(m["top"]), Cm(m["bottom"])
     section.left_margin, section.right_margin = Cm(m["left"]), Cm(m["right"])
@@ -43,10 +44,10 @@ class Furniture:
     page_label: None (main document), "A" (annex A), "A-1" (appendix 1 of A).
     """
 
-    def __init__(self, document, tk: Tokens, markings, *, copy=None, draft: bool = False,
-                 regime: str = "unclassified_from_page_2"):
+    def __init__(self, document, tk: Tokens, markings, *, copy=None, draft: bool = False):
+        # The page-number regime follows from the markings (1.2.16(6)-(7)).
         self.document, self.tk, self.markings = document, tk, markings
-        self.copy, self.draft, self.regime = copy, draft, regime
+        self.copy, self.draft = copy, draft
 
     # -- page-number paragraph ---------------------------------------------
     def _page_number(self, footer, page_label: str | None, first_page: bool) -> None:

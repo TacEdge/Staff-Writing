@@ -88,7 +88,7 @@ class Numbering:
         for i, key in enumerate(("level1", "level2")):
             node = self.tk.get(f"bullets.{key}")
             label = cm_to_twips(node["label_indent"])
-            text = label + cm_to_twips(1.0)
+            text = label + cm_to_twips(self.tk.tab_cm)   # text one tab stop after the bullet
             lvls.append(
                 f'<w:lvl w:ilvl="{i}"><w:start w:val="1"/><w:numFmt w:val="bullet"/>'
                 f'<w:lvlText w:val="{node["symbol"]}"/><w:lvlJc w:val="left"/>'

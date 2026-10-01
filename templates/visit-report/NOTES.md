@@ -1,7 +1,7 @@
 # Visit report / Post activity report: traceability notes
 
-Status: **implemented (Phase 2), awaiting review.** Word checks V-01 to V-04:
-NOT TESTED.
+Status: **implemented (Phase 2); provisionally accepted 2026-10-01.** Word checks
+V-01 to V-04: NOT TESTED.
 
 ## 1. DFI sources
 
@@ -50,7 +50,7 @@ available to every template:
 |---|---|---|
 | I-V1 | The subject prefix is generated from `report_type`; the author gives only the title | 2.2.10(5) makes the first words mandatory |
 | I-V2 | The travel table is generated from structured fields with the template's row labels, verbatim | Fig 2-19 p3; prevents omission of mandatory cost lines (2.2.10(9)) |
-| I-V3 | "Event" and "Dates" rows span the full width with the value in bold | Fig 2-19 shows "[Event]" and "[Dates]" as full-width bold placeholders (2P shows labels instead; the template governs) |
+| I-V3 | "Event" and "Dates" rows span the full width with the value in bold (**approved 2026-10-01**) | Fig 2-19 shows "[Event]" and "[Dates]" as full-width bold placeholders (2P shows labels instead; the template governs) |
 | I-V4 | The 2P footnote "All details must be consistent with the approved travel claim" is not reproduced | Absent from template 2Q (the template governs) |
 | I-V5 | Annex A identifier "VISIT REPORT [file ref]" / "POST ACTIVITY REPORT [file ref]" + report date, upper case | Fig 2-18 "Visit Report ABC 8000-000 / DD Mmm YY"; upper case per A-12 |
 | I-V6 | The content group heading follows the report type ("Visit report" or "Post activity report") | Fig 2-19 shows "Visit Report"; the DFI gives no PAR form. Sentence case per 1.2.17(3). |

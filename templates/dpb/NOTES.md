@@ -1,7 +1,7 @@
 # Dot-point brief: traceability notes
 
-Status: **implemented (Phase 2), awaiting review.** Word checks V-01 to V-04:
-NOT TESTED.
+Status: **implemented (Phase 2); provisionally accepted 2026-10-01.** Word checks
+V-01 to V-04: NOT TESTED.
 
 ## 1. DFI sources
 
@@ -47,7 +47,7 @@ margin variant was also added (`margins`).
 | I-D3 | Signature line 2 is the rank only (no Service) | Fig 2-17 "[Title/rank]" (unlike the minute's "[Title/rank, Service]") |
 | I-D4 | Annexes allowed although Fig 2-17 lists none | 2.2.3(7): supporting documents may be included with all administrative documentation |
 | I-D5 | Warning if a listed flag is not introduced in bold in the text, or if there are flags but no enclosure | 1.2.24(4)(a); 2.2.7(4) |
-| I-D6 | "Format" in Fig 2-17 is treated as a placeholder group heading, not a fixed one | It sits in the same position as the minute's "[Group heading]"; 2.2.8d(2) says to use group headings to structure the text |
+| I-D6 | "Format" in Fig 2-17 is treated as a placeholder group heading, not a fixed one (**approved 2026-10-01**) | It sits in the same position as the minute's "[Group heading]"; 2.2.8d(2) says to use group headings to structure the text |
 
 ## 5. Validation record (2026-10-01)
 

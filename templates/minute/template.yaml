@@ -15,7 +15,7 @@ blocks:
   - originator_descriptor                                 # 2.1.3(1) [M]
   - identifier: { word: MINUTE }                          # 2.1.11(3) [M]
   - date_line: { indent_cm: 1.0 }                         # 2.1.11(2),(4); A-06
-  - addressees: { info_max: 6 }                           # 2.1.11(5)-(7)
+  - addressees                                            # 2.1.11(5)-(7); limits in schema.py
   - subject                                               # 2.1.11(8) [M]
   - references                                            # 2.1.11(9) [D]
   - body: { numbering: correspondence }                   # 2.1.11(10)-(14)

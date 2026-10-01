@@ -72,3 +72,14 @@ def para_headings(blocks):
     for blk in blocks:
         if isinstance(blk, ParaBlock):
             yield from walk(blk.para)
+
+
+def standard_warnings(content, subject: str | None) -> list[str]:
+    """Warnings every document type shares (single implementation)."""
+    w: list[str] = []
+    cn = getattr(content, "copy_number", None)
+    if cn and not content.markings.above_restricted:
+        w.append("Copy numbers are for documents classified above Restricted (1.2.16(9), Fig 1-4 fn 2).")
+    if subject and subject != subject.upper():
+        w.append("Subject heading supplied in mixed case; rendered in upper case (1.2.9(6)).")
+    return w

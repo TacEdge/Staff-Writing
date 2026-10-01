@@ -22,22 +22,10 @@ from typing import Literal, Optional, Union
 from pydantic import Field, field_validator, model_validator
 
 from staffwriting.model import (
-    Addressee, Annex, BodyBlock, CopyNumber, DocDate, GroupHeading, Markings, Para,
+    Addressee, Annex, BodyBlock, CopyNumber, DocDate, GroupHeading, Identifier, Markings, Para,
     ParaBlock, Recommendations, Signature, Strict,
 )
-from staffwriting.wording import block_texts, para_headings, text_warnings
-
-
-class Identifier(Strict):
-    appointment: Optional[str] = None
-    number: Optional[int] = Field(default=None, ge=1)
-    year: Optional[int] = None
-
-    @model_validator(mode="after")
-    def _pair(self):
-        if (self.number is None) != (self.year is None):
-            raise ValueError("Give both number and year (nn/yyyy) or neither (2.1.11(3)).")
-        return self
+from staffwriting.wording import block_texts, para_headings, standard_warnings, text_warnings
 
 
 class SubmissionRecommendations(Recommendations):
@@ -99,8 +87,6 @@ class Content(Strict):
         if "consultation" not in headings + groups:
             raise ValueError("Context must include consultation (2.1.12b(2)(e) 'are to be included'): "
                              "add a paragraph or sub-paragraph headed 'Consultation' (Fig 2-6 f.).")
-        if self.copy_number and self.copy_number.number > self.copy_number.of:
-            raise ValueError("Copy number exceeds total copies.")
         return self
 
     # -- composition into shared body blocks --------------------------------
@@ -130,10 +116,7 @@ class Content(Strict):
             w.append("There should be only one addressee, the decision-maker (2.1.11(6)).")
         if len(re.findall(r"[.?](\s|$)", self.issue.strip())) > 2:
             w.append("Set out the issue in one or two short sentences (2.1.12b(1)(a)).")
-        if self.copy_number and not self.markings.above_restricted:
-            w.append("Copy numbers are for documents classified above Restricted (1.2.16(9), Fig 1-4 fn 2).")
-        if self.subject != self.subject.upper():
-            w.append("Subject heading supplied in mixed case; rendered in upper case (1.2.9(6)).")
+        w.extend(standard_warnings(self, self.subject))
         verbs = {re.match(r"\*\*(\w+)\*\*", i.strip()).group(1).lower() for i in self.recommendations.items
                  if re.match(r"\*\*(\w+)\*\*", i.strip())}
         if not verbs & {"agree", "approve"}:

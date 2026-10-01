@@ -13,6 +13,7 @@ from docx.shared import Cm, Pt
 
 from . import styles
 from .inline import Fmt, add_inline
+from .tokens import TWIPS_PER_CM, cm_to_twips
 
 
 def _borders_xml(eighths: int) -> str:
@@ -37,7 +38,7 @@ def render_table(b, tbl, caption_number: str | None = None):
     tblPr = table._tbl.tblPr
     eighths = int(round(tk.value("tables.border_weight_pt") * 8))  # 1.2.25c 0.5 pt
     tblPr.append(parse_xml(_borders_xml(eighths)))
-    width_cm = b.text_width_twips() / 566.929
+    width_cm = b.text_width_twips() / TWIPS_PER_CM
     widths = tbl.col_widths_cm or [width_cm / ncols] * ncols
     if sum(widths) > width_cm + 0.01:
         b.warn(f"Table is {sum(widths):.1f} cm wide; it must not extend beyond the margins "
@@ -70,7 +71,7 @@ def render_table(b, tbl, caption_number: str | None = None):
             col += cell.span
     # Column widths on the grid as well (Word honours tblGrid on open).
     for gc, w in zip(table._tbl.tblGrid.findall(qn("w:gridCol")), widths):
-        gc.set(qn("w:w"), str(int(w * 566.929)))
+        gc.set(qn("w:w"), str(cm_to_twips(w)))
     # Keep 12 pt clear below the table (4.4.18b) with an empty block paragraph.
     after = b.par(styles.BLOCK)
     after.paragraph_format.space_before = Pt(0)

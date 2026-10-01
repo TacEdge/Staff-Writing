@@ -1,7 +1,7 @@
 # Internal formal (demi-official) letter: traceability notes
 
-Status: **implemented (Phase 2), awaiting review.** Word checks V-01 to V-04:
-NOT TESTED.
+Status: **implemented (Phase 2); provisionally accepted 2026-10-01.** Word checks
+V-01 to V-04: NOT TESTED.
 
 ## 1. DFI sources
 
@@ -48,7 +48,7 @@ tests pass).
 | I-L1 | `purpose` field (routine, congratulatory, condolence, admonition, reprimand, reply_to_admonition) drives the rules | 2.1.15a and 2.1.17 tie the format to the purpose |
 | I-L2 | Errors: salutation/close format mismatch; commas after either; a file reference on congratulatory or condolence letters; a salutation or close on an admonition; annexes; sub-paragraphs or bullets | 2.1.17d(2)–(4), 2.1.16(6), (12), (18) |
 | I-L3 | Warnings: close not matching the salutation form (first name → sincerely; rank/title + surname → faithfully); typed salutation on congratulatory or condolence letters; abbreviations in them; subject heading on personal letters; am/pm times; abbreviated days or dates | 2.1.17d(1) (the writer may vary the close); 2.1.17c "usually"; 1.2.8d; 2.1.16(9) "should not"; 2.1.16(15); 1.2.10a–b |
-| I-L4 | The close sits one line below the last paragraph; the signature block is six lines below the close | 1.2.21c ("six lines below the last line of text"); the close is the last line of text. The six lines hold the handwritten signature (Fig 2-7). |
+| I-L4 | The close sits one line below the last paragraph; the signature block is six lines below the close (**approved 2026-10-01**) | 1.2.21c ("six lines below the last line of text"); the close is the last line of text. The six lines hold the handwritten signature (Fig 2-7). |
 | I-L5 | A handwritten salutation or close leaves one empty line | Fig 2-9 shows blank space where the typed line would be |
 | I-L6 | Standing reminder to check the identity device against the signatory | 2.1.16(3) depends on who signs; not machine-checkable |
 
@@ -65,7 +65,7 @@ Differences from Figs 2-7 to 2-9 (`output/comparisons/internal-letter-*`):
 | ID | Difference | Disposition |
 |---|---|---|
 | DL-01 | The figures put the file reference on its own line above the date; ours is on the date line | 2.1.16(6) prose: "on the same line as the date, against the right-hand margin" |
-| DL-02 | With the day left blank, the date reads "November 2025" at the margin with no space reserved for the day | 2.1.16(5) says left margin and day handwritten. **Open: should space be reserved before the month?** |
+| DL-02 | With the day left blank, the date reads "November 2025" at the margin with no space reserved for the day | 2.1.16(5) says left margin and day handwritten. **APPROVED AS IMPLEMENTED 2026-10-01**: no reserved space. |
 | DL-03 | The template shows about four blank lines before the close and one after; ours has one before and six after | 1.2.21c prose (I-L4). A bug that put the six-line gap **before** the close as well (twelve blank lines) was found during the external-letter comparison and fixed; it is covered by `test_close_follows_text_then_six_lines`. |
 | DL-04 | Example 2G omits the rank line from the signature block | 2.1.16(17) requires the full rank; the prose governs |
 | DL-05 | Badge and logo are labelled placeholders | T-05 (artwork not held) |

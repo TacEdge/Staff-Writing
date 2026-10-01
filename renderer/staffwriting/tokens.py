@@ -49,9 +49,18 @@ class Tokens:
         return self.get(f"page.margins.{variant}")
 
     @property
+    def a4_cm(self) -> tuple[float, float]:
+        a4 = self.get("page.a4_cm")
+        return a4["width"], a4["height"]
+
+    @property
+    def tab_cm(self) -> float:
+        return self.value("page.default_tab_interval")
+
+    @property
     def text_width_cm(self) -> float:
         m = self.margins("standard")
-        return 21.0 - m["left"] - m["right"]
+        return self.a4_cm[0] - m["left"] - m["right"]
 
 
 @lru_cache(maxsize=1)

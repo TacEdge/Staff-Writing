@@ -14,7 +14,7 @@ from staffwriting.model import (
     Annex, CopyNumber, DocDate, GroupHeading, MainHeading, Markings, ParaBlock,
     RecommendationsBlock, Signature, Strict,
 )
-from staffwriting.wording import block_texts, text_warnings
+from staffwriting.wording import block_texts, standard_warnings, text_warnings
 
 # Recommendations are deliberately excluded: a DPB does not seek a decision (2.2.6).
 DpbBlock = Union[GroupHeading, MainHeading, ParaBlock]
@@ -59,8 +59,9 @@ class Content(Strict):
         first = self.body[0]
         if not (isinstance(first, GroupHeading) and first.group.strip().lower() == "purpose"):
             w.append("Commence with a short Purpose statement (2.2.8d(1)).")
-        if self.subject != self.subject.upper():
-            w.append("Subject heading supplied in mixed case; rendered in upper case (1.2.9(6)).")
+        w.extend(standard_warnings(self, self.subject))
+        if self.signature.service:
+            w.append("The DPB signature block shows title/rank only (Fig 2-17); the Service given is not rendered.")
         texts = list(self._texts())
         joined = " ".join(texts)
         for i, _ in enumerate(self.flags):
@@ -69,8 +70,6 @@ class Content(Strict):
                 w.append(f"Flag {letter} is listed but not introduced in bold in the text, eg '**Flag {letter}**' (1.2.24(4)(a)).")
         if self.flags and not (self.enclosures or self.annexes):
             w.append("Flags identify material in an enclosure (2.2.7(4)); no enclosure is listed.")
-        if self.copy_number and not self.markings.above_restricted:
-            w.append("Copy numbers are for documents classified above Restricted (1.2.16(9), Fig 1-4 fn 2).")
         w.extend(text_warnings(texts, doc_name="dot-point briefs"))
         return w
 

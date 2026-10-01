@@ -6,26 +6,11 @@ from typing import Literal, Optional
 
 from pydantic import Field, model_validator
 
-from staffwriting.wording import block_texts, text_warnings
+from staffwriting.wording import block_texts, standard_warnings, text_warnings
 from staffwriting.model import (
-    Addressee, Annex, BodyBlock, CopyNumber, DocDate, GroupHeading, Markings,
+    Addressee, Annex, BodyBlock, CopyNumber, DocDate, GroupHeading, Identifier, Markings,
     ParaBlock, Para, RecommendationsBlock, Signature, Strict,
 )
-
-
-class Identifier(Strict):
-    """'[Appointment] MINUTE [nn/yyyy]' (2.1.11(3)). The appointment and nn/yyyy
-    may be omitted for internal unit minutes or personal matters."""
-
-    appointment: Optional[str] = None
-    number: Optional[int] = Field(default=None, ge=1)
-    year: Optional[int] = None
-
-    @model_validator(mode="after")
-    def _pair(self):
-        if (self.number is None) != (self.year is None):
-            raise ValueError("Give both number and year (nn/yyyy) or neither (2.1.11(3)).")
-        return self
 
 
 class Content(Strict):
@@ -62,22 +47,17 @@ class Content(Strict):
                              "list everyone under distribution instead of to/info.")
         if len(self.info) > 6:
             raise ValueError("A maximum of six information addressees may be included (2.1.11(5)); use a distribution list.")
-        if self.copy_number and self.copy_number.number > self.copy_number.of:
-            raise ValueError("Copy number exceeds total copies.")
         return self
 
     # Non-blocking findings (register T-10: report, never rewrite).
     def warnings(self) -> list[str]:
         w: list[str] = []
-        if self.copy_number and not self.markings.above_restricted:
-            w.append("Copy numbers are for documents classified above Restricted (1.2.16(9), Fig 1-4 fn 2).")
+        w.extend(standard_warnings(self, self.subject))
         if len(self.to) + len(self.info) > 6 and not self.distribution:
             w.append("More than six addressees: a distribution list may be used (2.1.11(7)).")
         first = self.body[0]
         if not (isinstance(first, GroupHeading) and first.group.strip().lower() == "purpose"):
             w.append("A 'Purpose' paragraph at the start is often useful (2.1.11(11)).")
-        if self.subject != self.subject.upper():
-            w.append("Subject heading supplied in mixed case; rendered in upper case (1.2.9(6)).")
         w.extend(text_warnings(_all_text(self), doc_name="minutes"))
         return w
 

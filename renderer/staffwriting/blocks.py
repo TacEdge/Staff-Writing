@@ -16,7 +16,7 @@ from . import dates, ooxml, styles
 from .inline import Fmt, add_inline
 from .model import GroupHeading, MainHeading, Para, ParaBlock, RecommendationsBlock, TableBlock
 from .page import setup_section
-from .tokens import cm_to_twips
+from .tokens import TWIPS_PER_CM, cm_to_twips
 
 BLOCK_GAP = 12  # pt before the first line of a block (one blank 12 pt line) [T] Figs 1-4, 2-3, 2-4
 
@@ -42,7 +42,7 @@ def letterhead(b, c, opts):
     w = b.text_width_twips()
     left, right = table.rows[0].cells
     left.width = Cm(8)
-    right.width = Cm(w / 566.929 - 8)
+    right.width = Cm(w / TWIPS_PER_CM - 8)
     lp = left.paragraphs[0]
     lp.style = b.doc.styles[styles.BLOCK]
     if lh.device:
@@ -84,7 +84,7 @@ def date_line(b, c, opts):
     typed day starts at the margin (implementation decision I-M3).
     """
     p = b.par(styles.BLOCK, before=BLOCK_GAP)
-    indent = opts.get("indent_cm", 1.0) if c.date.day is None else 0.0
+    indent = opts.get("indent_cm", b.tk.tab_cm) if c.date.day is None else 0.0
     p.paragraph_format.left_indent = Cm(indent)
     p.add_run(_date_text(b, c.date))
     ref = getattr(c, "file_reference", None)
@@ -97,7 +97,8 @@ def date_line(b, c, opts):
 
 def addressees(b, c, opts):
     """Action addressee(s) with optional '(through X)', then 'For information'
-    and up to `info_max` addressees; or 'See distribution' (2.1.11(5)-(7))."""
+    and its addressees; or 'See distribution' (2.1.11(5)-(7)). Addressee limits
+    are enforced by each template's schema."""
     # distribution_mode: "all" (minute: 'See distribution' replaces every addressee,
     # 2.1.11(7)) | "info" (VR/PAR: action addressee kept, 'For information / See
     # distribution', Figs 2-18, 2-19) | "none" (both shown, Fig 1-4 validation).
@@ -148,12 +149,16 @@ def _count_first_level(blocks) -> int:
     return sum(isinstance(x, (ParaBlock, RecommendationsBlock)) for x in blocks)
 
 
-def _render_para(b, para, level: int, num_id: int | None) -> object:
+def _render_para(b, para, level: int, num_id: int | None, *, numbered: bool = True) -> object:
+    """Render a paragraph and its sub-paragraphs (scheme C). With numbered=False
+    the paragraph itself carries no number (single first-level paragraph,
+    2.1.3(3)) while its sub-paragraphs keep their numbering."""
     if isinstance(para, str):
         para = Para(text=para)
-    style = styles.PARA[level] if num_id is not None or level > 0 else styles.PARA_UNNUMBERED
+    numbered = numbered and num_id is not None
+    style = styles.PARA[level] if numbered or level > 0 else styles.PARA_UNNUMBERED
     p = b.par(style)
-    if num_id is not None:
+    if numbered:
         ooxml.set_num(p, num_id, level)
     if para.heading:
         add_inline(p, para.heading + ".", b, Fmt(bold=True))  # 1.2.17(4)
@@ -218,7 +223,7 @@ def body_blocks(b, blocks, num_id: int | None, *, single_unnumbered: bool = True
             last = b.par(styles.MAIN_HEADING, blk.main)  # 1.2.17(2)
         elif isinstance(blk, ParaBlock):
             if num_for_level0 is None:
-                last = _render_para_unnumbered_top(b, blk.para, num_id)
+                last = _render_para(b, blk.para, 0, num_id, numbered=False)
             else:
                 last = _render_para(b, blk.para, 0, num_id)
         elif isinstance(blk, TableBlock):
@@ -231,25 +236,6 @@ def body_blocks(b, blocks, num_id: int | None, *, single_unnumbered: bool = True
             last = _render_para(
                 b, Para(text=r.lead, sub=list(r.items), sentence_list=r.conjunction), 0, num_id
             )
-    return last
-
-
-def _render_para_unnumbered_top(b, para, num_id):
-    if isinstance(para, str):
-        para = Para(text=para)
-    p = b.par(styles.PARA_UNNUMBERED)
-    if para.heading:
-        add_inline(p, para.heading + ".", b, Fmt(bold=True))
-        p.add_run(" ")
-    add_inline(p, para.text, b)
-    last = p
-    items = list(para.sub)
-    for i, item in enumerate(items):
-        if para.sentence_list and isinstance(item, str):
-            item = _sentence_list_punct(item, i, len(items), para.sentence_list)
-        last = _render_para(b, item, 1, num_id)
-    if para.bullets:
-        last = _render_bullets(b, para.bullets)
     return last
 
 
@@ -464,7 +450,7 @@ def _new_supporting_section(b, page_label: str):
 def supporting_documents(b, c, opts):
     """Annex and appendix pages in the same file (1.2.24(6))."""
     for idx, annex in enumerate(c.annexes or []):
-        if not annex.body and not annex.subject:
+        if not annex.body and not annex.subject and not annex.appendices:
             b.warn(f"Annex {chr(65 + idx)} is listed but its content is not in the file "
                    "(1.2.24(6): final version is one file).")
             continue

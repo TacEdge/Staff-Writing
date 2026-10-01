@@ -58,14 +58,15 @@ Decisions I-S1 to I-S8 and discrepancies DS-01 to DS-07 are recorded in
 ## Phase 2 (DPB, VR/PAR, internal and external letters): items that emerged
 
 Full records are in each template's `NOTES.md` (I-D, I-V, I-L, I-E decisions;
-DP, DV, DL, DE discrepancies). These need your decision:
+DP, DV, DL, DE discrepancies). Decisions recorded 2026-10-01 (Phase 2 review):
+all four items are **CLOSED**.
 
-| ID | Issue | Proposed |
-|---|---|---|
-| DL-02 | Letters: with the day left blank for handwriting, the date reads "November 2025" at the left margin and no space is reserved for the day. 2.1.16(5) says left margin and handwritten day, but not where the day goes. | Keep at the margin (prose). Alternative: reserve space with a leading tab. |
-| I-L4 | Letters: the template shows about four lines before the close and one after; the prose requires the signature block six lines below the last line of text. | Close one line below the last paragraph; signature block six lines below the close (prose) |
-| I-V3 | VR/PAR travel table: "Event" and "Dates" rows full width with the value in bold (template 2Q), not as labels (example 2P). | Template governs |
-| I-D6 | DPB: "Format" in Fig 2-17 treated as a placeholder group heading, not a fixed heading. | Placeholder (author's own group headings) |
+| ID | Decision |
+|---|---|
+| DL-02 | **APPROVED AS IMPLEMENTED.** When the day is to be handwritten, the month and year stay at the left margin. No reserved space is invented, because the written rule does not direct it (2.1.16(5)). |
+| I-L4 | **APPROVED AS IMPLEMENTED.** One line between the body and the close, then six lines between the close and the signature block (1.2.21c). The close stays attached to the signature block. |
+| I-V3 | **APPROVED AS IMPLEMENTED.** The travel table follows template 2Q, not example 2P. The discrepancy stays documented (DV-03, I-V3/I-V4). |
+| I-D6 | **APPROVED AS IMPLEMENTED.** "Format" in Fig 2-17 is example content, not a mandatory DPB heading. |
 
 Applied consistently with earlier decisions (recorded, no new decision needed):
 the date indent of 1 cm for administrative documents where templates 2O and 2Q
@@ -77,30 +78,31 @@ signature (DL-04, 2.1.16(17)).
 
 Phase 1 (engine, Annex 1A validation, Minute, Submission) is **provisionally
 accepted, pending Microsoft Word validation**. Phase 2 (DPB, VR/PAR, internal
-and external letters) is **implemented and awaiting review**; the same Word
-checks apply to it. Checks V-01 to V-04
+and external letters) is **provisionally accepted** (review 2026-10-01); the same
+Word checks apply to it. The shared renderer has been reused across six
+document types without destabilising the earlier ones. Checks V-01 to V-04
 (`templates/minute/NOTES.md` §7) have **not been tested in Word**. Do not
 report them as passed until a person has opened the outputs in Word and
 recorded the result.
 
 ## A. Ambiguities and conflicts in DFI 5.1
 
-### Needing your decision (OPEN)
+### Originally needing your decision (all DECIDED 2026-10-01: see the decision tables above; text below is the original analysis)
 
 | ID | Issue | DFI evidence | Proposed default |
 |---|---|---|---|
 | **A-01** | **Leading zero on the day of the month.** | The prose says "'0' is not to be included" (2.1.11(2), 2.1.16(5), 2.2.3(1)). Example 2E shows "01 Jun 25". Publication headers show "03 October 2025" (4.4.8a(5) "dd Month yyyy"); 4.4.17 shows "02 October 2015"; the record of change shows "03 November 2021". | No leading zero in correspondence, letters and administrative documents (the prose governs). Leading zero in publication headers, record of change and repeal notes (4.4.8 "dd"). |
-| **A-02** | **Handwritten day.** The DFI expects the day to be handwritten at signing. Generated documents may be signed digitally. | fn 20, 2.1.11(2), 2.1.16(5), 2.2.3(1), 2.3.8(5). QA form note 3 allows digital or email sign-off. | Default: render the month and year only, leaving space for the day. Option `date_mode: full` fills the day when the document will be signed electronically. Please confirm this option is acceptable. |
+| **A-02** | **Handwritten day.** The DFI expects the day to be handwritten at signing. Generated documents may be signed digitally. | fn 20, 2.1.11(2), 2.1.16(5), 2.2.3(1), 2.3.8(5). QA form note 3 allows digital or email sign-off. | Default: render the month and year only, leaving space for the day. Giving `date.day` fills the day when the document will be signed electronically. **DECIDED.** |
 | **A-05** | **Turnover lines of first-level paragraphs in correspondence.** | The prose says subsequent lines "align with the left margin" (2.1.3(3)), and "hanging indents are not used in correspondence" (1.2.16(3)). Fig 1-4 follows this. Figs 2-3, 2-5 and 2-27 mix both styles on the same page. Delegations (2K–2N) and the MOU (2V) are drawn hanging throughout. | Applying the precedence rule (prose > figure): every correspondence and administrative document, **including delegations and the MOU** (2.2.3 applies the correspondence standards to them), has turnover lines back at the margin. Directives, AI and DFO(T): hanging (fn 23, 3.2.11(6)). **Question: do you want delegations and the MOU to follow the prose or the drawn templates?** |
 | **A-07** | **Em dash in administrative documents.** | 1.2.7(10)(a) and 1.2.23c say no em dash in correspondence or administrative documentation; use a colon. The delegation templates and examples (2K–2N) and the MOU (2V) use em dashes. | Two repository rules collide here: verbatim boilerplate vs prose precedence. Proposed: keep the em dash in the **fixed boilerplate** of delegations and the MOU, and use a colon for list lead-ins in **user-authored** content. Alternative: replace with colons throughout (strict prose). |
 | **A-10** | **Rank abbreviations and signature-block line 2.** DFI gives no authoritative rank-abbreviation list, and its examples are inconsistent. | fn 19 lists RA, MGEN, AVM, CDRE, AIRCDRE, BRIG, CAPT… Fig 2-18 uses "MAJGEN". 2.1.11(17)(b) says "Rank/Title and Service separated by a comma", but the examples show "BRIG" or "CDR" with no Service. | Accept rank and Service as input. Validate against a rank table you supply (or one we build from fn 19 plus a source you approve). Render "RANK, Service" only when a Service is given. **Question: is there an authoritative NZDF abbreviation list we should load?** |
 | **A-13** | **Protective-marking vocabulary.** DFI defers to the PSR and DFO 51. It is inconsistent about whether IN-CONFIDENCE is a classification or an endorsement. | 1.1.10; 2.1.6c(4) "special handling marking"; 2.1.8(3) "In-Confidence classification"; 2.3.12c "endorsement marking"; 2.1.16(1) "UNCLASSIFIED – IN-CONFIDENCE". | Treat markings as validated input from a closed list (`standards/07` §2). **Question: can you supply the current NZDF/PSR marking list and combination rules (DFO 51 Vol 1 Ch 7)?** |
 | **A-14** | **Badge position: header or below the header?** | 1.2.18a: the header contains no badge, and the badge goes immediately below the header in line with the address block. 2.1.16(3): the identifier goes "in the top left of the header" of a letter. The templates show the badge top left and the address top right, under the markings. | Place the badge in the first-page body area, top left, aligned with the address block (top right), below any markings. This matches both the figures and 1.2.18a. |
-| **A-22** | **Sizes not stated in prose.** Minute originator descriptor and identifier; DPB, AI and agenda title lines; cover-sheet titles. | Fig 2-4 shows the descriptor centred, bold and visibly larger than 12 pt. | Measure from the DFI figures relative to the 12 pt body text (I estimate 14 pt) and tag the value `[T]`. **Better: if you have the official NZDF_DSWT Word templates (1.1.1f), they are the definitive source for these values (see T-03).** |
+| **A-22** | **Sizes not stated in prose.** Minute originator descriptor and identifier; DPB, AI and agenda title lines; cover-sheet titles. | Fig 2-4 shows the descriptor centred, bold and visibly larger than 12 pt. | Measured from the DFI figures relative to the 12 pt body text: **16 pt** (I-M1), tagged `[T]`. **Better: if you have the official NZDF_DSWT Word templates (1.1.1f), they are the definitive source for these values (see T-03).** |
 | **A-34** | **Submission: "Financial and resource implications" missing from the template.** | 2.1.12b(3): "all submissions must include specific text under a paragraph heading 'Financial and resource implications'". Figs 2-5 and 2-6 do not show it. | Add it as a mandatory paragraph heading at the end of Context (before Summary). The schema requires text (or an explicit "none" statement). |
 | **A-36** | **Roman page numbering start in publications.** | 4.4.7b(1): numbering "commencing with 'i' on the first page of the authority order". Figs 4-4, 4-5 **and DFI 5.1 itself** (the exemplar, 4.4.1b) show "ii" on the authority order. | The precedence rule (prose) gives "i" on the authority order; every exemplar shows "ii". Proposed: follow the exemplar ("ii"), because the prose may simply count the unnumbered title page as "i". Please confirm. |
 
-### Proposed defaults (PROPOSED: adopted unless you object)
+### Defaults (all ADOPTED 2026-10-01 unless decided otherwise above)
 
 | ID | Issue | DFI evidence | Proposed default |
 |---|---|---|---|
@@ -165,15 +167,15 @@ others verbatim, flagged in the template notes, until you decide each one.**
 
 | ID | Decision | Options | Recommendation | Status |
 |---|---|---|---|---|
-| **T-01** | Rendering stack | (a) Python 3 + python-docx with an OXML helper layer; (b) Node + `docx` (docx-js); (c) fill official `.dotx` templates | **(a) Python.** It reads and writes .docx (needed for validation as well as generation). Pydantic, Jinja2 and PyYAML are already available. The OXML layer covers what python-docx lacks (numbering definitions, footnotes, fields, watermark). | OPEN |
-| **T-02** | Content input format | (a) YAML document files validated by per-template schemas; (b) Markdown with front matter; (c) Python API only | **(a) YAML** with a small inline mark-up for **bold**, *italic*, footnotes and cross-references. It maps 1:1 to DFI structural elements, so the schema can enforce mandatory elements. | OPEN |
-| **T-03** | Source of Word styles | (a) Generate all styles from `standards/spec/dfi-5.1-tokens.yaml`; (b) start from the official NZDF_DSWT `.dotx` files (1.1.1f) | **(b) if you can supply them; otherwise (a).** The official templates would settle A-22 and A-24 and give exact style names. **Do you have access to the NZDF_DSWT templates?** | OPEN |
-| **T-04** | Verification rendering | LibreOffice headless docx→PDF→PNG for visual comparison with DFI pages | Use it, with Carlito standing in for Calibri. Final sign-off in MS Word by a human reviewer. | PROPOSED |
-| **T-05** | Badge, logo and coat-of-arms assets | Extract from the DFI PDF (low resolution, not authorised) vs supplied official artwork | **Supplied official artwork only**, stored in `renderer/assets/` (git-ignored if restricted). Until then, render a labelled placeholder frame. | OPEN |
-| **T-06** | Product type | (a) Generate **finished documents** from structured content; (b) generate **blank Word templates** with placeholders (like the DSWT); (c) both | **(c), with (a) first.** The engine that fills documents can also emit templates with DFI placeholder text. | OPEN |
-| **T-07** | Output formats | .docx only; optional PDF via LibreOffice; PDF permission security (1.1.3d(8)) | .docx primary; PDF optional for previews only; PDF security left to the user's approved tooling. | PROPOSED |
-| **T-08** | DFI file location | Moved `dfi_5_1.pdf` from the repo root to `source/dfi-5.1/` with `git mv`. The bytes are unchanged; the SHA-256 is recorded. | Done during this phase. Revert if you want the file at the root. | PROPOSED |
-| **T-09** | Validation approach | (1) Schema validation of input; (2) docx structural lint (fonts, sizes, margins, markings on every page, numbering, no bullets where forbidden, signature-block orphan rule); (3) visual diff against re-keyed DFI examples | All three, as in `docs/architecture.md` §6. | PROPOSED |
-| **T-10** | Content assistance | Should Claude also lint the **wording** (directive language, abbreviations, numbers, dates, NZ spelling) or only the layout? | Layout is enforced. Wording rules are reported as warnings, never rewritten automatically. | PROPOSED |
-| **T-11** | Policy for DFI errors (section E) | Strict verbatim vs logged corrections | See section E. | OPEN |
-| **T-12** | Implementation order | `docs/implementation-plan.md` | Approve or re-order P1–P4. | OPEN |
+| **T-01** | Rendering stack | (a) Python 3 + python-docx with an OXML helper layer; (b) Node + `docx` (docx-js); (c) fill official `.dotx` templates | **(a) Python.** It reads and writes .docx (needed for validation as well as generation). Pydantic, Jinja2 and PyYAML are already available. The OXML layer covers what python-docx lacks (numbering definitions, footnotes, fields, watermark). | DECIDED |
+| **T-02** | Content input format | (a) YAML document files validated by per-template schemas; (b) Markdown with front matter; (c) Python API only | **(a) YAML** with a small inline mark-up for **bold**, *italic*, footnotes and cross-references. It maps 1:1 to DFI structural elements, so the schema can enforce mandatory elements. | DECIDED |
+| **T-03** | Source of Word styles | (a) Generate all styles from `standards/spec/dfi-5.1-tokens.yaml`; (b) start from the official NZDF_DSWT `.dotx` files (1.1.1f) | **(b) if you can supply them; otherwise (a).** The official templates would settle A-22 and A-24 and give exact style names. **Do you have access to the NZDF_DSWT templates?** | OPEN: official templates not supplied; styles generated from tokens meanwhile |
+| **T-04** | Verification rendering | LibreOffice headless docx→PDF→PNG for visual comparison with DFI pages | Use it, with Carlito standing in for Calibri. Final sign-off in MS Word by a human reviewer. | ADOPTED |
+| **T-05** | Badge, logo and coat-of-arms assets | Extract from the DFI PDF (low resolution, not authorised) vs supplied official artwork | **Supplied official artwork only**, stored in `renderer/assets/` (git-ignored if restricted). Until then, render a labelled placeholder frame. | OPEN: artwork not supplied; labelled placeholders meanwhile |
+| **T-06** | Product type | (a) Generate **finished documents** from structured content; (b) generate **blank Word templates** with placeholders (like the DSWT); (c) both | **(c), with (a) first.** The engine that fills documents can also emit templates with DFI placeholder text. | DECIDED (finished .docx first) |
+| **T-07** | Output formats | .docx only; optional PDF via LibreOffice; PDF permission security (1.1.3d(8)) | .docx primary; PDF optional for previews only; PDF security left to the user's approved tooling. | ADOPTED |
+| **T-08** | DFI file location | Moved `dfi_5_1.pdf` from the repo root to `source/dfi-5.1/` with `git mv`. The bytes are unchanged; the SHA-256 is recorded. | Done during this phase. Revert if you want the file at the root. | ADOPTED |
+| **T-09** | Validation approach | (1) Schema validation of input; (2) docx structural lint (fonts, sizes, margins, markings on every page, numbering, no bullets where forbidden, signature-block orphan rule); (3) visual diff against re-keyed DFI examples | All three, as in `docs/architecture.md` §6. | ADOPTED |
+| **T-10** | Content assistance | Should Claude also lint the **wording** (directive language, abbreviations, numbers, dates, NZ spelling) or only the layout? | Layout is enforced. Wording rules are reported as warnings, never rewritten automatically. | ADOPTED |
+| **T-11** | Policy for DFI errors (section E) | Strict verbatim vs logged corrections | See section E. | DECIDED (section E policy above) |
+| **T-12** | Implementation order | `docs/implementation-plan.md` | Approve or re-order P1–P4. | DECIDED (P1, then the Phase 2 batch DPB → VR/PAR → letters; see implementation-plan.md) |

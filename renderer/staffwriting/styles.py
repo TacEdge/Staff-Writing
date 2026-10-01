@@ -176,7 +176,7 @@ def build(document, tk: Tokens) -> None:
     _para_style(document, TABLE_HEADER, base=TABLE_TEXT, size=tk.size("table_header"))       # 1.2.16(4)(b)
     _para_style(document, TABLE_CAPTION, size=tk.size("table_caption"),
                 align=WD_ALIGN_PARAGRAPH.CENTER, before=12, after=3, keep_next=True)         # 1.2.25b
-    _para_style(document, LIST_ITEM, before=0, after=0, left_cm=1.0, hanging_cm=1.0)
+    _para_style(document, LIST_ITEM, before=0, after=0, left_cm=tk.tab_cm, hanging_cm=tk.tab_cm)  # [T] "A.<tab>"
     _para_style(document, SIGNATURE, before=0, after=0)
     _para_style(document, ANNEX_ID, bold=True, align=WD_ALIGN_PARAGRAPH.RIGHT, before=0, after=0)
     _para_style(document, LETTERHEAD, size=tk.size("letterhead_address"), before=0, after=0)

@@ -8,8 +8,8 @@
 #         | A-nn (ambiguous; see register)
 # Units: lengths in cm unless stated, font sizes and spacing in pt.
 #
-# STATUS: DRAFT. Values tagged I or A-nn are proposed defaults that need
-# approval.
+# STATUS: IN USE (Phases 1-2). Values tagged I or A-nn follow the decisions in
+# docs/ambiguities-and-decisions.md (defaults adopted 2026-10-01).
 
 meta:
   dfi: "DFI 5.1 Defence Force Writing"
@@ -19,6 +19,7 @@ meta:
 
 page:
   size: { value: A4, allowed: [A4, A3], src: "1.1.3d(7), 1.2.16(1)", tag: M }
+  a4_cm: { width: 21.0, height: 29.7, src: "ISO 216 A4 dimensions", tag: I }
   orientation_default: { value: portrait, src: "all templates", tag: T }
   margins:
     standard:    { top: 2.5, bottom: 2.5, left: 2.5, right: 2.5, src: "1.2.16(2)", tag: M }

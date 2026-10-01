@@ -1,7 +1,8 @@
 # Templates
 
-One folder per DFI 5.1 document type. **No templates are implemented yet**
-(Phase 0). The full list of document types, their DFI sources and their
+One folder per DFI 5.1 document type. Implemented: `minute`, `submission`,
+`dpb`, `visit-report`, `internal-letter`, `external-letter`, plus the
+validation-only `_validation-annex-1a`. The full list of document types, their DFI sources and their
 priorities is in [`docs/template-inventory.md`](../docs/template-inventory.md).
 
 Every template folder must follow [`_SPEC-FORMAT.md`](_SPEC-FORMAT.md), and the

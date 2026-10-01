@@ -19,6 +19,9 @@ from .inline import plain
 CLASSIFICATIONS = ["UNCLASSIFIED", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP SECRET"]
 ABOVE_RESTRICTED = {"CONFIDENTIAL", "SECRET", "TOP SECRET"}
 ENDORSEMENTS = ["IN-CONFIDENCE", "SENSITIVE", "STAFF-IN-CONFIDENCE"]
+Classification = Literal["UNCLASSIFIED", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP SECRET"]
+Endorsement = Literal["IN-CONFIDENCE", "SENSITIVE", "STAFF-IN-CONFIDENCE"]
+assert list(Classification.__args__) == CLASSIFICATIONS and list(Endorsement.__args__) == ENDORSEMENTS
 
 
 class Strict(BaseModel):
@@ -26,8 +29,8 @@ class Strict(BaseModel):
 
 
 class Markings(Strict):
-    classification: Optional[Literal["UNCLASSIFIED", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP SECRET"]] = None
-    endorsement: Optional[Literal["IN-CONFIDENCE", "SENSITIVE", "STAFF-IN-CONFIDENCE"]] = None
+    classification: Optional[Classification] = None
+    endorsement: Optional[Endorsement] = None
 
     @property
     def above_restricted(self) -> bool:
@@ -53,6 +56,34 @@ class CopyNumber(Strict):
     number: int = Field(ge=1)
     of: int = Field(ge=1)
 
+    @model_validator(mode="after")
+    def _within_total(self):
+        if self.number > self.of:
+            raise ValueError("Copy number exceeds total copies (1.2.16(9)).")
+        return self
+
+
+class Identifier(Strict):
+    """'[Appointment] MINUTE [nn/yyyy]' (2.1.11(3)). The appointment and nn/yyyy
+    may be omitted for internal unit minutes or personal matters."""
+
+    appointment: Optional[str] = None
+    number: Optional[int] = Field(default=None, ge=1)
+    year: Optional[int] = Field(default=None, ge=1900, le=2999)   # yyyy (2.1.11(3))
+
+    @model_validator(mode="after")
+    def _pair(self):
+        if (self.number is None) != (self.year is None):
+            raise ValueError("Give both number and year (nn/yyyy) or neither (2.1.11(3)).")
+        return self
+
+
+def check_initials(v: str) -> str:
+    """Initials: capitals, no spaces or punctuation (1.2.7(3), 2.1.11(17)(a))."""
+    if not re.fullmatch(r"[A-Z]{1,5}", v):
+        raise ValueError("Initials are capitals without spaces or punctuation (2.1.11(17)(a), 1.2.7(3)).")
+    return v
+
 
 # --------------------------------------------------------------------- dates
 
@@ -63,6 +94,16 @@ class DocDate(Strict):
     year: int = Field(ge=1900, le=2999)
     month: int = Field(ge=1, le=12)
     day: Optional[int] = Field(default=None, ge=1, le=31)
+
+    @model_validator(mode="after")
+    def _real_date(self):
+        if self.day is not None:
+            import datetime as _dt
+            try:
+                _dt.date(self.year, self.month, self.day)
+            except ValueError as e:
+                raise ValueError(f"Not a calendar date: {self.day}/{self.month}/{self.year} ({e}).") from None
+        return self
 
 
 # ---------------------------------------------------------------- body text
@@ -186,9 +227,7 @@ class Signature(Strict):
     @field_validator("initials")
     @classmethod
     def _initials(cls, v):
-        if not re.fullmatch(r"[A-Z]{1,5}", v):
-            raise ValueError("Initials are capitals without spaces or punctuation (2.1.11(17)(a), 1.2.7(3)).")
-        return v
+        return check_initials(v)
 
     @field_validator("rank")
     @classmethod
@@ -200,12 +239,25 @@ class Signature(Strict):
 
 # ------------------------------------------------------- supporting documents
 
+def _date_needs_identifier(obj):
+    # 1.2.24(1)(c)-(d): the authorisation date accompanies the unique identifier;
+    # without one the identifying block shows only the reference.
+    if obj.date is not None and not obj.identifier:
+        raise ValueError("An annex or appendix date is shown with its unique identifier; give an "
+                         "identifier or omit the date (1.2.24(1)(c)-(d)).")
+    return obj
+
+
 class AppendixContent(Strict):
     title: str
     identifier: Optional[str] = None
     date: Optional[DocDate] = None
     subject: Optional[str] = None
     body: list[BodyBlock] = []
+
+    @model_validator(mode="after")
+    def _date(self):
+        return _date_needs_identifier(self)
 
 
 class Annex(Strict):
@@ -218,6 +270,10 @@ class Annex(Strict):
     subject: Optional[str] = None  # annex subject heading; defaults to title
     body: list[BodyBlock] = []
     appendices: list[AppendixContent] = []
+
+    @model_validator(mode="after")
+    def _date(self):
+        return _date_needs_identifier(self)
 
 
 def plain_len(text: str) -> int:

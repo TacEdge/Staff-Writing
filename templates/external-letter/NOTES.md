@@ -1,7 +1,7 @@
 # External letter: traceability notes
 
-Status: **implemented (Phase 2), awaiting review.** Word checks V-01 to V-04:
-NOT TESTED.
+Status: **implemented (Phase 2); provisionally accepted 2026-10-01.** Word checks
+V-01 to V-04: NOT TESTED.
 
 ## 1. DFI sources
 

@@ -11,8 +11,8 @@ from typing import Literal, Optional, Union
 
 from pydantic import Field, field_validator, model_validator
 
-from .model import CopyNumber, DocDate, Letterhead, Markings, Para, Strict
-from .wording import block_texts, text_warnings
+from .model import CopyNumber, DocDate, Letterhead, Markings, Para, Strict, check_initials
+from .wording import block_texts, standard_warnings, text_warnings
 
 
 class Salutation(Strict):
@@ -60,9 +60,7 @@ class LetterSignature(Strict):
     @field_validator("initials")
     @classmethod
     def _initials(cls, v):
-        if not re.fullmatch(r"[A-Z]{1,5}", v):
-            raise ValueError("Initials are capitals without spaces or punctuation (1.2.7(3)).")
-        return v
+        return check_initials(v)
 
 
 LetterPara = Union[str, Para]
@@ -124,7 +122,7 @@ def time_warnings(texts, *, external: bool) -> list[str]:
 
 
 _DAY = r"\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\b"
-_MON = r"(Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+_MON = r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
 
 
 def date_style_warnings(texts) -> list[str]:
@@ -173,6 +171,8 @@ class LetterBase(Strict):
     def _no_annexes(cls, data):
         if isinstance(data, dict) and data.get("annexes"):
             raise ValueError("Annexes are not appropriate in formal letters; use enclosures (2.1.16(18)).")
+        if isinstance(data, dict) and data.get("distribution"):
+            raise ValueError("A formal letter has one addressee; distribution lists are not used (2.1.17a, 2.1.16(7)).")
         return data
 
     @model_validator(mode="after")
@@ -182,10 +182,7 @@ class LetterBase(Strict):
 
     def common_warnings(self, *, external: bool) -> list[str]:
         w = pairing_warnings(self.salutation, self.close)
-        if self.subject and self.subject != self.subject.upper():
-            w.append("Subject heading supplied in mixed case; rendered in upper case (1.2.9(6)).")
-        if self.copy_number and not self.markings.above_restricted:
-            w.append("Copy numbers are for documents classified above Restricted (1.2.16(9)).")
+        w.extend(standard_warnings(self, self.subject))
         w.append("Check the visual identifier against the signatory (2.1.16(3)): COS and executive committee use the "
                  "assented NZDF or single-Service badge; others use the NZDF/Service logo with the Force for "
                  "New Zealand logotype.")
