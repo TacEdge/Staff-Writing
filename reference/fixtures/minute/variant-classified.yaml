@@ -1,0 +1,57 @@
+# Variant exercising: CONFIDENTIAL + endorsement (Page n of N on every page,
+# including annexes, 1.2.16(7)); copy number (1.2.16(9)); distribution list
+# replacing addressees (2.1.11(7)); multi-page body; several footnotes; group
+# headings; annex with an appendix; copy distribution.
+# Marking pairing is for layout testing only (register A-13). Fictional content.
+type: minute
+markings: { classification: CONFIDENTIAL, endorsement: SENSITIVE }
+copy_number: { number: 2, of: 8 }
+originator: Headquarters New Zealand Defence Force
+identifier: { appointment: AC SCE, number: 12, year: 2025 }
+date: { year: 2025, month: 9 }
+file_reference: NZDF 3300-0202
+distribution: [CA, CN, CAF, COMJFNZ, CJDS, CFO, DDLS, AC SCE]
+subject: Exercise SOUTHERN KATIPO planning conference outcomes
+references: ["HQJFNZ 3300-0100, 15 Aug 25", "CDF Directive 18/2025, 1 Jul 25"]
+body:
+  - group: Purpose
+  - para: "The purpose of this minute is to inform addressees of the outcomes of the Exercise SOUTHERN KATIPO main planning conference held at Trentham Military Camp from 1–3 Sep 25."
+  - group: Background
+  - para: "Exercise SOUTHERN KATIPO is a joint and combined exercise conducted every two years.^[CDF Directive 18/2025, 1 Jul 25, paragraph 4.] Twelve nations were represented at the conference."
+  - para:
+      heading: Conference outcomes
+      text: "The conference agreed the following:"
+      sentence_list: and
+      sub:
+        - "the exercise scenario and the force laydown"
+        - "the logistic concept, including the use of RNZAF Base Ohakea as the main air point of embarkation"
+        - "the public affairs plan, which is in Annex A"
+  - para:
+      heading: Outstanding issues
+      text: "Two issues remain unresolved."
+      sub:
+        - heading: Host nation support
+          text: "Agreements with two regional councils for the use of training areas are still being negotiated.^[Discussion LTCOL Strict/MAJ Payne, 3 1100 Sep 25.]"
+        - heading: Medical support
+          text: "The level 2 medical facility requirement exceeds the planned establishment by 14 personnel."
+  - group: Resource implications
+  - para: "The additional medical personnel will cost approximately $1.2 million, which can be met within the approved exercise budget."
+  - para: "No further funding is required from Vote Defence Force. Detailed costings will be provided before the final planning conference in Nov 25."
+  - para: "Each Service is to confirm its final force contribution by 1 Oct 25 to allow the final planning conference to focus on synchronisation of the exercise programme rather than force generation. This will also allow the logistic and movement plans to be completed in time for the contractual deadlines that apply to commercial transport and accommodation bookings."
+signature: { initials: JT, surname: Exemplar, rank: BRIG, service: Army, appointment: AC SCE }
+telephone: "DTelN (349) 7001"
+annexes:
+  - title: Exercise SOUTHERN KATIPO public affairs plan
+    identifier: AC SCE Minute 12/2025
+    subject: Exercise SOUTHERN KATIPO public affairs plan
+    body:
+      - group: Concept
+      - para: "Public affairs activity will promote the exercise as an example of regional cooperation."
+      - para: "Media access to exercise areas will be escorted at all times."
+    appendices:
+      - title: Media access schedule
+        subject: Media access schedule
+        body:
+          - para: "Media days are scheduled for the second and fourth weeks of the exercise."
+enclosures: ["Main planning conference record, 3 Sep 25"]
+copy_distribution: ["Copy 1: CA", "Copy 2: AC SCE (file)", "Copies 3-8: as per distribution"]

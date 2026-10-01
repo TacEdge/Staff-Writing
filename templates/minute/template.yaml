@@ -1,0 +1,28 @@
+# Minute: DFI 5.1 2.1.10-2.1.11; template Annex 2D (Fig 2-4); example Annex 2C (Fig 2-3)
+# Only what is unique to the minute. Shared rules come from standards/ and tokens.
+id: minute
+title: Minute
+dfi:
+  section: "2.1.10-2.1.11"
+  template: "2D (Fig 2-4), PDF pp 72-73"
+  example: "2C (Fig 2-3), PDF pp 70-71"
+page: { margins: standard, orientation: portrait }       # 1.2.16(1)-(2)
+numbering: correspondence                                 # scheme C, 2.1.3(3)
+page_numbering: unclassified_from_page_2                  # 1.2.16(6)-(7), 2.1.11(18)
+identity: none                                            # 2.1.11(1)
+date: { style: abbreviated }                              # 2.1.11(2); A-01, A-02
+blocks:
+  - originator_descriptor                                 # 2.1.3(1) [M]
+  - identifier: { word: MINUTE }                          # 2.1.11(3) [M]
+  - date_line: { indent_cm: 1.0 }                         # 2.1.11(2),(4); A-06
+  - addressees: { info_max: 6 }                           # 2.1.11(5)-(7)
+  - subject                                               # 2.1.11(8) [M]
+  - references                                            # 2.1.11(9) [D]
+  - body: { numbering: correspondence }                   # 2.1.11(10)-(14)
+  - signature: { variant: minute }                        # 2.1.11(15),(17) [M]
+  - telephone                                             # [T] Fig 2-4
+  - annex_list                                            # 1.2.24(1)(a)
+  - enclosure_list                                        # 1.2.24(3)
+  - distribution                                          # 2.1.11(7)
+  - copy_distribution                                     # 1.2.16(9)
+  - supporting_documents                                  # 1.2.24(6), 2.1.11(16)

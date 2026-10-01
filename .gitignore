@@ -15,3 +15,6 @@ Thumbs.db
 
 # Restricted assets (official artwork may not be redistributable)
 renderer/assets/restricted/
+
+# Regenerable DFI page renders (python -m staffwriting.compare)
+reference/dfi-pages/

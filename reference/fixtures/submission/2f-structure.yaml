@@ -1,0 +1,38 @@
+# Mirrors the element set and order of DFI 5.1 Annex 2F Submission - Template
+# (Fig 2-6, PDF pp 76-77) with fictional values, plus the mandatory Financial and
+# resource implications paragraph (2.1.12b(3); A-34).
+type: submission
+originator: Defence Logistics Command
+identifier: { appointment: COMLOG, number: 14, year: 2025 }
+date: { year: 2025, month: 11 }
+file_reference: DLC 4100-0010
+to: [{ appointment: CJDS, through: COS DLC }]
+info: [CFO]
+subject: Replacement of the Linton fuel installation
+references: ["DLC 4100-0010, 12 Aug 25"]
+issue: "The Linton bulk fuel installation has reached the end of its service life and needs replacement before winter 2026."
+recommendations:
+  lead: "It is recommended that CJDS:"
+  items:
+    - "**note** the condition assessment in Annex A"
+    - "**agree** to replace the installation in the 2026 financial year"
+timing: "A decision is required by 15 Dec 25 so that construction can start before the 2026 winter."
+context:
+  - para:
+      text: "The installation was commissioned in 1987."
+      sub:
+        - { heading: Content, text: "The condition assessment found corrosion in three of the four tanks." }
+        - { heading: Sections, text: "Background and options are covered below." }
+        - { heading: Argument, text: "Replacement is cheaper over 20 years than continued repair." }
+        - { heading: Implications, text: "Fuel will be trucked from Ohakea during the eight-week works period." }
+        - { heading: Effects, text: "Training at Linton will not be affected." }
+        - { heading: Consultation, text: "Land Component Command and Defence Estate and Infrastructure have been consulted and support the proposal." }
+financial_and_resource_implications: "The replacement will cost $2.4 million, which can be met from the approved Estate capital plan. There are no additional personnel implications."
+summary: ["Replacement in 2026 is recommended."]
+signature: { initials: AB, surname: Example, rank: CDR, service: RNZN, appointment: SO1 Fuels }
+telephone: "DTelN (349) 7100"
+annexes:
+  - title: Linton fuel installation condition assessment
+    subject: Linton fuel installation condition assessment
+    body: [{ para: "Three of the four tanks show corrosion beyond repair limits." }]
+enclosures: ["Defence Estate and Infrastructure engineering report, 1 Aug 25"]

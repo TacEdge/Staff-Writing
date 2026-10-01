@@ -1,0 +1,31 @@
+# Mirrors the element set and order of DFI 5.1 Annex 2D Minute - Template
+# (Fig 2-4, PDF pp 72-73) with representative (fictional) values in place of the
+# red placeholders. Used to check element order and presence against 2D.
+type: minute
+originator: Headquarters Joint Forces New Zealand
+identifier: { appointment: J4, number: 7, year: 2025 }
+date: { year: 2025, month: 11 }
+file_reference: HQJFNZ 4500-0001
+to: [{ appointment: COMJFNZ, through: CoS HQ JFNZ }]
+info: [J1, J8]
+subject: Annual fleet servicing schedule
+references: ["HQJFNZ 4500-0001, 2 Sep 25"]
+body:
+  - group: Purpose
+  - para: "The purpose of this minute is to seek approval of the 2026 fleet servicing schedule."
+  - main: Servicing Schedule
+  - group: Background
+  - para:
+      text: "The schedule has been developed with the three Services."
+      sub: ["Servicing windows avoid the main exercise periods."]
+  - recommendations:
+      lead: "It is recommended that COMJFNZ:"
+      items: ["**approve** the 2026 fleet servicing schedule"]
+signature: { initials: AB, surname: Example, rank: LTCOL, service: Army, appointment: SO1 J4 }
+telephone: "DTelN (349) 7000"
+annexes:
+  - title: 2026 fleet servicing schedule
+    subject: 2026 fleet servicing schedule
+    body:
+      - para: "The servicing schedule is summarised by quarter."
+enclosures: ["HQJFNZ fleet availability report, 1 Oct 25"]

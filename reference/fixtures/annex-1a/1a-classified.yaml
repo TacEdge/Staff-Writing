@@ -1,0 +1,79 @@
+# Re-key of DFI 5.1 Annex 1A Fig 1-4 (pp 1-31 to 1-33), Fig 1-5 (annex) and
+# Fig 1-6 (appendix). Text is verbatim from the figures; bracketed placeholders
+# kept as in DFI. Fig 1-4 is drawn as a document classified above Restricted
+# ("Copy 1 of [n]", "Page 1 of 3"), so this fixture uses CONFIDENTIAL plus an
+# endorsement to exercise marking order. The marking combination is for layout
+# testing only, not a PSR-validated pairing (register A-13).
+# Footnotes 1-4 of Fig 1-4 annotate the DFI figure itself and are omitted.
+type: _validation-annex-1a
+markings: { classification: CONFIDENTIAL, endorsement: SENSITIVE }
+copy_number: { number: 1, of: 5 }
+letterhead:
+  device: "NZDF badge"
+  address: ["[Unit name]", "[Address]"]
+date: { year: 2025, month: 10, day: 3 }
+file_reference: File reference
+to: [{ appointment: "[Title/rank, organisation/appointment]" }]
+info: ["[Title/rank, organisation/appointment]"]
+subject: "[SUBJECT HEADING]"
+references: ["[Document identifier/title and date]"]
+body:
+  - main: Standard NZDF Page Setup
+  - para: { heading: Margins, text: "Left and right margins are set at 2.5 cm for all documents except the right margin for briefs, which may be set at 4 cm to allow for handwritten notes. Top and bottom margins are set at 2.5 cm, with header and footer margins of 1 cm allowing for protective markings and page numbers." }
+  - para: { heading: Tabs, text: "Tabs are set at 1 cm spacing. Hanging indents are not used." }
+  - para: { heading: Font and size, text: "Calibri font is used for all Defence Force writing. Email is written using 11 pt font size. In all other writing, body text and headings use 12 pt font, table headings 11 pt font, and 10 pt font is used for footnotes and all table content." }
+  - para: { heading: Justification, text: "All text is left aligned and ragged right." }
+  - para:
+      heading: Line spacing
+      text: "Single line spacing is used in the body text of all documents, including draft documents sent electronically. Use double line spacing in the text body of a draft hard copy distributed for comment. Otherwise line spacing is:"
+      sub:
+        - "Subject, main and group headings are spaced with 12 pt before and 6 pt after."
+        - "Paragraphs and sub-paragraphs are spaced 6 pt before and 3 pt after."
+        - "Single line spacing is used within paragraphs and sub-paragraphs."
+        - "Headers and footers use single line spacing."
+        - "Footnotes use single line spacing."
+  - group: Placement of paragraphing
+  - para:
+      heading: First level paragraph
+      text: "The identifying paragraph number is followed by a full stop and placed on the left-hand margin (2.5 cm from the paper’s edge). The first letter of text commences on a tab point 1 cm from the margin. The second and subsequent lines of text start at the margin."
+      sub:
+        - heading: Second level paragraph
+          text: "The identifying lower case letter (a, b, c and so on) is followed by a full stop and indented 1 cm from the margin. The first letter of text commences on a tab stop 2 cm from the margin, with second and subsequent lines immediately below the first line of text."
+          sub:
+            - heading: Third level paragraph
+              text: "The identifying number, in parentheses, is indented 2 cm form the margin. The first letter of text commences on a tab indented 3 cm from the margin, with the second and subsequent lines immediately below the first letter of text."
+              sub:
+                - heading: Fourth level paragraph
+                  text: "The identifying letter, in parentheses, is indented 3 cm from the margin. The first letter of the text commences 4 cm from the margin, with second and subsequent lines immediately below the first letter of text."
+  - para:
+      heading: Bullets
+      text: "Bullets may be used in some forms of Defence Force writing:"
+      bullets:
+        - text: "First level bullets use a small dot aligned with the first tab stop."
+          sub:
+            - "Second level bullets use a small diamond aligned with the text of the first level bullet (second tab stop)."
+            - "Asterisks and other symbols are not used."
+  - para: { heading: References and footnotes, text: "By exception, cite principal references immediately below the subject heading. Use footnotes to reference other documents or to provide detail.^[Sentence case, 10 pt font.]" }
+  - para: { heading: Signature block, text: "Layout of the signature block depends on the document type. The signature block is to appear six lines below and is to be a minimum of two lines of text." }
+signature: { initials: AB, surname: Surname, rank: Rank, appointment: Appointment }
+annexes:
+  - title: Nominal role
+    identifier: "[Unique identifier]"
+    date: { year: 2025, month: 10, day: 3 }
+    subject: "[Annex title]"
+    body:
+      - para: { heading: Annex, text: "Where the context of a supporting document (containing specifically selected or created information) becomes apparent only when the information is read in conjunction with its parent document, the supporting document is termed an annex." }
+      - para: "A single page annex is not numbered. All pages in a multipage or classified annex are numbered using the annex identifying letter, followed by the annex page number above any protective markings."
+    appendices:
+      - title: Appendix
+        identifier: "[Unique identifier]"
+        date: { year: 2025, month: 10, day: 3 }
+        subject: "[Appendix title]"
+        body:
+          - para: { heading: Appendix, text: "An appendix is a complementary stand-alone document that forms part of an annex." }
+          - para: "A single page appendix is not numbered. All pages in a multipage or classified appendix are numbered using the annex identifying letter and number and appendix number, followed by the appendix page number."
+  - { title: Health support measures }
+enclosures:
+  - "[Document identifier/title and date]"
+  - "CA Directive 06/2021, 23 Aug 21"
+distribution: ["COMD 1st (NZ) BDE", "CO 16 FD REGT", "IG (ARMY)"]

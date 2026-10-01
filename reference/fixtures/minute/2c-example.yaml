@@ -1,0 +1,49 @@
+# Re-key of DFI 5.1 Annex 2C Minute - Example (Fig 2-3, PDF pp 70-71).
+# Faithful to the figure except:
+#  - "202X"/"2X" placeholders given a fictional year (2025);
+#  - para 8 lead "It is recommend that" corrected (E-01, section E policy);
+#  - the example shows both addressees and a Distribution block; the
+#    prose (2.1.11(7)) makes them alternatives, so Distribution is exercised
+#    in variant-classified.yaml instead (see templates/minute/NOTES.md D-04).
+type: minute
+originator: Headquarters Joint Forces New Zealand
+identifier: { appointment: LCC, number: 1, year: 2025 }
+date: { year: 2025, month: 6 }
+file_reference: NZDF 3300-0100
+to:
+  - { appointment: CA, through: COMJFNZ }
+  - { appointment: COMD 1 BDE NZ }
+info: [CoS HQNZDF]
+subject: SUBJECT HEADING
+references:
+  - "Principal references (*use only if appropriate, otherwise cite references in footnotes*)"
+body:
+  - group: Purpose
+  - para: "The purpose of this minute is to …………………………."
+  - main: Main Heading (If required)
+  - group: Group heading
+  - para:
+      heading: Page layout
+      text: "Standard Defence Force writing page layout conventions are to be adhered to for:"
+      sentence_list: and
+      sub: ["paragraph and sub-paragraph formats", "use and format of bullets"]
+  - para: { heading: References, text: "By exception, cite a principal reference below the subject heading." }
+  - para: { heading: Footnotes, text: "Use footnotes to reference other documents or to provide detail that would otherwise clutter the text.^[Report 2/12 – page 23, paragraph 14.]" }
+  - para: { heading: Supporting documents, text: "Annexes, appendices and enclosures are to be complete, stand-alone documents and must not have a protective security marking higher than the parent minute." }
+  - para: { heading: Signature blocks, text: "Signature blocks are not to be placed on a page without text; include at least two lines of text above the signature block." }
+  - group: Group heading
+  - para: "………………………………………………………………"
+  - recommendations:
+      lead: "It is recommended that CA:"
+      items:
+        - "**note** that ……………………"
+        - "**note** the ……………………"
+        - "**agree** to ……………………"
+        - "**agree** that ……………………"
+signature: { initials: JO, surname: Bloggs, rank: BRIG, appointment: LCC }
+telephone: "DTelN (nnn) nnnn"
+annexes:
+  - { title: Nominal Role for EX THREAT }
+  - { title: OTP Activities to Dec xx }
+enclosures:
+  - Report LMN 2/21 dated 15 Mar 21

@@ -47,7 +47,7 @@ font:
     footnote:          { value: 10, src: "1.2.16(4)(e), 1.2.19b", tag: M }
     quotation_delta:   { value: -0.5, src: "1.2.14b 'one half point lower'", tag: A-09 }
     letterhead_address: { value: 10, src: "Fig 1-4 '(Calibri 10)'", tag: A-33 }
-    originator_descriptor: { value: null, bold: true, align: center, src: "Fig 2-4 (size not stated)", tag: A-22 }
+    originator_descriptor: { value: 16, bold: true, align: center, src: "Fig 2-4 measured: descriptor and identifier glyph height 1.33x body text => 16 pt (size not stated in prose)", tag: T, register: A-22 }
 
 spacing:   # before / after in pt; line spacing single unless noted
   part_heading:     { before: 12, after: 12, src: "1.2.16(11)(a), 4.4.12(1)", tag: M }
@@ -92,8 +92,8 @@ tables:
     major_number: { value: "part, else chapter", src: "1.2.25b", tag: A-23 }
 
 bullets:
-  level1: { symbol: "•", label_indent: 1.0, src: "1.2.23g(1)", tag: M }
-  level2: { symbol: "♦", label_indent: 2.0, src: "1.2.23g(1)", tag: M }
+  level1: { symbol: "\uF0B7", font: Symbol, label_indent: 1.0, src: "1.2.23g(1) 'small dot'", tag: M, note: "Word's standard bullet glyph (Symbol F0B7)" }
+  level2: { symbol: "\uF075", font: Wingdings, label_indent: 2.0, src: "1.2.23g(1) 'small diamond'", tag: M, note: "Word's standard diamond bullet (Wingdings F075); glyph choice is [I]" }
   dpb_text_indent: { value: 2.0, src: "2.2.7(2)", tag: M }
   forbidden_in: [formal_letter, directive, order, instruction]   # 1.2.23g, 2.1.16(12), 2.2.3(5)
 

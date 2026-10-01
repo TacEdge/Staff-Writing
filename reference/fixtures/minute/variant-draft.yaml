@@ -1,0 +1,14 @@
+# Variant exercising: RESTRICTED (plain page numbers, first page unnumbered);
+# hard-copy DRAFT (watermark + double spacing, 1.2.22); a single first-level
+# paragraph (not numbered, 2.1.3(3)); identifier without appointment/number
+# (internal unit minute, 2.1.11(3)); typed day (digital completion, A-02).
+type: minute
+markings: { classification: RESTRICTED }
+draft: hardcopy
+originator: 5 Squadron RNZAF
+date: { year: 2025, month: 10, day: 7 }
+to: [{ appointment: CO 5 SQN }]
+subject: Request for additional leave
+body:
+  - para: "I request three days of additional annual leave from 14–16 Oct 25 to attend a family event in Christchurch. My duties will be covered by FLTLT Example, who has agreed to the arrangement."
+signature: { initials: AN, surname: Officer, rank: FLGOFF, service: RNZAF, appointment: Training Officer }

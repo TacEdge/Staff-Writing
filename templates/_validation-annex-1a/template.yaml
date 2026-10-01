@@ -1,0 +1,23 @@
+# VALIDATION ONLY - not a DFI document type.
+# Reproduces DFI 5.1 Annex 1A "Notes on Standard NZDF Layout Conventions -
+# Non-letter Format Example" (Figs 1-4, 1-5, 1-6; PDF pp 49-53) to validate the
+# shared page/layout system before any document type is built on it.
+id: _validation-annex-1a
+title: Annex 1A layout validation
+dfi: { section: "1.2.16-1.2.24", template: "-", example: "1A (Figs 1-4, 1-5, 1-6)" }
+page: { margins: standard, orientation: portrait }
+numbering: correspondence
+page_numbering: unclassified_from_page_2
+date: { style: abbreviated }
+blocks:
+  - letterhead
+  - date_line: { indent_cm: 0.0 }
+  - addressees: { distribution_replaces: false }   # Fig 1-4 illustrates both
+  - subject
+  - references
+  - body: { numbering: correspondence }
+  - signature: { variant: minute }
+  - annex_list
+  - enclosure_list
+  - distribution
+  - supporting_documents

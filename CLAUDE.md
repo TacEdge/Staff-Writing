@@ -141,8 +141,11 @@ When you draft text as well as layout, apply DFI 5.1 Part 1 Chapter 2
   checking. Say so in any visual-comparison note.
 - Language en-NZ. Automatic hyphenation off (1.2.7(11)(b)). Spacing between
   paragraphs of the same style must not be suppressed (4.4.16a).
-- The technology stack and input format are set out in `docs/architecture.md`.
-  They remain proposals until register section T is approved.
+- Stack (approved T-01, T-02): Python + python-docx + pydantic, YAML content.
+  See `renderer/README.md` for setup, the as-built architecture and the test
+  commands. Run `cd renderer && python3 -m pytest -q tests` after any change.
+- Block builders in `renderer/staffwriting/blocks.py` are shared: changing one
+  changes every document type that uses it. Re-run all fixtures.
 
 ## 7. Change control
 

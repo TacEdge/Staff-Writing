@@ -1,0 +1,49 @@
+# Re-key of DFI 5.1 Annex 2E Submission - Example (Fig 2-5, PDF pp 74-75).
+# Faithful to the figure except:
+#  - date "01 Jun 25" is rendered "1 Jun 25" (no leading zero, A-01 decided);
+#  - the figure's italic instructions "(remove this block if not required)" and
+#    "(list below or remove ...)" are DFI annotations, not content, and are omitted;
+#  - "Financial and resource implications" is ADDED because 2.1.12b(3) makes it
+#    mandatory although Fig 2-5 omits it (A-34 decided). Its text is fixture
+#    filler, not DFI text;
+#  - Fig 2-5 italicises "[addressee appointment]"; kept as *italic*.
+type: submission
+originator: HQ Joint Forces New Zealand
+identifier: { appointment: MCC, number: 3, year: 2025 }
+date: { year: 2025, month: 6, day: 1 }
+file_reference: ABC 8000-0000
+to: [{ appointment: COMLOG, through: LCM }]
+info: [COS DLC]
+subject: SUBJECT HEADING
+references:
+  - "Principal references (*use if appropriate, otherwise cite references in footnotes*)"
+issue: "Set out the issue in one or two short sentences."
+recommendations:
+  lead: "Set out the essence of the recommendations. It is recommended that [*addressee appointment*]:"
+  items:
+    - "**note** that………"
+    - "**note** the………"
+    - "**agree** to………"
+    - "**agree** that………"
+timing: "State when a decision is required by, the reason(s) for the timeline and any implications if the deadline were to be missed."
+context:
+  - para:
+      text: "The remainder of the submission conforms to the NZDF minute style and should be set out in the most appropriate way to address the issue. Include only information essential to any decision-making requested of the recipient. In particular:"
+      sub:
+        - { heading: Content, text: "The content of the main text depends on the complexity of the submission and the decision being sought." }
+        - heading: Sections
+          text: "Where it is considered appropriate, the main text may be split into sections using appropriate group headings, for example:"
+          sub: ["Background.", "Context."]
+        - { heading: Argument, text: "Clearly set out the balanced argument leading to the recommendations." }
+        - { heading: Implications, text: "Ensure all implications of the recommendations are identified, particularly financial, timing political or policy consequences and any follow-on effects of a decision on the issue." }
+        - { heading: Effects, text: "Decision-makers need to appreciate the concerns and aspirations of those who are likely to be affected by a submission’s recommendations. This includes both internal and external issues and the minute should state consequential changes to presentational issues such as advising the Minister, changes to publications, information published on the website and any other potential impact." }
+        - { heading: Consultation, text: "Consultation with those who have a direct interest in the issue is essential to ensure the minute clearly covers all aspects of the subject. When seeking a decision, the originator is to obtain Service or policy advice at the appropriate level. If there is a counter-argument or dissenting viewpoint, this must be explained in the minute to enable fully informed decision-making." }
+financial_and_resource_implications: "[Fixture filler: state the affordability, budgetary impact and other resource implications, or state that there are none.]"
+summary:
+  - "A summary is optional. If the main text or financial considerations are particularly long and complicated, include a summary of the main factors to assist decision-making. Ideally, a minute making a submission should be no longer than four pages and should not require a summary, especially where supporting information can be presented in annexes. The summary is not to contain new information."
+signature: { initials: JO, surname: Bloggs, rank: CDR, appointment: MCC }
+telephone: "DTelN (nnn) nnnn"
+annexes:
+  - { title: JKL 8000-0000 dated 01 Jun 18 }
+  - { title: RST 1000-0000 dated 10 Jun 18 }
+enclosures: ["Report LMN dated 15 Mar 18"]

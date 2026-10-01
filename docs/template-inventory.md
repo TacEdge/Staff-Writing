@@ -16,8 +16,8 @@ the shared engine). **P2** = common staff products that reuse P1 components.
 
 | # | Document | DFI section | Template annex | Example annex | Scheme | Priority |
 |---|---|---|---|---|---|---|
-| 1 | Minute | 2.1.10–2.1.11 | 2D (Fig 2-4) | 2C (Fig 2-3) | C | **P1** |
-| 2 | Submission (decision minute) | 2.1.12 | 2F (Fig 2-6) | 2E (Fig 2-5) | C | **P1** |
+| 1 | Minute **(implemented; gate passed 2026-10-01)** | 2.1.10–2.1.11 | 2D (Fig 2-4) | 2C (Fig 2-3) | C | **P1** |
+| 2 | Submission (decision minute) **(implemented, under review)** | 2.1.12 | 2F (Fig 2-6) | 2E (Fig 2-5) | C | **P1** |
 | 3 | Annex / appendix pages (shared sub-template) | 1.2.24 | Annex 1A (Figs 1-5, 1-6) | 2P p3 (Annex A) | C | **P1** |
 | 4 | Dot-point brief (DPB) | 2.2.6–2.2.8 | 2O (Fig 2-17) | – | C + bullets | P2 |
 | 5 | Visit report / post activity report | 2.2.9–2.2.11 | 2Q (Fig 2-19) | 2P (Fig 2-18) | C | P2 |

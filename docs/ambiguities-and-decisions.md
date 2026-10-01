@@ -4,6 +4,25 @@ Status values: **OPEN** (needs your decision), **PROPOSED** (my default; it will
 be adopted unless you object), **DECIDED** (approved; the decision and date are
 recorded).
 
+## Decisions recorded 2026-10-01 (foundation review)
+
+The foundation was provisionally approved. All **PROPOSED** defaults are adopted,
+except as directed below.
+
+| ID | Decision |
+|---|---|
+| A-01 | DECIDED: as proposed (no leading zero in correspondence, letters and administrative documents; leading zero in publication headers, record of change and repeal notes). |
+| A-02 | DECIDED: as proposed. Leave the signing day blank by default, with configurable support for digital completion (`date.day`). |
+| A-05 | DECIDED: follow the written DFI rule unless an explicit document-specific written rule overrides it. Conflicting template or example indentation is an ambiguity, not the governing rule. So correspondence and administrative documents (including delegations and the MOU) turn over to the margin; directives, AIs and DFO(T)s hang (fn 23, 3.2.11(6), 3.2.18(6), 3.2.22a(7)). |
+| A-07 | DECIDED: follow the written prohibition on em dashes in generated administrative writing. Keep an em dash only where mandatory or prescribed boilerplate is reproduced verbatim. |
+| A-34 | DECIDED: include **Financial and resource implications** in submissions, per the written structural requirement (2.1.12b(3)). |
+| A-36 | DECIDED: the authority order is page **ii**, consistent with DFI 5.1 itself and the exemplars. The conflict with 4.4.7b(1) remains recorded. |
+| A-02 / T-06 related | DECIDED: the primary product is a finished .docx. Blank reusable templates may come later. |
+| Section E | DECIDED: correct obvious typographical or grammatical errors in generated content. Do **not** silently correct, update or reinterpret substantive policy, legislative or legal references (eg E-06 Privacy Act 1993): flag them for review. |
+| T-01 / T-02 | DECIDED: Python/python-docx generation and validation, with structured YAML content and specification files. |
+| T-06 | DECIDED: finished .docx first; blank templates later. |
+| External inputs | DECIDED: missing external artefacts (NZDF_DSWT templates, badge/logo files, rank lists, PSR/DFO 51 material) must not block Phase 1. Record their absence, and design so they can be added later without rework. |
+
 Every entry cites DFI 5.1 v2.01. A "proposed default" is how the renderer will
 behave until you decide. It never changes the DFI.
 
@@ -12,6 +31,29 @@ behave until you decide. It never changes the DFI.
 - **Section T:** technical and implementation decisions (not DFI matters)
 
 ---
+
+## Phase 1 (Minute): items that emerged
+
+Implementation decisions I-M1 to I-M12, discrepancies D-01 to D-10 and Word
+verification items V-01 to V-04 are recorded in `templates/minute/NOTES.md` §6–7.
+Decisions recorded 2026-10-01 (Minute gate review):
+
+| ID | Decision |
+|---|---|
+| D-01 | DECIDED: bold every action addressee. The Annex 2C inconsistency stays in the discrepancy record. |
+| D-06 | DECIDED: do not implement signature-area shading for now. It remains **unresolved** pending authoritative Word-template or digital-signature evidence. |
+| D-09, D-10 | DECIDED: defer paragraph grading indicators and the single-approval statement. They are not implemented during the Minute validation gate. |
+| I-M7 | Kept: Word conditional field; to be verified in Word (V-01). |
+
+## Submission: items that emerged
+
+Decisions I-S1 to I-S8 and discrepancies DS-01 to DS-07 are recorded in
+`templates/submission/NOTES.md`. These need your decision:
+
+| ID | Issue | Proposed |
+|---|---|---|
+| S-01 | Template 2F shows six fixed Context sub-headings (Content, Sections, Argument, Implications, Effects, Consultation). The prose (2.1.12b(2)) describes them as considerations; only consultation is an "are to". | Require Consultation only; leave the other headings to the author (I-S3) |
+| S-02 | Position of the mandatory "Financial and resource implications" paragraph (no template guidance). | First-level paragraph after Context, before Summary, following the prose order (I-S2) |
 
 ## A. Ambiguities and conflicts in DFI 5.1
 
