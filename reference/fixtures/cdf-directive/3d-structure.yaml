@@ -1,0 +1,41 @@
+# Mirrors the element set and order of DFI 5.1 Annex 3D CDF Directive -
+# Template (Fig 3-5, PDF pp 167-168), with representative fictional values in
+# place of the red placeholders. No DFI example exists. Two or more pages, so
+# page 1 carries a number (3.2.11(1); DR-01; V-05).
+type: cdf-directive
+letterhead:
+  device: nzdf_badge
+  address: [Headquarters New Zealand Defence Force, Defence House, 34 Bowen Street, Wellington 6011]
+date: { year: 2026, month: 4 }
+distribution: [CN, CA, CAF, COMJFNZ, VCDF, CoS HQNZDF, CFO, CPO]
+number: 3
+year: 2026
+subject: Interim arrangements for example equipment accounting
+responsibilities: the management of NZDF equipment accounts
+purpose:
+  - "set interim rules for accounting for example equipment until DFO 14 is amended"
+context:
+  - "An audit of equipment accounts identified inconsistent recording of example equipment across the Services. Interim rules are needed until the rules are incorporated in the parent publication."
+conduct:
+  - "Equipment accounts are to be reconciled monthly using the rules in this Directive."
+accountabilities:
+  - "CFO is accountable for the financial implications of this Directive and is to report on progress quarterly."
+coordinating_arrangements:
+  planning_guidance:
+    - "COS are to complete the first reconciliation by 30 Jun 26."
+administration:
+  finance:
+    - "Costs are to be met from existing baselines."
+  legal:
+    - "Defence Legal Services has advised that there are no legal implications."
+command_and_control:
+  reporting:
+    - "COS are to report reconciliation results to CFO each quarter."
+  dirlauth:
+    - "DIRLAUTH is granted between Service equipment accountants and the Finance Branch."
+  points_of_contact:
+    - "The point of contact is SO1 Finance Policy, DTelN (349) 7101."
+cancellation:
+  option: incorporated
+  date: { year: 2027, month: 3, day: 31 }
+signature: { initials: AB, surname: Example, rank: AM, appointment: Chief of Defence Force }

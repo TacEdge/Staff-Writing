@@ -1,0 +1,34 @@
+# CONFIDENTIAL with endorsement: "Page n of N" on every page (1.2.16(7)),
+# copy number in the header (A-21), annex introduced in the text (3.2.11(8)).
+# Marking pairing for layout testing only (A-13). Fictional content.
+type: cdf-directive
+markings: { classification: CONFIDENTIAL, endorsement: SENSITIVE }
+copy_number: { number: 4, of: 10 }
+letterhead:
+  device: nzdf_badge
+  address: [Headquarters New Zealand Defence Force, Wellington]
+date: { year: 2026, month: 9 }
+distribution: [CN, CA, CAF, COMJFNZ, VCDF, CoS HQNZDF]
+number: 8
+year: 2026
+subject: Example readiness reporting
+responsibilities: readiness reporting
+purpose:
+  - "direct interim readiness reporting"
+  - "assign responsibility for the reporting template at Annex A"
+context:
+  - "Readiness reporting is to follow the template at Annex A until the parent publication is amended."
+conduct:
+  - text: "Reports are to—"
+    sentence_list: and
+    sub:
+      - "be submitted monthly"
+      - "use the template at Annex A"
+cancellation:
+  option: with_effect
+  date: { year: 2027, month: 8, day: 31 }
+signature: { initials: AB, surname: Example, rank: AM, appointment: Chief of Defence Force }
+annexes:
+  - title: Readiness reporting template
+    body:
+      - para: "The template sets out the readiness measures by capability."

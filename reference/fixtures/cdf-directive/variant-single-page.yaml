@@ -1,0 +1,20 @@
+# One page, four or fewer addressees, the second cancellation wording. Page 1
+# is not numbered when the main document has one page (3.2.11(1); DR-01): the
+# conditional field is evaluated by Word (V-05). Fictional content.
+type: cdf-directive
+letterhead:
+  device: nzdf_badge
+  address: [Headquarters New Zealand Defence Force, Wellington]
+date: { year: 2026, month: 6, day: 2 }
+to: [{ appointment: COMJFNZ }, { appointment: CoS HQNZDF }]
+number: 5
+year: 2026
+subject: Temporary suspension of example ceremonial activity
+purpose:
+  - "suspend example ceremonial activity during the national day of mourning"
+context:
+  - "Example ceremonial activity is to be suspended on Friday 5 Jun 26."
+cancellation:
+  option: with_effect
+  date: { year: 2026, month: 6, day: 6 }
+signature: { initials: AB, surname: Example, rank: AM, appointment: Chief of Defence Force }

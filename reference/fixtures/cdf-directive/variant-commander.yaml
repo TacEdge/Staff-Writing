@@ -1,0 +1,26 @@
+# Chief of Service directive (3.2.12): Service badge at the issuer's discretion
+# (3.2.12b); variant of the CDF Directive (DR-13). Authority wording supplied by
+# the author. Fictional content.
+type: cdf-directive
+issuer: commander
+letterhead:
+  device: army_badge
+  address: [Army General Staff, Defence House, Wellington]
+date: { year: 2026, month: 7 }
+to: [{ appointment: COMD 1 BDE }, { appointment: COMD TRADOC }, { appointment: COMD 1 (NZ) Bde }]
+identifier_appointment: CA
+number: 11
+year: 2026
+subject: Example field training safety requirements
+authority: "Issued by the Chief of Army."
+responsibilities: field training safety
+purpose:
+  - "set safety requirements for example field training"
+context:
+  - "Field training safety arrangements differ between formations."
+conduct:
+  - "Formations are to apply the requirements from 1 Aug 26."
+cancellation:
+  option: with_effect
+  date: { year: 2027, month: 6, day: 30 }
+signature: { initials: CD, surname: Sample, rank: MAJGEN, appointment: Chief of Army }

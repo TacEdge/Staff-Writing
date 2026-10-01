@@ -1,0 +1,22 @@
+# Senior-executive directive (3.2.13): no badge, crest or logo (3.2.13c); the
+# layout generally conforms to the CDF Directive (3.2.13b; DR-13). Fictional.
+type: cdf-directive
+issuer: senior_executive
+letterhead:
+  address: [Finance Branch, Headquarters New Zealand Defence Force, Wellington]
+date: { year: 2026, month: 8 }
+distribution: [CN, CA, CAF, COMJFNZ, CoS HQNZDF, CPO]
+identifier_appointment: CFO
+number: 2
+year: 2026
+subject: Example delegations reporting
+authority: "Issued by the Chief Financial Officer under delegation from the Chief of Defence Force."
+responsibilities: exercising financial delegations
+purpose:
+  - "set reporting requirements for the exercise of example financial delegations"
+context:
+  - "Delegation holders are to report the use of example delegations quarterly."
+cancellation:
+  option: with_effect
+  date: { year: 2027, month: 6, day: 30 }
+signature: { initials: EF, surname: Instance, appointment: Chief Financial Officer, rank: Mr }

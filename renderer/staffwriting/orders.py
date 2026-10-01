@@ -17,7 +17,7 @@ from typing import Iterable, Optional, Union
 from pydantic import model_validator
 
 from . import dates
-from .model import Addressee, DocDate, GroupHeading, Para, ParaBlock, Strict
+from .model import Addressee, DocDate, GroupHeading, Identifier, Para, ParaBlock, Strict
 from .wording import block_texts, para_texts, standard_warnings, text_warnings
 
 # 3.2.11(3), 3.2.22a(1): more than four addressees -> a distribution list.
@@ -79,6 +79,35 @@ def full_date(d: DocDate, where: str) -> DocDate:
     if d.day is None:
         raise ValueError(f"{where}: give the full date, including the day.")
     return d
+
+
+CDF_APPOINTMENT = "Chief of Defence Force"
+CDF_BADGES = ("nzdf_badge", "cdf_gold_badge")      # 3.2.11(2), 3.2.18(2); BR-04
+
+
+def check_cdf_signatory(signature, rule: str) -> None:
+    """3.2.11(7), 3.2.18(7): issued by CDF. An authorised signatory signs over
+    CDF's block and handwrites 'for', which is not generated (DR-14)."""
+    if signature.appointment != CDF_APPOINTMENT:
+        raise ValueError(f"The signature block is CDF's: appointment '{CDF_APPOINTMENT}' ({rule}). "
+                         "An authorised signatory signs over it and handwrites 'for' (DR-14).")
+
+
+def check_badge(letterhead, allowed: tuple[str, ...], rule: str) -> None:
+    device = letterhead.device if letterhead else None
+    if device not in allowed:
+        raise ValueError(f"Badge required: one of {', '.join(allowed)} ({rule}; BR-04).")
+
+
+def directive_identifier(appointment: str | None, number: int, year: int) -> Identifier:
+    return Identifier(appointment=appointment, number=number, year=year)
+
+
+def add_years(d, years: int = 1):
+    try:
+        return d.replace(year=d.year + years)
+    except ValueError:                      # 29 Feb
+        return d.replace(year=d.year + years, day=28)
 
 
 # ------------------------------------------------------- shared sub-structures
