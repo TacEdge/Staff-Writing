@@ -17,7 +17,7 @@ V-01 to V-04: PASSED in Microsoft Word 2026-10-01 (record in
 | # | Element | Tag | Source |
 |---|---|---|---|
 | 1 | Markings, only in exceptional circumstances | [D] | 2.1.16(1) |
-| 2 | Visual identifier top left (placeholder until artwork is supplied, T-05); unit name (bold) and address top right, 10 pt | [M] / [T] | 2.1.16(3)–(4); Figs 2-8, 2-9; A-14, A-33 |
+| 2 | Visual identifier top left (official artwork, BR-01; badge 2.5 cm or logo 1.25 cm high, BR-05; no wording mark, BR-02); unit name (bold) and address top right, 10 pt | [M] / [T] | 2.1.16(3)–(4); Figs 2-8, 2-9; A-14, A-33 |
 | 3 | "From: [appointment or name]" centred, 12 pt before and after (optional) | [D] | 2.1.16(4) |
 | 4 | Full date at the left margin (day blank by default) + file reference right, on the same line | [M] | 2.1.16(5)–(6); A-01, A-02 |
 | 5 | Recipient: name, appointment/post (one addressee, by name) | [M] | 2.1.16(7), 2.1.17a |
@@ -69,5 +69,5 @@ Differences from Figs 2-7 to 2-9 (`output/comparisons/internal-letter-*`):
 | DL-02 | With the day left blank, the date reads "November 2025" at the margin with no space reserved for the day | 2.1.16(5) says left margin and day handwritten. **APPROVED AS IMPLEMENTED 2026-10-01**: no reserved space. |
 | DL-03 | The template shows about four blank lines before the close and one after; ours has one before and six after | 1.2.21c prose (I-L4). A bug that put the six-line gap **before** the close as well (twelve blank lines) was found during the external-letter comparison and fixed; it is covered by `test_close_follows_text_then_six_lines`. |
 | DL-04 | Example 2G omits the rank line from the signature block | 2.1.16(17) requires the full rank; the prose governs |
-| DL-05 | Badge and logo are labelled placeholders | T-05 (artwork not held) |
+| DL-05 | Badge and logo were labelled placeholders | **Resolved 2026-10-01** (BR-06): official artwork. The Force for New Zealand wording mark that 2.1.16(3)(c) names is **not** added: Figs 2-7 to 2-9 do not show it and its placement is not defined for these letters (BR-02; open point OP-01). |
 | DL-06 | Example 2G italic annotations and the handwritten signature are not reproduced | DFI notes, not content |

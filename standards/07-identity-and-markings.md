@@ -44,7 +44,18 @@ Annex 1C; 2.1.11(1); 2.1.16(3)–(4); 2.2.3(2); 2.2.10(2); 2.3.6f; 2.3.8(1)–(3
   address block top right.
 - **Artwork:** Annex 1C shows the badges and logos, but production artwork must
   come from the NZDF identity standards (DFI 0.103 per 1.1.3f/4.1.7b; DFI 3.1
-  per 1.2.26: see [A-32]). Assets are a user-supplied input (register T-05).
+  per 1.2.26: see [A-32]). Source in use: the NZDF Visual Identity Standards v1.1
+  (Apr 2022), rendered unaltered at render time (register T-05, BR-01).
+- **Which device** `[M]`: badge for official documents including minutes,
+  orders and instructions (1.2.26c), CDF Directives and Op Directives
+  (3.2.11(2), 3.2.18(2)). Logo for other documents and correspondence
+  (1.2.26f, 2.1.16(3)(c)). Gold-leaf badge for CDF and their office only
+  (1.2.26e, 2.1.16(3)(b); BR-04). No device on AIs (3.2.22a(2)) or
+  senior-executive directives (3.2.13c).
+- **Size** `[T]`: badge 2.5 cm high, logo 1.25 cm high (measured from the DFI
+  figures), logo never narrower than 35 mm (VIS) (BR-05; tokens `identity.*`).
+- **Force for New Zealand wording mark:** not generated (BR-02). See open point
+  OP-01 in the register.
 
 ## 2. Protective markings
 

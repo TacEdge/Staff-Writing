@@ -11,6 +11,7 @@ from typing import Literal, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from .artwork import DEVICE_KEYS
 from .inline import plain
 
 # ----------------------------------------------------------------- markings
@@ -283,10 +284,26 @@ def plain_len(text: str) -> int:
 Para.model_rebuild()
 
 
+DeviceKey = Literal[DEVICE_KEYS]   # artwork manifest (register BR-01)
+
+
+_CDF_OFFICE = re.compile(r"\b(Chief of Defence Force|CDF|OCDF)\b")
+
+
+def check_gold_badge(device: Optional[str], *originator: Optional[str]) -> None:
+    """BR-04: the gold-leaf badge is for CDF and their office only
+    (1.2.26e, 2.1.16(3)(b)). `originator` is the signatory appointment and any
+    other line naming the originator."""
+    if device == "cdf_gold_badge" and not any(t and _CDF_OFFICE.search(t) for t in originator):
+        raise ValueError("The gold-leaf badge may be used only by CDF and their office "
+                         "(1.2.26e, 2.1.16(3)(b); register BR-04).")
+
+
 class Letterhead(Strict):
     """Badge/logo slot (top left) and address block (top right) (Fig 1-4; A-14).
-    `device` names the badge or logo; artwork is a later input (T-05)."""
+    `device` is a key of the identity-artwork manifest (BR-01); the artwork is
+    rendered from the NZDF Visual Identity Standards."""
 
-    device: Optional[str] = None
+    device: Optional[DeviceKey] = None
     unit: Optional[str] = None  # first line in bold, eg "[Unit name]" (Figs 2-8, 2-9) [T]
     address: list[str] = Field(min_length=1)

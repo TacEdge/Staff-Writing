@@ -4,7 +4,7 @@
 type: internal-letter
 purpose: congratulatory
 letterhead:
-  device: "NZDF logo with Force for New Zealand logotype"
+  device: nzdf_logo
   unit: New Zealand Army Leadership Centre
   address: [Waiouru Military Camp, Waiouru 4861]
 date: { year: 2025, month: 11 }

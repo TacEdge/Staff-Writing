@@ -11,7 +11,7 @@ from typing import Literal, Optional, Union
 
 from pydantic import Field, field_validator, model_validator
 
-from .model import CopyNumber, DocDate, Letterhead, Markings, Para, Strict, check_initials
+from .model import CopyNumber, DocDate, Letterhead, Markings, Para, Strict, check_gold_badge, check_initials
 from .wording import block_texts, standard_warnings, text_warnings
 
 
@@ -178,6 +178,8 @@ class LetterBase(Strict):
     @model_validator(mode="after")
     def _pairing(self):
         check_pairing(self.salutation, self.close)
+        check_gold_badge(self.letterhead.device, self.signature.appointment,
+                         self.from_line.text if self.from_line else None)
         return self
 
     def common_warnings(self, *, external: bool) -> list[str]:

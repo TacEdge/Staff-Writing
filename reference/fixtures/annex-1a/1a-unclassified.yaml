@@ -4,7 +4,7 @@
 type: _validation-annex-1a
 markings: {}
 letterhead:
-  device: NZDF badge
+  device: nzdf_badge
   address:
   - '[Unit name]'
   - '[Address]'

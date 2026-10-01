@@ -3,7 +3,7 @@
 # recipient (2.1.18(2)).
 type: external-letter
 letterhead:
-  device: "NZDF logo with Force for New Zealand logotype"
+  device: nzdf_logo
   address: [New Zealand Army Leadership Centre, Waiouru Military Camp, Private Bag 1, Waiouru 4861]
 from_line: { text: Commandant, shows: appointment }
 date: { year: 2025, month: 12 }

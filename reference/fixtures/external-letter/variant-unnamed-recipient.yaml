@@ -3,7 +3,7 @@
 # 1.2.17(1)). Fictional content.
 type: external-letter
 letterhead:
-  device: "NZDF logo with Force for New Zealand logotype"
+  device: nzdf_logo
   address: [Headquarters New Zealand Defence Force, Defence House, 34 Bowen Street, Wellington 6011]
 date: { year: 2025, month: 11, day: 3 }
 recipient: [The Manager, Wellington Venue Hire, PO Box 900, WELLINGTON 6140]

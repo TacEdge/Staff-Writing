@@ -176,6 +176,12 @@ page_numbering:
     end:    { format: "EM-{n}", src: "4.4.7b(5)", tag: M }
     classified: { format: decimal, start_on_title: 1, src: "4.4.7c", tag: M }
 
+identity:   # badge and logo size (register BR-05); artwork from the NZDF Visual Identity Standards (BR-01)
+  badge_height: { value: 2.5, src: "Figs 1-4, 3-5, 3-6 measured (same badge image, 2.31 x 2.50 cm at true scale); no VIS minimum for badges", tag: T, register: BR-05 }
+  logo_height:  { value: 1.25, src: "Figs 2-7 (1.30 cm) and 2-10 (1.19 cm) measured at true scale; mean", tag: T, register: BR-05 }
+  logo_min_width: { value: 3.5, src: "VIS pp 8, 26, 40, 54 minimum size 35 mm", tag: M, register: BR-05 }
+  render_dpi: { value: 600, src: "pixels per inch of the derived artwork at its display size", tag: I, register: BR-01 }
+
 copy_number:
   format: "Copy {n} of {N}"
   position: header_right_below_markings

@@ -8,7 +8,7 @@ dfi: { section: "1.2.16-1.2.24", template: "-", example: "1A (Figs 1-4, 1-5, 1-6
 page: { margins: standard, orientation: portrait }
 numbering: correspondence
 page_numbering: unclassified_from_page_2
-identity: letterhead_placeholder                 # Fig 1-4 crest/logo slot (T-05)
+identity: letterhead                            # Fig 1-4 badge slot (BR-01)
 date: { style: abbreviated }
 blocks:
   - letterhead

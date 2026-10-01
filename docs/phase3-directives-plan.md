@@ -1,7 +1,11 @@
 # Phase 3 plan: Administrative Instruction, CDF Directive, CDF Operational Directive
 
-Status: **PLAN ONLY, awaiting approval (2026-10-01).** Nothing in this plan has
-been implemented. The decisions in §5 are needed before implementation starts.
+Status: **APPROVED with changes (2026-10-01).** The decisions actually taken
+are in `docs/ambiguities-and-decisions.md` ("Decisions recorded 2026-10-01
+(Phase 3)"). Where they differ from the recommendations below, the register
+governs. In particular: DR-06 (prose-only mandatory status), DR-11 (no
+generated headings), DR-12 (not adopted), BR-01 (no committed extracted
+artwork), BR-02 (no invented wording-mark placement), E-13 and E-14.
 
 Constraint from the user (2026-10-01): the Phase 1–2 renderer foundation is
 accepted, and no further architectural changes are to be made unless a newly

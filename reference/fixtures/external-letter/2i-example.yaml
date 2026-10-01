@@ -2,13 +2,13 @@
 # Faithful to the figure except:
 #  - Fig 2-10 shows no date; 2.1.16(5) requires one, so a fictional date is
 #    given (A-30 decided);
-#  - Fig 2-10 shows no device; template 2J places one top left, so a labelled
-#    placeholder is used (T-05);
+#  - Fig 2-10 shows the NZ Army logo top left: official artwork (army_logo,
+#    BR-01). Corrected 2026-10-01 from an earlier "NZ Army badge" label (BR-06);
 #  - the italic annotations "(if appropriate)" and "(identify reference in
 #    introductory paragraph)" are DFI notes, not content, and are omitted.
 type: external-letter
 letterhead:
-  device: "NZ Army badge"
+  device: army_logo
   address: [Defence House, Private Bag 39997, Wellington Mail Centre, Lower Hutt 5045, New Zealand]
 date: { year: 2016, month: 6, day: 3 }
 recipient: [Mr MP Gummint, Ashes Taskings Ltd, 411 Target Road, AUCKLAND 6097]

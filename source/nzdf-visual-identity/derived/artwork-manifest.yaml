@@ -1,0 +1,23 @@
+# DERIVED FILE: not authoritative. Describes where each piece of artwork sits in
+# the controlled source PDF so the renderer can derive it reproducibly at render
+# time (register BR-01). No extracted artwork is committed.
+#
+# Boxes are in PDF points from the top-left of the page (pdftocairo -x -y -W -H
+# convention, scaled by the render resolution). They were measured on
+# 2026-10-01 as the tight bounding box of the artwork at 300 dpi, and checked
+# visually. Re-measure only if the source checksum changes.
+
+source: "source/nzdf-visual-identity/NZDF Visual Identity Standards Apr 2022.pdf"
+sha256: "486a9eb64ca1be4c2a5c3d5a8eadb7ca87b895976594433ef232f1bed3829f67"
+
+devices:
+  # kind: badge | logo (sets the size token used: identity.badge_height / logo_height)
+  nzdf_badge:     { kind: badge, page: 12, box: [44.88, 496.32, 156.00, 166.08], label: "NZDF badge (assented 21 Oct 1993)", dfi: "1.2.26c, 2.1.16(3)(a), 3.2.11(2), 3.2.18(2); Annex 1C" }
+  cdf_gold_badge: { kind: badge, page: 12, box: [303.12, 496.08, 156.96, 165.84], label: "CDF gold-leaf badge", dfi: "1.2.26e, 2.1.16(3)(b)", restricted_to: "CDF and their office (BR-04)" }
+  nzdf_logo:      { kind: logo,  page: 8,  box: [134.64, 423.36, 310.08, 67.20],  label: "NZDF logo", dfi: "1.2.26f, 2.1.16(3)(c); Annex 1C" }
+  navy_logo:      { kind: logo,  page: 26, box: [151.44, 387.36, 276.24, 75.60],  label: "RNZN logo", dfi: "1.2.26f; Annex 1C" }
+  navy_badge:     { kind: badge, page: 29, box: [233.76, 412.32, 139.68, 249.60], label: "RNZN badge", dfi: "1.2.26c, 2.1.16(3)(a); Annex 1C", raster: "embedded JPEG 194 x 347 px on a white background (about 350 ppi at 2.5 cm); all other devices are vector" }
+  army_logo:      { kind: logo,  page: 40, box: [149.52, 399.36, 285.36, 68.88],  label: "NZ Army logo", dfi: "1.2.26f; Annex 1C" }
+  army_badge:     { kind: badge, page: 43, box: [200.40, 419.52, 204.48, 188.88], label: "NZ Army badge", dfi: "1.2.26c, 2.1.16(3)(a); Annex 1C" }
+  airforce_logo:  { kind: logo,  page: 54, box: [158.16, 405.36, 264.48, 60.96],  label: "RNZAF logo", dfi: "1.2.26f; Annex 1C" }
+  airforce_badge: { kind: badge, page: 57, box: [194.64, 399.60, 219.36, 226.08], label: "RNZAF badge", dfi: "1.2.26c, 2.1.16(3)(a); Annex 1C" }

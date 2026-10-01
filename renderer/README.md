@@ -76,5 +76,8 @@ blocks.py   REGISTRY of reusable blocks: letterhead, originator_descriptor,
 Rules:
 - Read every formatting value from the tokens.
 - Emit real Word constructs (styles, numbering, fields, sections, footnotes).
-- `assets/` will hold **official artwork supplied by the user only** (T-05).
-  Until then the letterhead block renders a labelled placeholder.
+- Identity artwork (badges, logos) is **not stored** in the repository. `artwork.py`
+  renders each device from the controlled NZDF Visual Identity Standards PDF
+  (`source/nzdf-visual-identity/`, checksum verified) with poppler `pdftocairo`
+  into the git-ignored cache `output/.cache/artwork/` (BR-01). The device keys and
+  crop boxes are in `source/nzdf-visual-identity/derived/artwork-manifest.yaml`.

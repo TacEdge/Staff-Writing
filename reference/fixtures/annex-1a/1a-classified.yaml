@@ -9,7 +9,7 @@ type: _validation-annex-1a
 markings: { classification: CONFIDENTIAL, endorsement: SENSITIVE }
 copy_number: { number: 1, of: 5 }
 letterhead:
-  device: "NZDF badge"
+  device: nzdf_badge
   address: ["[Unit name]", "[Address]"]
 date: { year: 2025, month: 10, day: 3 }
 file_reference: File reference

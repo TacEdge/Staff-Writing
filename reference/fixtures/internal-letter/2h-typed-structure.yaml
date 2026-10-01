@@ -3,7 +3,7 @@
 type: internal-letter
 purpose: routine
 letterhead:
-  device: "NZ Army logo with Force for New Zealand logotype"
+  device: army_logo
   unit: New Zealand Army Leadership Centre
   address: [Waiouru Military Camp, Waiouru 4861]
 from_line: { text: Commandant, shows: appointment }

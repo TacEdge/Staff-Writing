@@ -2,7 +2,7 @@
 # Typewritten - Template (Fig 2-11, PDF p 87) with fictional values.
 type: external-letter
 letterhead:
-  device: "NZ Army logo with Force for New Zealand logotype"
+  device: army_logo
   address: [New Zealand Army Leadership Centre, Waiouru Military Camp, Private Bag 1, Waiouru 4861]
 from_line: { text: Commandant, shows: appointment }
 date: { year: 2025, month: 10, day: 14 }

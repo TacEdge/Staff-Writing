@@ -1,6 +1,6 @@
 # Re-key of DFI 5.1 Annex 2G Internal Formal Letter - Example (Fig 2-7, PDF p 83).
 # Faithful to the figure except:
-#  - the RNZAF logo is a labelled placeholder (official artwork not held, T-05);
+#  - the RNZAF logo is the official artwork (airforce_logo, BR-01);
 #  - the italic annotations "(appointment or name optional here)", "(if required)",
 #    "(typed or handwritten and matches closure)", "(if appropriate)" and
 #    "(if not identified below header)" are DFI notes, not content, and are omitted;
@@ -12,7 +12,7 @@
 type: internal-letter
 purpose: routine
 letterhead:
-  device: "RNZAF logo with Force for New Zealand logotype"
+  device: airforce_logo
   unit: Unit Name to go here
   address: [RNZAF Air Force Base Auckland, Auckland 0618]
 from_line: { text: Wing Commander BE Smyth, shows: name }

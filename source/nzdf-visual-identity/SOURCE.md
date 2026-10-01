@@ -32,9 +32,12 @@ The PDF is read-only. Never edit, re-save, optimise, rename or replace it.
 
 ## Artwork map
 
-All of the artwork below is **vector** in the PDF (it is not embedded raster),
-so it can be rendered at any resolution without loss. A test render at 600 dpi
-with a transparent background gave clean results.
+All of the artwork below is **vector** in the PDF, so it renders at any
+resolution without loss, **except the RNZN badge (p29)**. That badge is an
+embedded JPEG of 194 x 347 px on a white background: about 350 ppi at the
+2.5 cm display height, which is adequate for print but not lossless. Renders
+were checked visually on 2026-10-01. The crop boxes are in
+`derived/artwork-manifest.yaml`.
 
 | PDF page | Artwork | DFI use |
 |---|---|---|

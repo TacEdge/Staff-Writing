@@ -85,9 +85,47 @@ the engine, Annex 1A validation, Minute, Submission, DPB, VR/PAR, internal
 and external letters. User direction: no further architectural changes unless a
 subsequently implemented DFI document type requires them.
 
-Next family (planned, not started): Administrative Instruction, CDF Directive,
-CDF Operational Directive. See `docs/phase3-directives-plan.md`. Its open
-items are DR-01 to DR-17 in that plan, plus E-13 and E-14 below (proposed).
+Next family: Administrative Instruction, CDF Directive, CDF Operational
+Directive (`docs/phase3-directives-plan.md`). Decisions recorded below.
+
+## Decisions recorded 2026-10-01 (Phase 3: identity artwork and directive family)
+
+Governing principle (user, 2026-10-01): **DFI controls document structure; the
+NZDF Visual Identity Standards (VIS) supply artwork and identity treatment only
+where DFI points to them.** Where adopting a recommendation would introduce
+information, structure or behaviour not supported by DFI, the item is surfaced
+instead of adopted.
+
+| ID | Decision |
+|---|---|
+| BR-01 | APPROVED. Use the official VIS artwork in generated NZDF documents within this repository. Keep provenance and checksums. Keep **one controlled source** (the VIS PDF). Derive the rendering assets reproducibly from it at render time; do not commit duplicate extracted artwork. |
+| BR-02 | DECIDED. Do not invent wording-mark placement. Apply the Force for New Zealand wording mark only where the VIS and the applicable DFI document treatment support it. Do not add it to a DFI template that does not show it. |
+| BR-03 | APPROVED. DFI-specific document layout takes precedence (unit name top right, Fig 2-8). |
+| BR-04 | APPROVED. Standard NZDF badge by default. The CDF gold-leaf badge only where the source supports it: CDF and their office (1.2.26e, 2.1.16(3)(b)). |
+| BR-05 | APPROVED. Intended size from the DFI figures, never below an applicable VIS minimum. |
+| BR-06 | APPROVED. Replace the badge and logo placeholders in accepted Phase 1–2 outputs as the first Phase 3 step. This is a **controlled baseline update**: regression must show that the artwork is the only change. |
+| DR-01 | DECIDED. Count the main document only (SECTIONPAGES) for the two-page threshold. Annexes keep their own numbering regime. |
+| DR-02 | DECIDED. The AI follows A-11 and the general page-number rule (1.2.16(6)–(7)). |
+| DR-03 | DECIDED. Number the AI cancellation paragraph (3.2.22a(7); the written rule wins). |
+| DR-04 | DECIDED. Heading-only paragraphs are paragraph headings per 1.2.17(4): bold, with a full stop. |
+| DR-05 | ADOPTED (traceable): "Tasks" as drawn in Fig 3-7. 3.2.22a(6) describes the content and does not prescribe heading text. |
+| DR-06 | APPROVED, on condition: a section is **mandatory only where DFI prose requires it**. A section shown only in a template figure is optional: it is rendered when content is supplied, omitted cleanly otherwise, with a warning naming the omitted template section. Mandatory status is never inferred from a figure alone. |
+| DR-07 | APPROVED. Date at the margin in all three types. |
+| DR-08 | APPROVED. Dates generated within the text use the abbreviated form "2 Sep 26" (1.2.10b; A-01). |
+| DR-09 | ADOPTED (traceable): warn on abbreviated day names (1.2.10a), except in the 1.2.10d combined day-date-time form. Warning only. |
+| DR-10 | DECIDED. Copy number stays in the header, right-aligned (A-21). |
+| DR-11 | DECIDED. The Op Directive minimum elements (3.2.17(5)–(7)) are **required schema fields**. They are rendered as the author's own paragraphs in the prose order. **No headings are generated for them.** Required fields and rendered headings are separate concepts. |
+| DR-12 | **SURFACED, NOT ADOPTED.** The recommendation (optional extra sections before Acknowledgement) would add a structural position that DFI does not define. 3.2.16c permits the format to change but does not say how. The Op Directive is implemented in the fixed Fig 3-6 order only. Decide later if needed. |
+| DR-13 | DECIDED. Commander and senior-executive directives are variants of the CDF Directive template (`issuer` option), not separate engines or templates. |
+| DR-14 | ADOPTED (traceable, 3.2.11(7), 3.2.18(7)): CDF's block is always rendered. The handwritten "for" is not generated. |
+| DR-15 | ADOPTED (traceable, [T]): "See distribution" weight as drawn: bold in Fig 3-5, regular in Figs 3-6 and 3-7. |
+| DR-16 | ADOPTED (traceable, 3.2.22a(4)): AI Purpose uses the Fig 3-7 stem with its items; a warning when there are more than two. |
+| DR-17 | DECIDED. Enforce the one-year limit as an error for CDF Directives. 3.2.9d states the period and makes the end-of-period action mandatory ("are to be incorporated … or cancelled"). Not applied to the commander and senior-executive variants: 3.2.9d is about CDF Directives, and 3.2.13b extends only the layout. |
+| E-13 | DECIDED. Do not alter the fixed "DFO 14" reference. It is reproduced verbatim, and a warning flags it on every use, pending authoritative resolution. |
+| E-14 | DECIDED. Obvious capitalisation error, corrected without changing meaning: "this administrative instruction" becomes "this Administrative Instruction" (Fig 3-7 Purpose stem and Cancellation), matching paras 1–3 and 3.2.21. |
+| OP-01 | **OPEN (surfaced by BR-02).** 2.1.16(3)(c) requires the Force for New Zealand logotype with the logo on formal letters from members other than COS and the executive committee. Figs 2-7 to 2-12 do not show it, and the VIS placement (bottom right of a single-page document, or the back cover) does not fit multi-page letters. Not generated. Needs your decision. See `docs/baselines/2026-10-01-identity-artwork.md`. |
+| V-05 | ADDED. Microsoft Word check of the directive page-1 conditional number. **NOT TESTED.** |
+
 
 ## A. Ambiguities and conflicts in DFI 5.1
 
@@ -164,15 +202,15 @@ others verbatim, flagged in the template notes, until you decide each one.**
 | E-10 | Annex A abbreviations | "HQNZDF: Headquarters Defence Force New Zealand" | "Headquarters New Zealand Defence Force" (as on the title page) |
 | E-11 | 2V cl 15 | "own resources and;" | "own resources and:" (or an em dash, per A-07) |
 | E-12 | 2Q, 2Z, 2AC, 2AD | Enclosure item "1" without a full stop; "[Addressee (through Appointment XYZ]" with an unclosed parenthesis | "1."; "[Addressee] (through [Appointment])" |
-| E-13 | 3D para 15 (first cancellation option) | "…incorporated in DFO 14 and no later than DD Mmm YYYY." "DFO 14" is printed as fixed text, not as a placeholder | PROPOSED (Phase 3 plan): treat as a field "[parent publication]"; default verbatim until decided |
-| E-14 | 3F paras 1–4 and Cancellation | "Administrative Instruction" vs "administrative instruction" within the same boilerplate | PROPOSED (Phase 3 plan): reproduce verbatim unless you direct a correction |
+| E-13 | 3D para 15 (first cancellation option) | "…incorporated in DFO 14 and no later than DD Mmm YYYY." "DFO 14" is printed as fixed text, not as a placeholder | DECIDED 2026-10-01: reproduce verbatim and flag with a warning; no correction without an authoritative basis |
+| E-14 | 3F paras 1–4 and Cancellation | "Administrative Instruction" vs "administrative instruction" within the same boilerplate | DECIDED 2026-10-01: corrected to "Administrative Instruction" (obvious capitalisation error) |
 
 ---
 
 ## BR. Brand artwork (NZDF Visual Identity Standards, supplied 2026-10-01)
 
 Source: `source/nzdf-visual-identity/` (record, checksum and artwork map). DFI 5.1
-still governs layout. All items below are OPEN and need your decision.
+still governs layout. **All items DECIDED 2026-10-01**: see the Phase 3 decision table above. Original analysis below.
 
 | ID | Issue | Evidence | Recommendation | Alternative |
 |---|---|---|---|---|
@@ -195,7 +233,7 @@ Note), and command or unit badges (3.2.12b).
 | **T-02** | Content input format | (a) YAML document files validated by per-template schemas; (b) Markdown with front matter; (c) Python API only | **(a) YAML** with a small inline mark-up for **bold**, *italic*, footnotes and cross-references. It maps 1:1 to DFI structural elements, so the schema can enforce mandatory elements. | DECIDED |
 | **T-03** | Source of Word styles | (a) Generate all styles from `standards/spec/dfi-5.1-tokens.yaml`; (b) start from the official NZDF_DSWT `.dotx` files (1.1.1f) | **(b) if you can supply them; otherwise (a).** The official templates would settle A-22 and A-24 and give exact style names. **Do you have access to the NZDF_DSWT templates?** | OPEN: official templates not supplied; styles generated from tokens meanwhile |
 | **T-04** | Verification rendering | LibreOffice headless docx→PDF→PNG for visual comparison with DFI pages | Use it, with Carlito standing in for Calibri. Final sign-off in MS Word by a human reviewer. | ADOPTED |
-| **T-05** | Badge, logo and coat-of-arms assets | Extract from the DFI PDF (low resolution, not authorised) vs supplied official artwork | **Supplied official artwork only**, stored in `renderer/assets/` (git-ignored if restricted). Until then, render a labelled placeholder frame. | OPEN: **source supplied 2026-10-01** (NZDF Visual Identity Standards v1.1, Apr 2022, `source/nzdf-visual-identity/`). Its artwork is vector. Extraction and use await decisions BR-01 to BR-06. Labelled placeholders stay until then. |
+| **T-05** | Badge, logo and coat-of-arms assets | Extract from the DFI PDF (low resolution, not authorised) vs supplied official artwork | **Supplied official artwork only**, stored in `renderer/assets/` (git-ignored if restricted). Until then, render a labelled placeholder frame. | DECIDED 2026-10-01 (BR-01): official artwork from the NZDF Visual Identity Standards (`source/nzdf-visual-identity/`), derived reproducibly at render time. |
 | **T-06** | Product type | (a) Generate **finished documents** from structured content; (b) generate **blank Word templates** with placeholders (like the DSWT); (c) both | **(c), with (a) first.** The engine that fills documents can also emit templates with DFI placeholder text. | DECIDED (finished .docx first) |
 | **T-07** | Output formats | .docx only; optional PDF via LibreOffice; PDF permission security (1.1.3d(8)) | .docx primary; PDF optional for previews only; PDF security left to the user's approved tooling. | ADOPTED |
 | **T-08** | DFI file location | Moved `dfi_5_1.pdf` from the repo root to `source/dfi-5.1/` with `git mv`. The bytes are unchanged; the SHA-256 is recorded. | Done during this phase. Revert if you want the file at the root. | ADOPTED |

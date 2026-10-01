@@ -12,7 +12,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Cm, Pt
 
-from . import dates, ooxml, styles
+from . import artwork, dates, ooxml, styles
 from .inline import Fmt, add_inline
 from .model import GroupHeading, MainHeading, Para, ParaBlock, RecommendationsBlock, TableBlock
 from .page import setup_section
@@ -30,8 +30,10 @@ def _date_text(b, d) -> str:
 def letterhead(b, c, opts):
     """Badge/logo (top left) and address block (top right) (1.2.18a, Fig 1-4; A-14).
 
-    Reads c.letterhead.address (list[str]) and c.letterhead.device (str|None).
-    Official artwork is not held (register T-05): a labelled placeholder is drawn.
+    Reads c.letterhead.address (list[str]) and c.letterhead.device (a key of
+    the identity-artwork manifest). The device is the official artwork from the
+    NZDF Visual Identity Standards, inserted as an inline picture at the size
+    in tokens `identity.*` (registers BR-01, BR-05).
     """
     lh = getattr(c, "letterhead", None)
     if lh is None:
@@ -46,13 +48,14 @@ def letterhead(b, c, opts):
     lp = left.paragraphs[0]
     lp.style = b.doc.styles[styles.BLOCK]
     if lh.device:
-        lp.add_run(f"[{lh.device} - official artwork not held (register T-05)]").italic = True
+        wcm, hcm = artwork.size_cm(lh.device, b.tk)
+        img = artwork.path(lh.device, b.tk)
+        lp.add_run().add_picture(str(img), width=Cm(wcm), height=Cm(hcm))
     lines = ([(lh.unit, True)] if lh.unit else []) + [(a, False) for a in lh.address]
     for i, (line, bold) in enumerate(lines):
         p = right.paragraphs[0] if i == 0 else right.add_paragraph()
         p.style = b.doc.styles[styles.LETTERHEAD]
         p.add_run(line).bold = bold or None
-    b.warn("Letterhead device rendered as a placeholder: official artwork not held (T-05).")
 
 
 # ----------------------------------------------------------- descriptor/ident
